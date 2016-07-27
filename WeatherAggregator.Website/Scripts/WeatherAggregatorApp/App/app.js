@@ -4,5 +4,5 @@ var WeatherAggregatorApp = (function () {
         this.mainApp = {};
     }
     return WeatherAggregatorApp;
-}());
+})();
 //# sourceMappingURL=app.js.map

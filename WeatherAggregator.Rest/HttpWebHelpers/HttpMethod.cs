@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherAggregator.Rest
+namespace WeatherAggregator.Rest.HttpWebHelpers
 {
-    public class Class1
+    public enum HttpMethod: byte
     {
+        Get,
+        Post,
+        Put,
+        Delete
     }
 }

@@ -20,5 +20,5 @@ var WeatherInfo = (function (_super) {
         configurable: true
     });
     return WeatherInfo;
-}(Backbone.Model));
+})(Backbone.Model);
 //# sourceMappingURL=weatherInfo.js.map
