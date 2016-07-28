@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpWebHelpers\HttpMethod.cs" />
+    <Compile Include="HttpMethod.cs" />
     <Compile Include="HttpWebRequestor.cs" />
     <Compile Include="Interfaces\IHttpWebRequestor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
