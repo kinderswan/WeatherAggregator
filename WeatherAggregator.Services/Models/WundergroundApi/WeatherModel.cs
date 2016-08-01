@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherAggregator.Rest.Tests.Models
+namespace WeatherAggregator.Services.Models.WundergroundApi
 {
 	/// <summary>
-	/// Weather model is constructed from api from http://api.wunderground.com
+	/// Weather model is constructed from http://api.wunderground.com api
 	/// </summary>
-	public class WeatherModel
+	public class WeatherModel : DisplayLocation
 	{
 		[JsonProperty(PropertyName = "current_observation")]
 		public CurrentObservation CurrentObservation { get; set; }

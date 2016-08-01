@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace WeatherAggregator.Services.Models
+namespace WeatherAggregator.Services.Models.WundergroundApi
 {
 	public class DisplayLocation
 	{
@@ -17,5 +12,8 @@ namespace WeatherAggregator.Services.Models
 
 		[JsonProperty(PropertyName = "country")]
 		public string CountryName { get; set; }
+
+		[JsonProperty(PropertyName = "state_name")]
+		public string StateName { get; set; }
 	}
 }

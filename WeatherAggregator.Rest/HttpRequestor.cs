@@ -23,8 +23,7 @@ namespace WeatherAggregator.Rest
 			var result = Task.Run(() => this.ExecuteMethod(url, method)).Result;
 			return new RestResponse<TResponse>(result);
 		}
-
-
+		
 		private async Task<HttpResponseMessage> ExecuteMethod(string url, HttpMethod method)
 		{ 
 			switch (method)

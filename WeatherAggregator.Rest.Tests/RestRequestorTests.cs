@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WeatherAggregator.Rest.Tests.Models;
+using WeatherAggregator.Services.Models;
+using WeatherAggregator.Services.Models.ThePrintfulApi;
 
 namespace WeatherAggregator.Rest.Tests
 {
@@ -12,9 +14,9 @@ namespace WeatherAggregator.Rest.Tests
 		public void CheckTestMethod()
 		{
 			var obj = new HttpRequestor();
-			var response = obj.PerformRequest<WeatherModel>(@"http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/BY/Brest.json",
+			var response = obj.PerformRequest<CountriesCollectionModel>(@"https://api.theprintful.com/countries",
 				HttpMethod.Get);
-			Debug.Write(response.Data.CurrentObservation.IconUrl);
+			Debug.Write(response.Data.Countries.First(x => x.CountryName == "Australia").States[0].StateName);
 		}
 	}
 }

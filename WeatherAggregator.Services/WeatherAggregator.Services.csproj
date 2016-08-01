@@ -43,9 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\CurrentObservation.cs" />
-    <Compile Include="Models\DisplayLocation.cs" />
-    <Compile Include="Models\WeatherModel.cs" />
+    <Compile Include="Models\ThePrintfulApi\CountriesCollectionModel.cs" />
+    <Compile Include="Models\ThePrintfulApi\CountryModel.cs" />
+    <Compile Include="Models\ThePrintfulApi\StateModel.cs" />
+    <Compile Include="Models\WundergroundApi\CitiesContainerResponse.cs" />
+    <Compile Include="Models\WundergroundApi\CitiesCollectionModel.cs" />
+    <Compile Include="Models\WundergroundApi\CityModel.cs" />
+    <Compile Include="Models\WundergroundApi\CurrentObservation.cs" />
+    <Compile Include="Models\WundergroundApi\DisplayLocation.cs" />
+    <Compile Include="Models\WundergroundApi\WeatherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

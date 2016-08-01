@@ -54,11 +54,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Models\CurrentObservation.cs" />
-    <Compile Include="Models\DisplayLocation.cs" />
-    <Compile Include="Models\WeatherModel.cs" />
     <Compile Include="RestRequestorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThePrintfulApi\CountriesCollectionModel.cs" />
+    <Compile Include="ThePrintfulApi\CountryModel.cs" />
+    <Compile Include="ThePrintfulApi\StateModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WeatherAggregator.Rest\WeatherAggregator.Rest.csproj">
