@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherAggregator.Services.Models.WundergroundApi
+namespace WeatherAggregator.Services.Models.WundergroundApi.Weather
 {
 	public class CurrentObservation
 	{

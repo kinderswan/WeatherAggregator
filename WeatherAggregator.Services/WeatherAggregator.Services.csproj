@@ -43,20 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ThePrintfulApi\CountriesCollectionModel.cs" />
-    <Compile Include="Models\ThePrintfulApi\CountryModel.cs" />
-    <Compile Include="Models\ThePrintfulApi\StateModel.cs" />
-    <Compile Include="Models\WundergroundApi\CitiesContainerResponse.cs" />
-    <Compile Include="Models\WundergroundApi\CitiesCollectionModel.cs" />
-    <Compile Include="Models\WundergroundApi\CityModel.cs" />
-    <Compile Include="Models\WundergroundApi\CurrentObservation.cs" />
-    <Compile Include="Models\WundergroundApi\DisplayLocation.cs" />
-    <Compile Include="Models\WundergroundApi\WeatherModel.cs" />
+    <Compile Include="Models\PixabayApi.Images\ImageModel.cs" />
+    <Compile Include="Models\PixabayApi.Images\ImagesCollectionModel.cs" />
+    <Compile Include="Models\ThePrintfulApi.Countries\CountriesCollectionModel.cs" />
+    <Compile Include="Models\ThePrintfulApi.Countries\CountryModel.cs" />
+    <Compile Include="Models\ThePrintfulApi.Countries\StateModel.cs" />
+    <Compile Include="Models\WundergroundApi.Weather\CitiesContainerResponse.cs" />
+    <Compile Include="Models\WundergroundApi.Weather\CitiesCollectionModel.cs" />
+    <Compile Include="Models\WundergroundApi.Weather\CityModel.cs" />
+    <Compile Include="Models\WundergroundApi.Weather\CurrentObservation.cs" />
+    <Compile Include="Models\WundergroundApi.Weather\DisplayLocation.cs" />
+    <Compile Include="Models\WundergroundApi.Weather\WeatherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
