@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace WeatherAggregator.Models.Models.Countries.ThePrintful
+namespace WeatherAggregator.Models.Models.Core.Countries.ThePrintful
 {
 	public class CountryModel
 	{

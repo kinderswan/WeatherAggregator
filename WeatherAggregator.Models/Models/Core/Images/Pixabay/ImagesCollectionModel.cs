@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace WeatherAggregator.Models.Models.Images.Pixabay
+namespace WeatherAggregator.Models.Models.Core.Images.Pixabay
 {
 	/// <summary>
 	/// Api is from https://pixabay.com/api/?key=3018114-ef10ea70a2ba5da78d32b52be&q=yellow+flowers&image_type=photo

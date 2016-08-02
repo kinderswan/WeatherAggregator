@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace WeatherAggregator.Models.Models.Countries.Wunderground
+namespace WeatherAggregator.Models.Models.Core.Countries.Wunderground
 {
 	public class CitiesCollectionModel
 	{

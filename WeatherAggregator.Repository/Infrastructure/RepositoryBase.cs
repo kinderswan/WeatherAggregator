@@ -1,7 +1,7 @@
 ﻿using WeatherAggregator.Rest;
 using WeatherAggregator.Rest.Interfaces;
 
-namespace WeatherAggregator.Repository.Core
+namespace WeatherAggregator.Repository.Infrastructure
 {
 	public abstract class RepositoryBase<T> where T: class
 	{

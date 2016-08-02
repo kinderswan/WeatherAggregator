@@ -43,14 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Images\Pixabay\ImageModel.cs" />
-    <Compile Include="Models\Images\Pixabay\ImagesCollectionModel.cs" />
-    <Compile Include="Models\Countries\ThePrintful\CountriesCollectionModel.cs" />
-    <Compile Include="Models\Countries\ThePrintful\CountryModel.cs" />
-    <Compile Include="Models\Countries\ThePrintful\StateModel.cs" />
-    <Compile Include="Models\Countries\Wunderground\CitiesCollectionModel.cs" />
-    <Compile Include="Models\Countries\Wunderground\CitiesContainerResponse.cs" />
-    <Compile Include="Models\Countries\Wunderground\CityModel.cs" />
+    <Compile Include="Models\Core\Images\Pixabay\ImageModel.cs" />
+    <Compile Include="Models\Core\Images\Pixabay\ImagesCollectionModel.cs" />
+    <Compile Include="Models\Core\Countries\ThePrintful\CountriesCollectionModel.cs" />
+    <Compile Include="Models\Core\Countries\ThePrintful\CountryModel.cs" />
+    <Compile Include="Models\Core\Countries\ThePrintful\StateModel.cs" />
+    <Compile Include="Models\Core\Countries\Wunderground\CitiesCollectionModel.cs" />
+    <Compile Include="Models\Core\Countries\Wunderground\CitiesContainerResponse.cs" />
+    <Compile Include="Models\Core\Countries\Wunderground\CityModel.cs" />
     <Compile Include="Models\Weather\Wunderground\CurrentObservation.cs" />
     <Compile Include="Models\Weather\Wunderground\DisplayLocation.cs" />
     <Compile Include="Models\Weather\Wunderground\WeatherModel.cs" />

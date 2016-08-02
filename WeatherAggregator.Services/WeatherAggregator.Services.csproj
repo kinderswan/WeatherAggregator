@@ -51,8 +51,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CountriesServices\Interfaces\" />
-    <Folder Include="ImagesServices\Interfaces\" />
+    <Folder Include="Core\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WeatherAggregator.Models\WeatherAggregator.Models.csproj">

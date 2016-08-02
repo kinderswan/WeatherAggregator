@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Web;
+﻿using System.Reflection;
 using System.Web.Http;
-using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.WebApi;
 using WeatherAggregator.Repository.Repositories.WeatherRepositories.Interfaces;
@@ -12,13 +7,14 @@ using WeatherAggregator.Rest;
 using WeatherAggregator.Rest.Interfaces;
 using WeatherAggregator.Services.WeatherServices.Interfaces;
 
-namespace WeatherAggregator.WebApi.App_Start
+namespace WeatherAggregator.WebApi
 {
 	public class Bootstrapper
 	{
 		public static void Run()
 		{
 			Bootstrapper.SetAutofacContainer();
+			AutoMapperConfig.Configure();
 		}
 
 		private static void SetAutofacContainer()
@@ -26,7 +22,7 @@ namespace WeatherAggregator.WebApi.App_Start
 			var builder = new ContainerBuilder();
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
 
-			builder.RegisterType<HttpRequestor>().As<IHttpRequestor>().InstancePerRequest();
+			builder.RegisterType<HttpRequestor>().As<IHttpRequestor>().SingleInstance();
 
 			builder.RegisterGeneric(typeof(RestResponse<>)).As(typeof(IRestResponse<>)).InstancePerRequest();
 

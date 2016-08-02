@@ -1,8 +1,7 @@
-﻿using WeatherAggregator.Models.Models.Countries.Wunderground;
+﻿using WeatherAggregator.Models.Models.Core.Countries.Wunderground;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
-using WeatherAggregator.Repository.Core;
+using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.WeatherRepositories.Interfaces;
-using WeatherAggregator.Rest;
 using WeatherAggregator.Rest.Interfaces;
 
 namespace WeatherAggregator.Repository.Repositories.WeatherRepositories
