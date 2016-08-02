@@ -15,5 +15,8 @@ namespace WeatherAggregator.Models.Models.Weather.Wunderground
 
 		[JsonProperty(PropertyName = "state_name")]
 		public string StateName { get; set; }
+
+		[JsonProperty(PropertyName = "state")]
+		public string State { get; set; }
 	}
 }
