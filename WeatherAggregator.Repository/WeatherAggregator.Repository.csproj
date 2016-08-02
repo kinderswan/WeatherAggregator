@@ -39,8 +39,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Infrastructure\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\WeatherRepositories\Interfaces\IWundergroundWeatherRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Repositories\WeatherRepositories\WundergroundWeatherRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeatherAggregator.Models\WeatherAggregator.Models.csproj">
+      <Project>{15b8220f-515a-4cd7-b65b-7d36f59c0dd8}</Project>
+      <Name>WeatherAggregator.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeatherAggregator.Rest\WeatherAggregator.Rest.csproj">
+      <Project>{1de2cfe3-9602-4f00-953f-a46796448a71}</Project>
+      <Name>WeatherAggregator.Rest</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\Core\Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

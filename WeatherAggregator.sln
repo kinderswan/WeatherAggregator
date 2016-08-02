@@ -5,13 +5,19 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Website", "WeatherAggregator.Website\WeatherAggregator.Website.csproj", "{B61058CD-43E1-4EE0-90A3-FD27349DB500}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.WebApi", "WeatherAggregator.WebApi\WeatherAggregator.WebApi.csproj", "{90D9F8AC-9536-4CCA-8FD3-F7CBF784FA75}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Services", "WeatherAggregator.Services\WeatherAggregator.Services.csproj", "{302F3803-3DFD-4C4C-A679-52FFE6D31E9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Repository", "WeatherAggregator.Repository\WeatherAggregator.Repository.csproj", "{3018748D-4679-4C37-A1DF-2FE4EF679051}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Rest", "WeatherAggregator.Rest\WeatherAggregator.Rest.csproj", "{1DE2CFE3-9602-4F00-953F-A46796448A71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{870CBCE5-09C7-4AEC-9379-421A46B098AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Rest.Tests", "WeatherAggregator.Rest.Tests\WeatherAggregator.Rest.Tests.csproj", "{82375CA9-9D74-48C3-8941-42DDCFE9BD83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.WebApi", "WeatherAggregator.WebApi\WeatherAggregator.WebApi.csproj", "{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Models", "WeatherAggregator.Models\WeatherAggregator.Models.csproj", "{15B8220F-515A-4CD7-B65B-7D36F59C0DD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +29,6 @@ Global
 		{B61058CD-43E1-4EE0-90A3-FD27349DB500}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B61058CD-43E1-4EE0-90A3-FD27349DB500}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B61058CD-43E1-4EE0-90A3-FD27349DB500}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90D9F8AC-9536-4CCA-8FD3-F7CBF784FA75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90D9F8AC-9536-4CCA-8FD3-F7CBF784FA75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90D9F8AC-9536-4CCA-8FD3-F7CBF784FA75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90D9F8AC-9536-4CCA-8FD3-F7CBF784FA75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{302F3803-3DFD-4C4C-A679-52FFE6D31E9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{302F3803-3DFD-4C4C-A679-52FFE6D31E9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{302F3803-3DFD-4C4C-A679-52FFE6D31E9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,8 +41,23 @@ Global
 		{1DE2CFE3-9602-4F00-953F-A46796448A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DE2CFE3-9602-4F00-953F-A46796448A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DE2CFE3-9602-4F00-953F-A46796448A71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82375CA9-9D74-48C3-8941-42DDCFE9BD83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82375CA9-9D74-48C3-8941-42DDCFE9BD83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82375CA9-9D74-48C3-8941-42DDCFE9BD83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82375CA9-9D74-48C3-8941-42DDCFE9BD83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15B8220F-515A-4CD7-B65B-7D36F59C0DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15B8220F-515A-4CD7-B65B-7D36F59C0DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15B8220F-515A-4CD7-B65B-7D36F59C0DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15B8220F-515A-4CD7-B65B-7D36F59C0DD8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{82375CA9-9D74-48C3-8941-42DDCFE9BD83} = {870CBCE5-09C7-4AEC-9379-421A46B098AE}
 	EndGlobalSection
 EndGlobal

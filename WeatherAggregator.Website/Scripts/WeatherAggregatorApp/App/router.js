@@ -9,12 +9,10 @@ var WeatherAggregatorRouter = (function (_super) {
     function WeatherAggregatorRouter() {
         _super.call(this);
         this.routes = {};
-        //this.weatherAggregatorRouter = new WeatherAggregatorRouter();
-        Backbone.history.start();
     }
     return WeatherAggregatorRouter;
 }(Backbone.Router));
-$(function () {
-    new WeatherAggregatorRouter();
-});
+//$(() => {
+//	new WeatherAggregatorRouter();
+//}); 
 //# sourceMappingURL=router.js.map
