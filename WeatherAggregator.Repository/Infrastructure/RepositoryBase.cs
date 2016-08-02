@@ -14,7 +14,7 @@ namespace WeatherAggregator.Repository.Infrastructure
 			this.httpRequestor = requestor;
 		}
 
-		public virtual T GetResponseData(string url)
+		public virtual T GetResponseFromUrl(string url)
 		{
 			return this.httpRequestor.PerformRequest<T>(url, HttpMethod.Get).Data;
 		}

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherAggregator.Models.Models.Core.Countries.ThePrintful
+namespace WeatherAggregator.Models.Models.Core.Countries
 {
 	public class StateModel
 	{

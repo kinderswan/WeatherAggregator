@@ -1,4 +1,4 @@
-﻿using WeatherAggregator.Models.Models.Core.Countries.Wunderground;
+﻿using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.WeatherRepositories.Interfaces;
@@ -18,10 +18,10 @@ namespace WeatherAggregator.Repository.Repositories.WeatherRepositories
 
 		public WeatherModel GetWeatherData(CityModel cityModel)
 		{
-			return base.GetResponseData(this.BuildGetRequestUrl(cityModel));
+			return base.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
 		}
 
-		private string BuildGetRequestUrl(CityModel model)
+        private string BuildGetRequestUrl(CityModel model)
 		{
 			return string.IsNullOrEmpty(model.StateName) ?
 				string.Format(WeatherCountryURL, model.CountryName, model.CityName) :

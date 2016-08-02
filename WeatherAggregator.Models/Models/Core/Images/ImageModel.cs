@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherAggregator.Models.Models.Core.Images.Pixabay
+namespace WeatherAggregator.Models.Models.Core.Images
 {
 	public class ImageModel
 	{

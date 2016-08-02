@@ -15,7 +15,7 @@ namespace WeatherAggregator.WebApi.Models
 
 		public string WindDirection { get; set; }
 
-		public double Feelslike { get; set; }
+		public string Feelslike { get; set; }
 
 		public string Country { get; set; }
 

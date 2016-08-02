@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\ImageService.cs" />
+    <Compile Include="Core\Interfaces\IImageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WeatherServices\Interfaces\IWundergroundWeatherService.cs" />
     <Compile Include="WeatherServices\WundergroundWeatherService.cs" />
@@ -50,9 +52,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WeatherAggregator.Models\WeatherAggregator.Models.csproj">
       <Project>{15b8220f-515a-4cd7-b65b-7d36f59c0dd8}</Project>

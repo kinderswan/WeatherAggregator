@@ -1,4 +1,4 @@
-﻿using WeatherAggregator.Models.Models.Core.Countries.Wunderground;
+﻿using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
 using WeatherAggregator.Repository.Infrastructure.Interfaces;
 

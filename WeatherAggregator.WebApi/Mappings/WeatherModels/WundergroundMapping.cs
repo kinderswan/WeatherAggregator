@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
 using WeatherAggregator.WebApi.Models;
 
@@ -11,7 +12,8 @@ namespace WeatherAggregator.WebApi.Mappings.WeatherModels
 			get { return "WundergroundMapping"; }
 		}
 
-		protected override void Configure()
+	    [Obsolete("Use the constructor instead. Will be removed in 6.0")]
+	    protected override void Configure()
 		{
 			CreateMap<WeatherModel, WeatherViewModel>()
 				.ForMember(temp => temp.Temperature, x => x.MapFrom(src => src.CurrentObservation.TemperatureCelsius))

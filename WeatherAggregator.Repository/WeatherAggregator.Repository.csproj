@@ -40,6 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\Core\ImageRepository.cs" />
+    <Compile Include="Repositories\Core\Interfaces\IImageRepository.cs" />
     <Compile Include="Repositories\WeatherRepositories\Interfaces\IWundergroundWeatherRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
@@ -55,9 +57,7 @@
       <Name>WeatherAggregator.Rest</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\Core\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

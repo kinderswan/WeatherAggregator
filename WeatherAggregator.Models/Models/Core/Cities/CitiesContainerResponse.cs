@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace WeatherAggregator.Models.Models.Core.Countries.Wunderground
+namespace WeatherAggregator.Models.Models.Core.Cities
 {
 	/// <summary>
 	/// Api documentation at http://api.wunderground.com/weather/api/d/docs

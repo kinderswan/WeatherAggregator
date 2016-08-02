@@ -2,6 +2,6 @@
 {
 	public interface IRepository<T> where T: class
 	{
-		T GetResponseData(string url);
+		T GetResponseFromUrl(string url);
 	}
 }
