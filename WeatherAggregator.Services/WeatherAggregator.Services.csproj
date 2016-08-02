@@ -43,23 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\PixabayApi.Images\ImageModel.cs" />
-    <Compile Include="Models\PixabayApi.Images\ImagesCollectionModel.cs" />
-    <Compile Include="Models\ThePrintfulApi.Countries\CountriesCollectionModel.cs" />
-    <Compile Include="Models\ThePrintfulApi.Countries\CountryModel.cs" />
-    <Compile Include="Models\ThePrintfulApi.Countries\StateModel.cs" />
-    <Compile Include="Models\WundergroundApi.Weather\CitiesContainerResponse.cs" />
-    <Compile Include="Models\WundergroundApi.Weather\CitiesCollectionModel.cs" />
-    <Compile Include="Models\WundergroundApi.Weather\CityModel.cs" />
-    <Compile Include="Models\WundergroundApi.Weather\CurrentObservation.cs" />
-    <Compile Include="Models\WundergroundApi.Weather\DisplayLocation.cs" />
-    <Compile Include="Models\WundergroundApi.Weather\WeatherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeatherServices\Interfaces\IWundergroundWeatherService.cs" />
+    <Compile Include="WeatherServices\WundergroundWeatherService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="CountriesServices\Interfaces\" />
+    <Folder Include="ImagesServices\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WeatherAggregator.Models\WeatherAggregator.Models.csproj">
+      <Project>{15b8220f-515a-4cd7-b65b-7d36f59c0dd8}</Project>
+      <Name>WeatherAggregator.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WeatherAggregator.Repository\WeatherAggregator.Repository.csproj">
+      <Project>{3018748d-4679-4c37-a1df-2fe4ef679051}</Project>
+      <Name>WeatherAggregator.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

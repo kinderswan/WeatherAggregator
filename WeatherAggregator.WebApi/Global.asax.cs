@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WeatherAggregator.WebApi.App_Start;
 
 namespace WeatherAggregator.WebApi
 {
@@ -22,6 +23,9 @@ namespace WeatherAggregator.WebApi
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+			Bootstrapper.Run();
+			GlobalConfiguration.Configuration.EnsureInitialized(); 
 		}
 	}
 }
