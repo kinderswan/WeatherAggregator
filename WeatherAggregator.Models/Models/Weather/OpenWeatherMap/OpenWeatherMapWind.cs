@@ -10,9 +10,9 @@ namespace WeatherAggregator.Models.Models.Weather.OpenWeatherMap
 	public class OpenWeatherMapWind
 	{
 		[JsonProperty(PropertyName = "speed")]
-		public int WindSpeed { get; set; }
+		public double WindSpeed { get; set; }
 
 		[JsonProperty(PropertyName = "deg")]
-		public int WindDegrees { get; set; }
+		public double WindDegrees { get; set; }
 	}
 }

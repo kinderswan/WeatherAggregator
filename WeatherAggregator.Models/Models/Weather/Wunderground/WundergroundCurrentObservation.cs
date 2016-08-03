@@ -23,7 +23,7 @@ namespace WeatherAggregator.Models.Models.Weather.Wunderground
 		public string WindDirection { get; set; }
 
 		[JsonProperty(PropertyName = "wind_degrees")]
-		public int WindDegrees { get; set; }
+		public double WindDegrees { get; set; }
 
 		[JsonProperty(PropertyName = "wind_kph")]
 		public double WindSpeed { get; set; }
