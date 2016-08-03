@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using AutoMapper;
-using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Models.Models.Core.Weather;
-using WeatherAggregator.Models.Models.Weather.Wunderground;
 using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Mappings

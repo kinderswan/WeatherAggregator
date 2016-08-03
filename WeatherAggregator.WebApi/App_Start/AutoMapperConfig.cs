@@ -13,6 +13,7 @@ namespace WeatherAggregator.WebApi
 				x.AddProfile<WundergroundConventionMapping>();
 				x.AddProfile<ImageMapping>();
 				x.AddProfile<WeatherMapping>();
+				x.AddProfile<CountriesMapping>();
 			});
 		}
 	}

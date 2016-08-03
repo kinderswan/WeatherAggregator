@@ -32,10 +32,11 @@ namespace WeatherAggregator.WebApi
 			builder.RegisterAssemblyTypes(typeof(IImagesRepository).Assembly)
 				.Where(t => t.Name.EndsWith("Repository"))
 				.AsImplementedInterfaces().InstancePerRequest();
+
 			builder.RegisterAssemblyTypes(typeof(IWundergroundWeatherService).Assembly)
 				.AsImplementedInterfaces().InstancePerRequest();
 
-			
+
 
 			IContainer container = builder.Build();
 			GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);

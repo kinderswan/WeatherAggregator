@@ -1,4 +1,6 @@
-﻿namespace WeatherAggregator.Repository.Infrastructure.Interfaces
+﻿using System;
+
+namespace WeatherAggregator.Repository.Infrastructure.Interfaces
 {
 	public interface IRepository<T> where T: class
 	{
