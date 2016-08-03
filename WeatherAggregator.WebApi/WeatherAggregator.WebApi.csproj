@@ -179,6 +179,7 @@
     <Compile Include="Controllers\Core\CitiesController.cs" />
     <Compile Include="Controllers\Core\ImageController.cs" />
     <Compile Include="Controllers\Core\CountriesController.cs" />
+    <Compile Include="Controllers\WeatherControllers\OpenWeatherMapWeatherController.cs" />
     <Compile Include="Controllers\WeatherControllers\WundergroundWeatherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,6 +188,7 @@
     <Compile Include="Mappings\CountriesMapping.cs" />
     <Compile Include="Mappings\WeatherMapping.cs" />
     <Compile Include="Mappings\ImageMapping.cs" />
+    <Compile Include="Mappings\WeatherModelsMappings\OpenWeatherMapConventionMapping.cs" />
     <Compile Include="Models\CitiesCollectionViewModel.cs" />
     <Compile Include="Models\CityViewModel.cs" />
     <Compile Include="Models\CountriesCollectionViewModel.cs" />

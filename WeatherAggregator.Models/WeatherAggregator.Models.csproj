@@ -52,6 +52,10 @@
     <Compile Include="Models\Core\Cities\CitiesContainerResponse.cs" />
     <Compile Include="Models\Core\Cities\CityModel.cs" />
     <Compile Include="Models\Core\Weather\WeatherConventionModel.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapMain.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapSys.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapWeatherModel.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapWind.cs" />
     <Compile Include="Models\Weather\Wunderground\WundergroundCurrentObservation.cs" />
     <Compile Include="Models\Weather\Wunderground\WundergroundDisplayLocation.cs" />
     <Compile Include="Models\Weather\Wunderground\WundergroundWeatherModel.cs" />

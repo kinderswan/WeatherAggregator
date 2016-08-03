@@ -8,7 +8,7 @@
 
 		public double WindSpeed { get; set; }
 
-		public string WindDirection { get; set; }
+		public int WindDegrees { get; set; }
 
 		public string Feelslike { get; set; }
 

@@ -12,6 +12,7 @@ namespace WeatherAggregator.WebApi
 			{
 				// Transform third-party weather api models to default
 				x.AddProfile<WundergroundConventionMapping>();
+				x.AddProfile<OpenWeatherMapConventionMapping>();
 				//
 
 				x.AddProfile<ImageMapping>();

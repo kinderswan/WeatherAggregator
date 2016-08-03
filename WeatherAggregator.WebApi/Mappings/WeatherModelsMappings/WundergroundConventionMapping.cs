@@ -24,7 +24,7 @@ namespace WeatherAggregator.WebApi.Mappings.WeatherModelsMappings
 						? src.CurrentObservation.DisplayLocation.StateName
 						: src.CurrentObservation.DisplayLocation.CountryName))
 				.ForMember(temp => temp.Feelslike, x => x.MapFrom(src => src.CurrentObservation.FeelslikeCelsius))
-				.ForMember(temp => temp.WindDirection, x => x.MapFrom(src => src.CurrentObservation.WindDirection))
+				.ForMember(temp => temp.WindDegrees, x => x.MapFrom(src => src.CurrentObservation.WindDegrees))
 				.ForMember(temp => temp.WindSpeed, x => x.MapFrom(src => src.CurrentObservation.WindSpeed))
 				.ForMember(temp => temp.State, x => x.MapFrom(src => src.CurrentObservation.DisplayLocation.StateName));
 		}
