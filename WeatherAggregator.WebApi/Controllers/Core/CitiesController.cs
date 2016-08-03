@@ -30,7 +30,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("{countryName}/{stateName}/getcities")]
 		public IHttpActionResult GetCountries(string countryName, string stateName)
 		{
-			var result = this.sitiesService.GetCitiesCollection(countryName);
+			var result = this.sitiesService.GetCitiesCollection(countryName, stateName);
 			return Json(Mapper.Map<CitiesCollectionModel, CitiesCollectionViewModel>(result));
 		}
 	}

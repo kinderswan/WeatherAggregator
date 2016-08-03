@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using WeatherAggregator.WebApi.Mappings;
-using WeatherAggregator.WebApi.Mappings.WeatherModels;
+using WeatherAggregator.WebApi.Mappings.WeatherModelsMappings;
 
 namespace WeatherAggregator.WebApi
 {
@@ -10,7 +10,10 @@ namespace WeatherAggregator.WebApi
 		{
 			Mapper.Initialize(x =>
 			{
+				// Transform third-party weather api models to default
 				x.AddProfile<WundergroundConventionMapping>();
+				//
+
 				x.AddProfile<ImageMapping>();
 				x.AddProfile<WeatherMapping>();
 				x.AddProfile<CountriesMapping>();

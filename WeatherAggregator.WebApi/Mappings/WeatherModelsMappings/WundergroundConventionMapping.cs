@@ -3,7 +3,7 @@ using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
 
-namespace WeatherAggregator.WebApi.Mappings.WeatherModels
+namespace WeatherAggregator.WebApi.Mappings.WeatherModelsMappings
 {
 	public class WundergroundConventionMapping : Profile
 	{

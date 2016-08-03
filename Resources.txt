@@ -1,0 +1,1 @@
+http://api.openweathermap.org/data/2.5/weather?q=Minsk,Belarus&appid=5c534ef4999710bd65efedf91d6295e4
