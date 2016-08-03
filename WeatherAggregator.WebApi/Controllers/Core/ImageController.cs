@@ -5,19 +5,21 @@ using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Services.Core.Interfaces;
+using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
     [RoutePrefix("api/image")]
     public class ImageController : ApiController
     {
-        private readonly IImageService imageService;
+        private readonly IImagesService imageService;
 
         public ImageController() { }
 
-        public ImageController(IImageService imageService)
+        public ImageController(IImagesService imageService)
         {
             this.imageService = imageService;
         }
@@ -30,7 +32,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 
             ImageModel result = this.imageService.GetImage(encodedSearchQuery);
 
-            return Json(result);
+            return Json(Mapper.Map<ImageModel,ImageViewModel>(result));
         }
 
     }

@@ -51,9 +51,10 @@
     <Compile Include="Models\Core\Cities\CitiesCollectionModel.cs" />
     <Compile Include="Models\Core\Cities\CitiesContainerResponse.cs" />
     <Compile Include="Models\Core\Cities\CityModel.cs" />
-    <Compile Include="Models\Weather\Wunderground\CurrentObservation.cs" />
-    <Compile Include="Models\Weather\Wunderground\DisplayLocation.cs" />
-    <Compile Include="Models\Weather\Wunderground\WeatherModel.cs" />
+    <Compile Include="Models\Core\Weather\WeatherConventionModel.cs" />
+    <Compile Include="Models\Weather\Wunderground\WundergroundCurrentObservation.cs" />
+    <Compile Include="Models\Weather\Wunderground\WundergroundDisplayLocation.cs" />
+    <Compile Include="Models\Weather\Wunderground\WundergroundWeatherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

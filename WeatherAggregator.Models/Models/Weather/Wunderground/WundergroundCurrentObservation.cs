@@ -2,10 +2,10 @@
 
 namespace WeatherAggregator.Models.Models.Weather.Wunderground
 {
-	public class CurrentObservation
+	public class WundergroundCurrentObservation
 	{
 		[JsonProperty(PropertyName = "display_location")]
-		public DisplayLocation DisplayLocation { get; set; }
+		public WundergroundDisplayLocation DisplayLocation { get; set; }
 
 		[JsonProperty(PropertyName = "temperature_string")]
 		public string Temperature { get; set; }

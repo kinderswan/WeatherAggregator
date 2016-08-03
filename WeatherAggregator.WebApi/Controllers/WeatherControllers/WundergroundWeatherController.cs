@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Cities;
+using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
 using WeatherAggregator.Services.WeatherServices.Interfaces;
 using WeatherAggregator.WebApi.Models;
@@ -30,7 +31,7 @@ namespace WeatherAggregator.WebApi.Controllers.WeatherControllers
 				StateName = state
 			});
 			
-			return Json(Mapper.Map<WeatherModel, WeatherViewModel>(result));
+			return Json(Mapper.Map<WeatherConventionModel, WeatherViewModel>(result));
 		}
 
 		[HttpGet]
@@ -43,7 +44,7 @@ namespace WeatherAggregator.WebApi.Controllers.WeatherControllers
 				CityName = city
 			});
 
-			return Json(Mapper.Map<WeatherModel, WeatherViewModel>(result));
+			return Json(Mapper.Map<WeatherConventionModel, WeatherViewModel>(result));
 		}
 	}
 }

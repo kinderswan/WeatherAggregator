@@ -1,21 +1,21 @@
 ﻿using System;
 using AutoMapper;
+using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
-using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Mappings.WeatherModels
 {
-	public class WundergroundMapping : Profile
+	public class WundergroundConventionMapping : Profile
 	{
 		public new string ProfileName
 		{
-			get { return "WundergroundMapping"; }
+			get { return "WundergroundConventionMapping"; }
 		}
 
-	    [Obsolete("Use the constructor instead. Will be removed in 6.0")]
-	    protected override void Configure()
+		[Obsolete("Use the constructor instead. Will be removed in 6.0")]
+		protected override void Configure()
 		{
-			CreateMap<WeatherModel, WeatherViewModel>()
+			CreateMap<WundergroundWeatherModel, WeatherConventionModel>()
 				.ForMember(temp => temp.Temperature, x => x.MapFrom(src => src.CurrentObservation.TemperatureCelsius))
 				.ForMember(temp => temp.Humidity, x => x.MapFrom(src => src.CurrentObservation.RelativeHumidity))
 				.ForMember(temp => temp.City, x => x.MapFrom(src => src.CurrentObservation.DisplayLocation.CityName))

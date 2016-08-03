@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherAggregator.Models.Models.Core.Images;
-using WeatherAggregator.Repository.Repositories.Core.Interfaces;
+using WeatherAggregator.Repository.Repositories.Interfaces;
 using WeatherAggregator.Services.Core.Interfaces;
 
 namespace WeatherAggregator.Services.Core
 {
-    public class ImageService : IImageService
+    public class ImagesService : IImagesService
     {
-        private readonly IImageRepository imageRepository;
+        private readonly IImagesRepository imageRepository;
 
-        public ImageService() { }
+        public ImagesService() { }
 
-        public ImageService(IImageRepository imageRepository)
+        public ImagesService(IImagesRepository imageRepository)
         {
             this.imageRepository = imageRepository;
         }

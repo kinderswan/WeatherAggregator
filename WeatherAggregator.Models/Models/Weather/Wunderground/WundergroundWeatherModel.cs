@@ -7,10 +7,10 @@ namespace WeatherAggregator.Models.Models.Weather.Wunderground
 	/// Example request is http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/CA/San_Francisco.json
 	/// Api key is d560e8d2602ee998
 	/// </summary>
-	public class WeatherModel
+	public class WundergroundWeatherModel
 	{
 		[JsonProperty(PropertyName = "current_observation")]
-		public CurrentObservation CurrentObservation { get; set; }
+		public WundergroundCurrentObservation CurrentObservation { get; set; }
 	}
 
 	

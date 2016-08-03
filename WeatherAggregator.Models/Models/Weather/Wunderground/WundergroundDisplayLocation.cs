@@ -2,7 +2,7 @@
 
 namespace WeatherAggregator.Models.Models.Weather.Wunderground
 {
-	public class DisplayLocation
+	public class WundergroundDisplayLocation
 	{
 		[JsonProperty(PropertyName = "full")]
 		public string FullCityName { get; set; }
