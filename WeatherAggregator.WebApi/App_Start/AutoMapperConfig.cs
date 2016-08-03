@@ -14,6 +14,7 @@ namespace WeatherAggregator.WebApi
 				x.AddProfile<ImageMapping>();
 				x.AddProfile<WeatherMapping>();
 				x.AddProfile<CountriesMapping>();
+				x.AddProfile<CitiesMapping>();
 			});
 		}
 	}

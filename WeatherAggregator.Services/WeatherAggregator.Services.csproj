@@ -51,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\CitiesService.cs" />
     <Compile Include="Core\CountriesService.cs" />
     <Compile Include="Core\ImagesService.cs" />
+    <Compile Include="Core\Interfaces\ICitiesService.cs" />
     <Compile Include="Core\Interfaces\ICountriesService.cs" />
     <Compile Include="Core\Interfaces\IImagesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -176,15 +176,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Core\CitiesController.cs" />
     <Compile Include="Controllers\Core\ImageController.cs" />
     <Compile Include="Controllers\Core\CountriesController.cs" />
     <Compile Include="Controllers\WeatherControllers\WundergroundWeatherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappings\CitiesMapping.cs" />
     <Compile Include="Mappings\CountriesMapping.cs" />
     <Compile Include="Mappings\WeatherMapping.cs" />
     <Compile Include="Mappings\ImageMapping.cs" />
+    <Compile Include="Models\CitiesCollectionViewModel.cs" />
+    <Compile Include="Models\CityViewModel.cs" />
     <Compile Include="Models\CountriesCollectionViewModel.cs" />
     <Compile Include="Models\CountryViewModel.cs" />
     <Compile Include="Models\ImageViewModel.cs" />

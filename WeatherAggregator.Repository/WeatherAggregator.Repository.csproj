@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Interfaces\IRepository.cs" />
+    <Compile Include="Repositories\CitiesRepository.cs" />
     <Compile Include="Repositories\ImagesRepository.cs" />
+    <Compile Include="Repositories\Interfaces\ICitiesRepository.cs" />
     <Compile Include="Repositories\Interfaces\ICountriesRepository.cs" />
     <Compile Include="Repositories\Interfaces\IImagesRepository.cs" />
     <Compile Include="Repositories\CountriesRepository.cs" />

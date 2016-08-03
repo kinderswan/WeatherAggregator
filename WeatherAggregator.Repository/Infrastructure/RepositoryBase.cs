@@ -1,5 +1,4 @@
-﻿using System;
-using WeatherAggregator.Rest;
+﻿using WeatherAggregator.Rest;
 using WeatherAggregator.Rest.Interfaces;
 
 namespace WeatherAggregator.Repository.Infrastructure

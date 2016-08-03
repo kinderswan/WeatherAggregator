@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WeatherAggregator.Models.Models.Core.Countries;
+﻿using WeatherAggregator.Models.Models.Core.Countries;
 using WeatherAggregator.Repository.Repositories.Interfaces;
 using WeatherAggregator.Services.Core.Interfaces;
 

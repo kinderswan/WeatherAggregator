@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-using WeatherAggregator.Models.Models.Core.Countries;
 
 namespace WeatherAggregator.WebApi.Models
 {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
+﻿using System.Web.Http;
 using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Countries;
 using WeatherAggregator.Services.Core.Interfaces;
