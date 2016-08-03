@@ -6,7 +6,7 @@ using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
-	[RoutePrefix("api/countries")]
+	[RoutePrefix("api/location")]
 	public class CountriesController : ApiController
 	{
 		private readonly ICountriesService countriesService;

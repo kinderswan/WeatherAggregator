@@ -29,7 +29,7 @@ namespace WeatherAggregator.WebApi.Controllers.WeatherControllers
 				CityName = city,
 				StateName = state
 			});
-			
+
 			return Json(Mapper.Map<WeatherConventionModel, WeatherViewModel>(result));
 		}
 

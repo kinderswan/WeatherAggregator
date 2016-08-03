@@ -6,7 +6,7 @@ using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
-	[RoutePrefix("api/cities")]
+	[RoutePrefix("api/location")]
 	public class CitiesController : ApiController
 	{
 		private readonly ICitiesService sitiesService;
@@ -19,7 +19,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		}
 
 		[HttpGet]
-		[Route("{countryName}/getcities")]
+		[Route("getcities/{countryName}")]
 		public IHttpActionResult GetCountries(string countryName)
 		{
 			var result = this.sitiesService.GetCitiesCollection(countryName);
@@ -27,7 +27,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		}
 
 		[HttpGet]
-		[Route("{countryName}/{stateName}/getcities")]
+		[Route("getcities/{countryName}/{stateName}")]
 		public IHttpActionResult GetCountries(string countryName, string stateName)
 		{
 			var result = this.sitiesService.GetCitiesCollection(countryName, stateName);
