@@ -88,11 +88,18 @@
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\WeatherAggregatorRouter.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\CitiesCollection.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\CountriesCollection.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\StatesCollection.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\WeatherCollection.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\CityModel.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\CountryModel.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\ImageModel.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\StateModel.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\WeatherModel.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Util.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\ImageView.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\IndexPageView.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

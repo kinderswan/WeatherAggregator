@@ -7,7 +7,7 @@ using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
-	[EnableCors(origins: "http://localhost:666", headers: "*", methods: "*")]
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
 	[RoutePrefix("api/location")]
 	public class CountriesController : ApiController
 	{
@@ -25,7 +25,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		public IHttpActionResult GetCountries()
 		{
 			var result = this.countriesService.GetCountriesCollection();
-			return Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result));
+			return Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result).Countries);
 		}
 	}
 }

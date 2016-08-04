@@ -8,7 +8,7 @@ using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.WeatherControllers
 {
-	[EnableCors(origins: "http://localhost:666", headers: "*", methods: "*")]
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
 	[RoutePrefix("api/weather/wunderground")]
 	public class WundergroundWeatherController : ApiController
 	{

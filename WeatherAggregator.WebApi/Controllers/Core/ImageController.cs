@@ -8,7 +8,7 @@ using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
-	[EnableCors(origins: "http://localhost:666", headers: "*", methods: "*")]
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
 	[RoutePrefix("api/images")]
 	public class ImageController : ApiController
 	{
