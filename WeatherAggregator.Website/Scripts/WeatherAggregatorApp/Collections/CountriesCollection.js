@@ -6,7 +6,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 var CountriesCollection = (function (_super) {
     __extends(CountriesCollection, _super);
     function CountriesCollection() {
-        _super.apply(this, arguments);
+        _super.call(this);
+        this.url = Util.Hostname + Util.CountryApiUrl;
     }
     return CountriesCollection;
 }(Backbone.Collection));

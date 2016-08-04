@@ -2,32 +2,14 @@
 
 	constructor(countryName: string, stateName?: string) {
 		super();
-		this.url = this.createUrl(countryName, stateName);
-
-	}
-
-	defaults() {
-		return {
-			Cities: typeof CityModel
-		}
+		this.url = this.buildUrl(countryName, stateName);
 	}
 
 	url: string;
 
-
-	private createUrl(countryName: string, stateName?: string) {
+	private buildUrl(countryName: string, stateName?: string): string {
 		return stateName === undefined
 			? Util.Hostname + Util.CityApiUrl + countryName
 			: Util.Hostname + Util.CityApiUrl + countryName + "/" + stateName;
 	}
 }
-
-(function () {
-	var col = new CitiesCollection("Belarus");
-	col.fetch({
-		success: function(x) {
-			console.log(x);
-		}
-	});
-
-})()

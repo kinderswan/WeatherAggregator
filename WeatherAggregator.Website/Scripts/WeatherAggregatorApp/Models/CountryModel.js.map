@@ -1,1 +1,1 @@
-{"version":3,"file":"CountryModel.js","sourceRoot":"","sources":["CountryModel.ts"],"names":[],"mappings":";;;;;AAAC;IAA2B,gCAAc;IAAzC;QAA2B,8BAAc;IAE1C,CAAC;IAAD,mBAAC;AAAD,CAAC,AAFA,CAA2B,QAAQ,CAAC,KAAK,GAEzC"}
+{"version":3,"file":"CountryModel.js","sourceRoot":"","sources":["CountryModel.ts"],"names":[],"mappings":";;;;;AAAC;IAA2B,gCAAc;IAAzC;QAA2B,8BAAc;IAQ1C,CAAC;IAPA,+BAAQ,GAAR;QACC,MAAM,CAAC;YACN,WAAW,EAAE,EAAE;YACf,WAAW,EAAE,EAAE;YACf,MAAM,EAAE,IAAI,UAAU,EAAE;SACxB,CAAA;IACF,CAAC;IACF,mBAAC;AAAD,CAAC,AARA,CAA2B,QAAQ,CAAC,KAAK,GAQzC"}

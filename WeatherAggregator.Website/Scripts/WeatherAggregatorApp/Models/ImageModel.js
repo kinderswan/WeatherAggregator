@@ -15,9 +15,6 @@ var ImageModel = (function (_super) {
             ImageUrl: ""
         };
     };
-    ImageModel.prototype.initialize = function () {
-        this.util = new Util();
-    };
     return ImageModel;
 }(Backbone.Model));
 //# sourceMappingURL=ImageModel.js.map

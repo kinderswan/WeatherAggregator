@@ -8,6 +8,12 @@ var StatesCollection = (function (_super) {
     function StatesCollection() {
         _super.apply(this, arguments);
     }
+    StatesCollection.prototype.defaults = function () {
+        return {
+            StateName: "",
+            StateCode: ""
+        };
+    };
     return StatesCollection;
 }(Backbone.Collection));
 //# sourceMappingURL=StatesCollection.js.map

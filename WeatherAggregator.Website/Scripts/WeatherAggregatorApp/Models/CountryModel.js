@@ -8,6 +8,13 @@ var CountryModel = (function (_super) {
     function CountryModel() {
         _super.apply(this, arguments);
     }
+    CountryModel.prototype.defaults = function () {
+        return {
+            CountryCode: "",
+            CountryName: "",
+            States: new StateModel()
+        };
+    };
     return CountryModel;
 }(Backbone.Model));
 //# sourceMappingURL=CountryModel.js.map

@@ -8,6 +8,12 @@ var StateModel = (function (_super) {
     function StateModel() {
         _super.apply(this, arguments);
     }
+    StateModel.prototype.defaults = function () {
+        return {
+            StateCode: "",
+            StateName: ""
+        };
+    };
     return StateModel;
 }(Backbone.Model));
 //# sourceMappingURL=StateModel.js.map

@@ -90,7 +90,6 @@
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\WeatherAggregatorRouter.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\CitiesCollection.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\CountriesCollection.ts" />
-    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\StatesCollection.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\WeatherCollection.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\CityModel.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\CountryModel.ts" />

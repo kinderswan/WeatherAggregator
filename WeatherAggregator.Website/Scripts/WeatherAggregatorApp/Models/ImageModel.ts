@@ -3,7 +3,6 @@
 class ImageModel extends Backbone.Model {
 
 	private imageSearchQuery: string;
-	private util: Util;
 
 	constructor(imageSearchQuery: string) {
 		super();
@@ -14,10 +13,6 @@ class ImageModel extends Backbone.Model {
 		return {
 			ImageUrl: ""
 		}
-	}
-
-	initialize(): void {
-		this.util = new Util();
 	}
 
 	url: string;

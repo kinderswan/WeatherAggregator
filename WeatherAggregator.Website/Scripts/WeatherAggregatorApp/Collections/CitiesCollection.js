@@ -7,26 +7,13 @@ var CitiesCollection = (function (_super) {
     __extends(CitiesCollection, _super);
     function CitiesCollection(countryName, stateName) {
         _super.call(this);
-        this.url = this.createUrl(countryName, stateName);
+        this.url = this.buildUrl(countryName, stateName);
     }
-    CitiesCollection.prototype.defaults = function () {
-        return {
-            Cities: typeof CityModel
-        };
-    };
-    CitiesCollection.prototype.createUrl = function (countryName, stateName) {
+    CitiesCollection.prototype.buildUrl = function (countryName, stateName) {
         return stateName === undefined
             ? Util.Hostname + Util.CityApiUrl + countryName
             : Util.Hostname + Util.CityApiUrl + countryName + "/" + stateName;
     };
     return CitiesCollection;
 }(Backbone.Collection));
-(function () {
-    var col = new CitiesCollection("Belarus");
-    col.fetch({
-        success: function (x) {
-            console.log(x);
-        }
-    });
-})();
 //# sourceMappingURL=CitiesCollection.js.map

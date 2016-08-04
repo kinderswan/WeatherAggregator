@@ -1,1 +1,1 @@
-{"version":3,"file":"CountriesCollection.js","sourceRoot":"","sources":["CountriesCollection.ts"],"names":[],"mappings":";;;;;AAAC;IAAkC,uCAAiC;IAAnE;QAAkC,8BAAiC;IAEpE,CAAC;IAAD,0BAAC;AAAD,CAAC,AAFA,CAAkC,QAAQ,CAAC,UAAU,GAErD"}
+{"version":3,"file":"CountriesCollection.js","sourceRoot":"","sources":["CountriesCollection.ts"],"names":[],"mappings":";;;;;AAAC;IAAkC,uCAAiC;IAEnE;QACC,iBAAO,CAAC;QAER,IAAI,CAAC,GAAG,GAAG,IAAI,CAAC,QAAQ,GAAG,IAAI,CAAC,aAAa,CAAC;IAC/C,CAAC;IAGF,0BAAC;AAAD,CAAC,AATA,CAAkC,QAAQ,CAAC,UAAU,GASrD"}

@@ -1,26 +1,23 @@
-﻿/// <reference path="../../typings/backbone/backbone.d.ts" />
+﻿class WeatherModel extends Backbone.Model {
 
-class WeatherModel extends Backbone.Model {
-	defaults(): { temperature: number;humidity: string;windSpeed: number;windDegrees: number;feelslike: string;country: string;state: string;city: string } {
+	constructor(url?: string) {
+		super();
+		this.url = url;
+	}
+
+	defaults(): { Temperature: number; Humidity: string; WindSpeed: number; WindDegrees: number; Feelslike: string; Country: string; State: string; City: string } {
 		return {
-			temperature: 0,
-			humidity: "",
-			windSpeed: 0,
-			windDegrees: 0,
-			feelslike: "",
-			country: "",
-			state: "",
-			city: ""
+			Temperature: 0,
+			Humidity: "",
+			WindSpeed: 0,
+			WindDegrees: 0,
+			Feelslike: "",
+			Country: "",
+			State: "",
+			City: ""
 		}
 	}
 
-	initialize(): void {
-		var util = new Util();
-	}
-
-	clear(): void {
-
-		this.destroy();
-	}
+	url: string;
 
 } 
