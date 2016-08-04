@@ -10,7 +10,3 @@ class WeatherAggregatorRouter extends Backbone.Router {
 		super();
 	}
 } 
-
-//$(() => {
-//	new WeatherAggregatorRouter();
-//});

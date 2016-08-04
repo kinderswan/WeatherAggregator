@@ -1,0 +1,3 @@
+﻿class WeatherAggregatorApp {
+	mainApp: any = {};
+}

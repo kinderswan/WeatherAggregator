@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Models.Models.Core.Weather;
@@ -7,6 +8,7 @@ using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.WeatherControllers
 {
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
 	[RoutePrefix("api/weather/openweathermap")]
 	public class OpenWeatherMapWeatherController : ApiController
 	{
