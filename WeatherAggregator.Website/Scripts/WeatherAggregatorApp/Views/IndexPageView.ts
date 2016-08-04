@@ -1,3 +1,3 @@
-﻿class IndexPageView extends Backbone.View {
+﻿class IndexPageView extends Backbone.View<any> {
 	
 } 

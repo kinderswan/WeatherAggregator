@@ -1,3 +1,3 @@
-﻿class ImageView extends Backbone.View {
+﻿class ImageView extends Backbone.View<ImageModel> {
 
 } 
