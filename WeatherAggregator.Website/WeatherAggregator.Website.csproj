@@ -74,19 +74,25 @@
     <Content Include="Scripts\libs\jquery-3.1.0.slim.min.js" />
     <Content Include="Scripts\libs\underscore.js" />
     <Content Include="Scripts\libs\underscore.min.js" />
+    <Content Include="Scripts\WeatherAggregatorApp\JavaScript1.js" />
+    <Content Include="Scripts\WeatherAggregatorApp\Templates\CityImageTemplate.html" />
     <Content Include="web.config" />
     <Content Include="Scripts\libs\jquery-3.1.0.slim.min.map" />
     <Content Include="Scripts\libs\jquery-3.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\typings\jqueryui\jqueryui.d.ts" />
-    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\app.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\WeatherAggregatorApp.ts" />
     <TypeScriptCompile Include="Scripts\typings\backbone\backbone-global.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\backbone\backbone.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
-    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\router.ts" />
-    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\weatherInfo.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\WeatherAggregatorRouter.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\WeatherCollection.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\ImageModel.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\WeatherModel.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Util.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\ImageView.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -98,10 +104,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Scripts\WeatherAggregatorApp\Templates\" />
-    <Folder Include="Scripts\WeatherAggregatorApp\Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
   </PropertyGroup>
