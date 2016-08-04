@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <NuGetPackageImportStamp>eabe8f19</NuGetPackageImportStamp>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -172,17 +173,31 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\Bootstrapper.cs" />
-    <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Core\CitiesController.cs" />
+    <Compile Include="Controllers\Core\ImageController.cs" />
+    <Compile Include="Controllers\Core\CountriesController.cs" />
+    <Compile Include="Controllers\WeatherControllers\OpenWeatherMapWeatherController.cs" />
     <Compile Include="Controllers\WeatherControllers\WundergroundWeatherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappings\CitiesMapping.cs" />
+    <Compile Include="Mappings\CountriesMapping.cs" />
+    <Compile Include="Mappings\WeatherMapping.cs" />
+    <Compile Include="Mappings\ImageMapping.cs" />
+    <Compile Include="Mappings\WeatherModelsMappings\OpenWeatherMapConventionMapping.cs" />
+    <Compile Include="Models\CitiesCollectionViewModel.cs" />
+    <Compile Include="Models\CityViewModel.cs" />
+    <Compile Include="Models\CountriesCollectionViewModel.cs" />
+    <Compile Include="Models\CountryViewModel.cs" />
+    <Compile Include="Models\ImageViewModel.cs" />
+    <Compile Include="Models\StateViewModel.cs" />
     <Compile Include="Models\WeatherViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mappings\WeatherModels\WundergroundMapping.cs" />
+    <Compile Include="Mappings\WeatherModelsMappings\WundergroundConventionMapping.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -199,7 +214,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Controllers\Core\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

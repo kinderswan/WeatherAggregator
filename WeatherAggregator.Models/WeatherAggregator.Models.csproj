@@ -43,17 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Core\Images\Pixabay\ImageModel.cs" />
-    <Compile Include="Models\Core\Images\Pixabay\ImagesCollectionModel.cs" />
-    <Compile Include="Models\Core\Countries\ThePrintful\CountriesCollectionModel.cs" />
-    <Compile Include="Models\Core\Countries\ThePrintful\CountryModel.cs" />
-    <Compile Include="Models\Core\Countries\ThePrintful\StateModel.cs" />
-    <Compile Include="Models\Core\Countries\Wunderground\CitiesCollectionModel.cs" />
-    <Compile Include="Models\Core\Countries\Wunderground\CitiesContainerResponse.cs" />
-    <Compile Include="Models\Core\Countries\Wunderground\CityModel.cs" />
-    <Compile Include="Models\Weather\Wunderground\CurrentObservation.cs" />
-    <Compile Include="Models\Weather\Wunderground\DisplayLocation.cs" />
-    <Compile Include="Models\Weather\Wunderground\WeatherModel.cs" />
+    <Compile Include="Models\Core\Images\ImageModel.cs" />
+    <Compile Include="Models\Core\Images\ImagesCollectionModel.cs" />
+    <Compile Include="Models\Core\Countries\CountriesCollectionModel.cs" />
+    <Compile Include="Models\Core\Countries\CountryModel.cs" />
+    <Compile Include="Models\Core\Countries\StateModel.cs" />
+    <Compile Include="Models\Core\Cities\CitiesCollectionModel.cs" />
+    <Compile Include="Models\Core\Cities\CitiesContainerResponse.cs" />
+    <Compile Include="Models\Core\Cities\CityModel.cs" />
+    <Compile Include="Models\Core\Weather\WeatherConventionModel.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapMain.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapSys.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapWeatherModel.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapWind.cs" />
+    <Compile Include="Models\Weather\Wunderground\WundergroundCurrentObservation.cs" />
+    <Compile Include="Models\Weather\Wunderground\WundergroundDisplayLocation.cs" />
+    <Compile Include="Models\Weather\Wunderground\WundergroundWeatherModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,13 +1,13 @@
 ﻿using System.Web.Http;
 using AutoMapper;
-using WeatherAggregator.Models.Models.Core.Countries.Wunderground;
-using WeatherAggregator.Models.Models.Weather.Wunderground;
+using WeatherAggregator.Models.Models.Core.Cities;
+using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Services.WeatherServices.Interfaces;
 using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.WeatherControllers
 {
-	[RoutePrefix("api/wunderground")]
+	[RoutePrefix("api/weather/wunderground")]
 	public class WundergroundWeatherController : ApiController
 	{
 		private readonly IWundergroundWeatherService weatherService;
@@ -29,8 +29,8 @@ namespace WeatherAggregator.WebApi.Controllers.WeatherControllers
 				CityName = city,
 				StateName = state
 			});
-			
-			return Json(Mapper.Map<WeatherModel, WeatherViewModel>(result));
+
+			return Json(Mapper.Map<WeatherConventionModel, WeatherViewModel>(result));
 		}
 
 		[HttpGet]
@@ -43,7 +43,7 @@ namespace WeatherAggregator.WebApi.Controllers.WeatherControllers
 				CityName = city
 			});
 
-			return Json(Mapper.Map<WeatherModel, WeatherViewModel>(result));
+			return Json(Mapper.Map<WeatherConventionModel, WeatherViewModel>(result));
 		}
 	}
 }
