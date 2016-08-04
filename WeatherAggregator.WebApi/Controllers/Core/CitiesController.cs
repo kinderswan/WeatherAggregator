@@ -2,7 +2,7 @@
 using System.Web.Http.Cors;
 using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Cities;
-using WeatherAggregator.Services.Core.Interfaces;
+using WeatherAggregator.Services.Interfaces;
 using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
