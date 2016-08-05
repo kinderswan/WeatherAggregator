@@ -12,9 +12,10 @@ namespace WeatherAggregator.Rest
 
 		public T Data { get; private set; }
 
-		public RestResponse() { } 
+		public RestResponse() { }
 
-		public RestResponse(HttpResponseMessage httpResponseMessage) : this()
+		public RestResponse(HttpResponseMessage httpResponseMessage)
+			: this()
 		{
 			this.StatusCode = httpResponseMessage.StatusCode;
 			this.Data = this.GetDataFromResponseContent(httpResponseMessage.Content);
@@ -23,7 +24,23 @@ namespace WeatherAggregator.Rest
 		private T GetDataFromResponseContent(HttpContent responseContent)
 		{
 			string responseString = Task.Run(() => responseContent.ReadAsStringAsync()).Result;
-			return JsonConvert.DeserializeObject<T>(responseString);
+			return this.JsonTryDeserialize(responseString);
+		}
+
+		private T JsonTryDeserialize(string responseString)
+		{
+			T result;
+
+			try
+			{
+				result = JsonConvert.DeserializeObject<T>(responseString);
+			}
+			catch (JsonSerializationException exception)
+			{
+				return default(T);
+			}
+
+			return result;
 		}
 	}
 }

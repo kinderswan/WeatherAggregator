@@ -51,6 +51,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 			{
 				return 640;
 			}
+
 			return size;
 		}
 	}
