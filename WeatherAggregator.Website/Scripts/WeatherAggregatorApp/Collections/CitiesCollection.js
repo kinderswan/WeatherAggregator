@@ -11,8 +11,8 @@ var CitiesCollection = (function (_super) {
     }
     CitiesCollection.prototype.buildUrl = function (countryName, stateName) {
         return stateName === undefined
-            ? Util.Hostname + Util.CityApiUrl + countryName
-            : Util.Hostname + Util.CityApiUrl + countryName + "/" + stateName;
+            ? UrlConstants.Hostname + UrlConstants.CityApiUrl + countryName
+            : UrlConstants.Hostname + UrlConstants.CityApiUrl + countryName + "/" + stateName;
     };
     return CitiesCollection;
 }(Backbone.Collection));

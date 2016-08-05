@@ -7,7 +7,7 @@ var CountriesCollection = (function (_super) {
     __extends(CountriesCollection, _super);
     function CountriesCollection() {
         _super.call(this);
-        this.url = Util.Hostname + Util.CountryApiUrl;
+        this.url = UrlConstants.Hostname + UrlConstants.CountryApiUrl;
     }
     return CountriesCollection;
 }(Backbone.Collection));

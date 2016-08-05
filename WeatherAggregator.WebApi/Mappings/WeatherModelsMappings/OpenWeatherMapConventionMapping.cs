@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Linq;
 using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.OpenWeatherMap;
-using WeatherAggregator.Models.Models.Weather.Wunderground;
 
 namespace WeatherAggregator.WebApi.Mappings.WeatherModelsMappings
 {
@@ -22,7 +22,8 @@ namespace WeatherAggregator.WebApi.Mappings.WeatherModelsMappings
 				.ForMember(temp => temp.City, x => x.MapFrom(src => src.CityName))
 				.ForMember(temp => temp.Country, x => x.MapFrom(src => src.OpenWeatherMapCountry.Country))
 				.ForMember(temp => temp.WindDegrees, x => x.MapFrom(src => src.OpenWeatherMapWind.WindDegrees))
-				.ForMember(temp => temp.WindSpeed, x => x.MapFrom(src => src.OpenWeatherMapWind.WindSpeed));
+				.ForMember(temp => temp.WindSpeed, x => x.MapFrom(src => src.OpenWeatherMapWind.WindSpeed))
+                .ForMember(temp => temp.WeatherDescription, x => x.MapFrom(src => src.OpenWeatherMapWeather.FirstOrDefault().WeatherDescription));
 		}
 	}
 }

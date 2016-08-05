@@ -13,16 +13,16 @@ var WeatherCollection = (function (_super) {
         this.stateName = stateName;
     }
     WeatherCollection.prototype.customFetch = function () {
-        for (var i = 0; i < Util.WeatherApiUrls.length; i++) {
-            var weatherModel = new WeatherModel(this.buildUrl(Util.WeatherApiUrls[i]));
+        for (var i = 0; i < UrlConstants.WeatherApiUrls.length; i++) {
+            var weatherModel = new WeatherModel(this.buildUrl(UrlConstants.WeatherApiUrls[i]));
             weatherModel.fetch();
             this.add(weatherModel);
         }
     };
     WeatherCollection.prototype.buildUrl = function (uri) {
         return this.stateName === undefined
-            ? Util.Hostname + uri + this.countryName + "/" + this.cityName
-            : Util.Hostname + uri + this.countryName + "/" + this.stateName + "/" + this.cityName;
+            ? UrlConstants.Hostname + uri + this.countryName + "/" + this.cityName
+            : UrlConstants.Hostname + uri + this.countryName + "/" + this.stateName + "/" + this.cityName;
     };
     return WeatherCollection;
 }(Backbone.Collection));

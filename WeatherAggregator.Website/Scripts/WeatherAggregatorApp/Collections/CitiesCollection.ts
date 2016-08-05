@@ -9,7 +9,7 @@
 
 	private buildUrl(countryName: string, stateName?: string): string {
 		return stateName === undefined
-			? Util.Hostname + Util.CityApiUrl + countryName
-			: Util.Hostname + Util.CityApiUrl + countryName + "/" + stateName;
+			? UrlConstants.Hostname + UrlConstants.CityApiUrl + countryName
+			: UrlConstants.Hostname + UrlConstants.CityApiUrl + countryName + "/" + stateName;
 	}
 }

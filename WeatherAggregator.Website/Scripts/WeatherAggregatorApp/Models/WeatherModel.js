@@ -18,7 +18,8 @@ var WeatherModel = (function (_super) {
             Feelslike: "",
             Country: "",
             State: "",
-            City: ""
+            City: "",
+            WeatherDescription: ""
         };
     };
     return WeatherModel;

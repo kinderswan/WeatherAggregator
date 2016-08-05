@@ -5,7 +5,7 @@
 		this.url = url;
 	}
 
-	defaults(): { Temperature: number; Humidity: string; WindSpeed: number; WindDegrees: number; Feelslike: string; Country: string; State: string; City: string } {
+	defaults(): { Temperature: number; Humidity: string; WindSpeed: number; WindDegrees: number; Feelslike: string; Country: string; State: string; City: string, WeatherDescription: string } {
 		return {
 			Temperature: 0,
 			Humidity: "",
@@ -14,7 +14,8 @@
 			Feelslike: "",
 			Country: "",
 			State: "",
-			City: ""
+			City: "",
+			WeatherDescription:""
 		}
 	}
 

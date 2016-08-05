@@ -1,7 +1,6 @@
 ﻿using System;
 using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Cities;
-using WeatherAggregator.Models.Models.Core.Countries;
 using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Mappings
