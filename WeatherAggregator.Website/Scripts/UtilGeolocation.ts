@@ -15,13 +15,12 @@ class UtilGeolocation {
 		this.codeLatLng(lat, lng);
 	}
 
-	codeLatLng(lat, lng) : CityGeoModel {
+	codeLatLng(lat, lng): void {
 		var latlng = new google.maps.LatLng(lat, lng);
-		var cityGeoResult: CityGeoModel;
 		var self = this;
-		this.geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+		this.geocoder.geocode({ 'latLng': latlng },
+			function (results, status) {
 			if (status === google.maps.GeocoderStatus.OK) {
-				console.log(results);
 				if (results[1]) {
 					for (var i = 0; i < results[0].address_components.length; i++) {
 						for (var b = 0; b < results[0].address_components[i].types.length; b++) {
@@ -38,16 +37,10 @@ class UtilGeolocation {
 							}
 						}
 					}
-					//city data
-					cityGeoResult = new CityGeoModel(self.cityName, self.countryName);
-					console.log(cityGeoResult);
-					alert(self.countryName);
-					alert(self.countryName);
 				}
+				router.navigate(self.countryName + "/" + self.cityName, { trigger: true });
 			}
 		});
-
-		return cityGeoResult;
 	}
 }
 

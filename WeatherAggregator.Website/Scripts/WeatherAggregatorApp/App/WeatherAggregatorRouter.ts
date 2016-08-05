@@ -19,7 +19,7 @@ class WeatherAggregatorRouter extends Backbone.Router {
 	indexRoute() {
 		var coords = new UtilGeolocation();
 		navigator.geolocation.getCurrentPosition(function (location) {
-			console.log(coords.codeLatLng(location.coords.latitude, location.coords.longitude));
+			coords.codeLatLng(location.coords.latitude, location.coords.longitude);
 		});
 
 	}

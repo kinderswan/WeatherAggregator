@@ -19,7 +19,7 @@ var WeatherAggregatorRouter = (function (_super) {
     WeatherAggregatorRouter.prototype.indexRoute = function () {
         var coords = new UtilGeolocation();
         navigator.geolocation.getCurrentPosition(function (location) {
-            console.log(coords.codeLatLng(location.coords.latitude, location.coords.longitude));
+            coords.codeLatLng(location.coords.latitude, location.coords.longitude);
         });
     };
     WeatherAggregatorRouter.prototype.weatherRoute = function (country, city) {
