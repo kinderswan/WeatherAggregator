@@ -2,13 +2,15 @@
 
 class WeatherAggregatorRouter extends Backbone.Router {
 
-	public weatherAggregatorRouter: WeatherAggregatorRouter;
-
-	routes = {
-		
-	}
+	weatherAggregatorRouter: WeatherAggregatorRouter;
 
 	constructor() {
 		super();
 	}
+
+	routes = {
+		"index": "index"
+	}
+
+	
 } 
