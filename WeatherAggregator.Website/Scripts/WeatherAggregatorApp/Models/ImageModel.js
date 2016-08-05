@@ -6,14 +6,20 @@ var __extends = (this && this.__extends) || function (d, b) {
 /// <reference path="../UrlConstants.ts" />
 var ImageModel = (function (_super) {
     __extends(ImageModel, _super);
-    function ImageModel(imageSearchQuery) {
+    function ImageModel(imageSearchQuery, imageSize) {
         _super.call(this);
-        this.url = UrlConstants.Hostname + UrlConstants.ImageApiUrl + imageSearchQuery;
+        this.url = this.createUrl(imageSearchQuery, imageSize);
     }
     ImageModel.prototype.defaults = function () {
         return {
             ImageUrl: ""
         };
+    };
+    ImageModel.prototype.createUrl = function (imageSearchQuery, imageSize) {
+        if (imageSize === undefined) {
+            imageSize = 640;
+        }
+        return UrlConstants.Hostname + UrlConstants.ImageApiUrl + imageSearchQuery + "/" + imageSize;
     };
     return ImageModel;
 }(Backbone.Model));
