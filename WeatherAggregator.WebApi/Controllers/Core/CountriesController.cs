@@ -1,11 +1,13 @@
 ﻿using System.Web.Http;
+using System.Web.Http.Cors;
 using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Countries;
-using WeatherAggregator.Services.Core.Interfaces;
+using WeatherAggregator.Services.Interfaces;
 using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
 	[RoutePrefix("api/location")]
 	public class CountriesController : ApiController
 	{
@@ -23,7 +25,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		public IHttpActionResult GetCountries()
 		{
 			var result = this.countriesService.GetCountriesCollection();
-			return Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result));
+			return Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result).Countries);
 		}
 	}
 }

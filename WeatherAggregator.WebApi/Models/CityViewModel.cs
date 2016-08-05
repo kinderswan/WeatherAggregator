@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace WeatherAggregator.WebApi.Models
+﻿namespace WeatherAggregator.WebApi.Models
 {
 	public class CityViewModel
 	{

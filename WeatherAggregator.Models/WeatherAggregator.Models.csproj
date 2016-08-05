@@ -54,6 +54,7 @@
     <Compile Include="Models\Core\Weather\WeatherConventionModel.cs" />
     <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapMain.cs" />
     <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapSys.cs" />
+    <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapWeather.cs" />
     <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapWeatherModel.cs" />
     <Compile Include="Models\Weather\OpenWeatherMap\OpenWeatherMapWind.cs" />
     <Compile Include="Models\Weather\Wunderground\WundergroundCurrentObservation.cs" />
