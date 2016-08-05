@@ -3,7 +3,7 @@
 	constructor() {
 		super();
 
-		this.url = Util.Hostname + Util.CountryApiUrl;
+		this.url = UrlConstants.Hostname + UrlConstants.CountryApiUrl;
 	}
 
 	url: string;

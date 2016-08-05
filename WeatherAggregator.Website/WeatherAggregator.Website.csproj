@@ -96,7 +96,7 @@
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\ImageModel.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\StateModel.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\WeatherModel.ts" />
-    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Util.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\UrlConstants.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\ImageView.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\IndexPageView.ts" />
   </ItemGroup>

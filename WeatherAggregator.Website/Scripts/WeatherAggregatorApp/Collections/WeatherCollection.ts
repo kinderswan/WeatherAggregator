@@ -14,8 +14,8 @@ class WeatherCollection extends Backbone.Collection<WeatherModel> {
 	}
 
 	customFetch(): void {
-		for (var i = 0; i < Util.WeatherApiUrls.length; i++) {
-			var weatherModel = new WeatherModel(this.buildUrl(Util.WeatherApiUrls[i]));
+		for (var i = 0; i < UrlConstants.WeatherApiUrls.length; i++) {
+			var weatherModel = new WeatherModel(this.buildUrl(UrlConstants.WeatherApiUrls[i]));
 			weatherModel.fetch();
 			this.add(weatherModel);
 		}
@@ -25,7 +25,7 @@ class WeatherCollection extends Backbone.Collection<WeatherModel> {
 
 	private buildUrl(uri: string): string {
 		return this.stateName === undefined
-			? Util.Hostname + uri + this.countryName + "/" + this.cityName
-			: Util.Hostname + uri + this.countryName + "/" + this.stateName + "/" + this.cityName;
+			? UrlConstants.Hostname + uri + this.countryName + "/" + this.cityName
+			: UrlConstants.Hostname + uri + this.countryName + "/" + this.stateName + "/" + this.cityName;
 	}
 } 
