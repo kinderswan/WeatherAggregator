@@ -8,7 +8,9 @@ var WeatherAggregatorRouter = (function (_super) {
     __extends(WeatherAggregatorRouter, _super);
     function WeatherAggregatorRouter() {
         _super.call(this);
-        this.routes = {};
+        this.routes = {
+            "index": "index"
+        };
     }
     return WeatherAggregatorRouter;
 }(Backbone.Router));

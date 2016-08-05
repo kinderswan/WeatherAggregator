@@ -1,1 +1,1 @@
-{"version":3,"file":"WeatherAggregatorRouter.js","sourceRoot":"","sources":["WeatherAggregatorRouter.ts"],"names":[],"mappings":"AAAC,6DAA6D;;;;;;AAE9D;IAAsC,2CAAe;IAQpD;QACC,iBAAO,CAAC;QALT,WAAM,GAAG,EAER,CAAA;IAID,CAAC;IACF,8BAAC;AAAD,CAAC,AAXD,CAAsC,QAAQ,CAAC,MAAM,GAWpD"}
+{"version":3,"file":"WeatherAggregatorRouter.js","sourceRoot":"","sources":["WeatherAggregatorRouter.ts"],"names":[],"mappings":"AAAC,6DAA6D;;;;;;AAE9D;IAAsC,2CAAe;IAIpD;QACC,iBAAO,CAAC;QAGT,WAAM,GAAG;YACR,OAAO,EAAE,OAAO;SAChB,CAAA;IAJD,CAAC;IAOF,8BAAC;AAAD,CAAC,AAbD,CAAsC,QAAQ,CAAC,MAAM,GAapD"}
