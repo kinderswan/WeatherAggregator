@@ -2,7 +2,6 @@
 
 	events(): any {
 		return {
-			"click #content": "clickContent"
 		};
 	}
 
@@ -14,12 +13,11 @@
 
 	constructor() {
 		super();
-
-		this.render();
+		//this.render();
 	}
 
 	render(): any {
-		this.renderCityImage("Belarus", "Minsk");
+		this.renderCityImage("USA", "Salt LAke City");
 		return {};
 	}
 
@@ -31,15 +29,14 @@
 				$.get("Scripts/WeatherAggregatorApp/Templates/CityImageTemplate.html", function (data) {
 					var template = _.template(data);
 					var result:string = template({ model: x });
-					$("#content").append(result);
+					$("#wapp-city-image-placeHolder").append(result);
 				}, "html");
 
 			}
 		});
 	}
 
-
-	clickContent(): void {
-		alert(1);
+	remove(): any {
+		$("#wapp-city-image-content").remove();
 	}
 } 

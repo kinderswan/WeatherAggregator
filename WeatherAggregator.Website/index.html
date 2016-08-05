@@ -1,25 +1,161 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>TypeScript HTML App</title>
-	<link rel="stylesheet" href="Content/Css/app.css" type="text/css" />
-	<script src="Scripts/libs/underscore.js"></script>
-	<script src="Scripts/libs/backbone.js"></script>
-	<script src="Scripts/libs/jquery-3.1.0.js"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Weather service</title>
+	<link href="Content/css/app.css" rel="stylesheet">
+	<link href="Content/css/bootstrap.css" rel="stylesheet">
+	<link href="Content/css/shop-homepage.css" rel="stylesheet">
 
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="Scripts/libs/underscore.js"></script>
+	<script src="Scripts/libs/jquery-3.1.0.js"></script>
+	<script src="Scripts/libs/backbone.js"></script>
 </head>
 <body>
-	<!--<h1>TypeScript HTML App</h1>-->
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Weather services</a>
+			</div>
+		</div>
+	</nav>
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<p class="lead">Select city</p>
+				<div class="list-group">
+					<a href="#" class="list-group-item">Category 1</a>
+					<a href="#" class="list-group-item">Category 2</a>
+					<a href="#" class="list-group-item">Category 3</a>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="row" id="wapp-city-image-row">
+					<div class="col-md-12">
+						<div id="wapp-city-image-placeHolder">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<img src="http://placehold.it/320x150" alt="">
+							<div class="caption">
+								<h4 class="pull-right">$24.99</h4>
+								<h4>
+									<a href="#">First Product</a>
+								</h4>
+								<p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.
+								</p>
+							</div>
+							<div class="ratings">
+								<p class="pull-right">15 reviews</p>
+								<p>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<img src="http://placehold.it/320x150" alt="">
+							<div class="caption">
+								<h4 class="pull-right">$24.99</h4>
+								<h4>
+									<a href="#">First Product</a>
+								</h4>
+								<p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.
+								</p>
+							</div>
+							<div class="ratings">
+								<p class="pull-right">15 reviews</p>
+								<p>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<img src="http://placehold.it/320x150" alt="">
+							<div class="caption">
+								<h4 class="pull-right">$24.99</h4>
+								<h4>
+									<a href="#">First Product</a>
+								</h4>
+								<p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.
+								</p>
+							</div>
+							<div class="ratings">
+								<p class="pull-right">15 reviews</p>
+								<p>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-lg-4 col-md-4">
+						<div class="thumbnail">
+							<img src="http://placehold.it/320x150" alt="">
+							<div class="caption">
+								<h4 class="pull-right">$24.99</h4>
+								<h4>
+									<a href="#">First Product</a>
+								</h4>
+								<p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+							</div>
+							<div class="ratings">
+								<p class="pull-right">15 reviews</p>
+								<p>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.container -->
+	<div class="container">
+		<hr>
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; Your Website 2014</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+<!-- /.container -->
 
-	<div id="content"></div>
-	<script src="Scripts/libs/jquery-3.1.0.js"></script>
-	<script src="Scripts/libs/jquery-ui-1.12.0.js"></script>
-	<script src="Scripts/libs/backbone.js"></script>
-	<script src="Scripts/libs/underscore.js"></script>
-
-
+	<!-- Bootstrap Core JavaScript -->
+	<script src="Scripts/libs/bootstrap.min.js"></script>
+	<script src="Scripts/UtilGeolocation.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/UrlConstants.js"></script>
 
 	<script src="Scripts/WeatherAggregatorApp/Models/WeatherModel.js"></script>

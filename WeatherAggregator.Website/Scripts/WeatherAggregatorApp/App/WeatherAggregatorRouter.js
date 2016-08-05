@@ -1,5 +1,6 @@
 /// <reference path="../../typings/backbone/backbone.d.ts" />
 /// <reference path="../views/IndexPageView.ts" />
+/// <reference path="../../utilgeolocation.ts" />
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -11,12 +12,22 @@ var WeatherAggregatorRouter = (function (_super) {
         _super.call(this, options);
         this.routes = {
             "": "indexRoute",
-            "index": "indexRoute"
+            "(:country)/(:city)": "weatherRoute"
         };
         Backbone.Router.apply(this, arguments);
     }
     WeatherAggregatorRouter.prototype.indexRoute = function () {
-        new IndexPageView();
+        var coords = new UtilGeolocation();
+        navigator.geolocation.getCurrentPosition(function (location) {
+            console.log(coords.codeLatLng(location.coords.latitude, location.coords.longitude));
+        });
+    };
+    WeatherAggregatorRouter.prototype.weatherRoute = function (country, city) {
+        if (this.indexPageView !== undefined) {
+            this.indexPageView.remove();
+        }
+        this.indexPageView = new IndexPageView();
+        this.indexPageView.renderCityImage(country, city);
     };
     return WeatherAggregatorRouter;
 }(Backbone.Router));

@@ -7,15 +7,13 @@ var IndexPageView = (function (_super) {
     __extends(IndexPageView, _super);
     function IndexPageView() {
         _super.call(this);
-        this.render();
+        //this.render();
     }
     IndexPageView.prototype.events = function () {
-        return {
-            "click #content": "clickContent"
-        };
+        return {};
     };
     IndexPageView.prototype.render = function () {
-        this.renderCityImage("Belarus", "Minsk");
+        this.renderCityImage("USA", "Salt LAke City");
         return {};
     };
     IndexPageView.prototype.renderCityImage = function (countryName, cityName) {
@@ -26,13 +24,13 @@ var IndexPageView = (function (_super) {
                 $.get("Scripts/WeatherAggregatorApp/Templates/CityImageTemplate.html", function (data) {
                     var template = _.template(data);
                     var result = template({ model: x });
-                    $("#content").append(result);
+                    $("#wapp-city-image-placeHolder").append(result);
                 }, "html");
             }
         });
     };
-    IndexPageView.prototype.clickContent = function () {
-        alert(1);
+    IndexPageView.prototype.remove = function () {
+        $("#wapp-city-image-content").remove();
     };
     return IndexPageView;
 }(Backbone.View));

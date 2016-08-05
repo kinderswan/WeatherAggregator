@@ -1,11 +1,13 @@
 ﻿/// <reference path="../../typings/backbone/backbone.d.ts" />
 /// <reference path="../views/IndexPageView.ts" />
+/// <reference path="../../utilgeolocation.ts" />
 
 class WeatherAggregatorRouter extends Backbone.Router {
+	private indexPageView: IndexPageView;
 
 	routes: any = {
 		"": "indexRoute",
-		"index": "indexRoute"
+		"(:country)/(:city)": "weatherRoute"
 	};
 
 	constructor(options?: Backbone.RouterOptions) {
@@ -15,7 +17,19 @@ class WeatherAggregatorRouter extends Backbone.Router {
 	}
 
 	indexRoute() {
-		new IndexPageView();
+		var coords = new UtilGeolocation();
+		navigator.geolocation.getCurrentPosition(function (location) {
+			console.log(coords.codeLatLng(location.coords.latitude, location.coords.longitude));
+		});
+
+	}
+
+	weatherRoute(country, city) {
+		if (this.indexPageView !== undefined) {
+			this.indexPageView.remove();
+		}
+		this.indexPageView = new IndexPageView();
+		this.indexPageView.renderCityImage(country, city);
 	}
 }
 var router = new WeatherAggregatorRouter();
