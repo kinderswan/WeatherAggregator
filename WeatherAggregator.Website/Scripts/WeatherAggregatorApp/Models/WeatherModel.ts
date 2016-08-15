@@ -3,6 +3,7 @@
 	constructor(url?: string) {
 		super();
 		this.url = url;
+		this.defaults();
 	}
 
 	defaults(): { Temperature: number; Humidity: string; WindSpeed: number; WindDegrees: number; Feelslike: string; Country: string; State: string; City: string, WeatherDescription: string } {

@@ -87,6 +87,7 @@
     <Content Include="Scripts\libs\underscore.min.js" />
     <Content Include="Scripts\WeatherAggregatorApp\JavaScript1.js" />
     <Content Include="Scripts\WeatherAggregatorApp\Templates\CityImageTemplate.html" />
+    <Content Include="Scripts\WeatherAggregatorApp\Templates\WeatherInfoBlockTemplate.html" />
     <Content Include="web.config" />
     <Content Include="Scripts\libs\jquery-3.1.0.slim.min.map" />
     <Content Include="Scripts\libs\jquery-3.1.0.min.map" />
