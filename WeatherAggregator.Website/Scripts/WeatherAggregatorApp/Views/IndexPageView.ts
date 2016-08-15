@@ -5,52 +5,30 @@
 		};
 	}
 
-	inputCountry: any;
-	inputState: any;
-	inputCity: any;
+	private inputCountry: string;
+	private inputState: string;
+	private inputCity: string;
 
-	weatherContainer: HTMLElement;
+	private locationView: LocationView;
+	private imageView: ImageView;
 
-	constructor() {
+	constructor(countryName:string, cityName:string, stateName?:string) {
 		super();
-		//this.render();
+		this.inputCountry = countryName;
+		this.inputState = stateName;
+		this.inputCity = cityName;
+		this.locationView = new LocationView();
+		this.imageView = new ImageView(countryName, cityName, stateName);
+		this.render();
 	}
 
 	render(): any {
-		this.renderCityImage();
-		return {};
-	}
-
-	renderCityImage(countryName?: string, cityName?: string) {
-		var cityImage = new ImageModel(countryName + " " + cityName, 960);
-		var self = this;
-		cityImage.fetch({
-			success: function (image) {
-				$.get("Scripts/WeatherAggregatorApp/Templates/CityImageTemplate.html", function (data) {
-					var template = _.template(data);
-					var result:string = template({ model: image });
-					$("#wapp-city-image-placeHolder").append(result);
-					self.renderWeatherBlocks(countryName, cityName);
-				}, "html");
-
-			}
-		});
-	}
-
-	renderWeatherBlocks(countryName: string, cityName: string) {
-		var weatherCollection = new WeatherCollection(countryName, cityName);
-		weatherCollection.customFetch(function (weatherModel) {
-			$.get("Scripts/WeatherAggregatorApp/Templates/WeatherInfoBlockTemplate.html", function (data) {
-				var template = _.template(data);
-				var result: string = template({ model: weatherModel });
-				$("#wapp-weather-info-row").append(result);
-			}, "html");
-		});
-		
+		this.imageView.render();
 	}
 
 	remove(): any {
 		$("#wapp-city-image-content").remove();
+		$("#wapp-city-image-description").remove();
 		$(".wapp-weather-info-block-class").remove();
 	}
 } 

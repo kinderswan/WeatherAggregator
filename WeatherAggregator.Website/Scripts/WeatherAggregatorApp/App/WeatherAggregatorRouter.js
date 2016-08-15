@@ -12,7 +12,8 @@ var WeatherAggregatorRouter = (function (_super) {
         _super.call(this, options);
         this.routes = {
             "": "indexRoute",
-            "(:country)/(:city)": "weatherRoute"
+            "(:country)/(:city)": "weatherRoute",
+            "(:country)/(:state)/(:city)": "weatherStateRoute"
         };
         Backbone.Router.apply(this, arguments);
     }
@@ -26,8 +27,13 @@ var WeatherAggregatorRouter = (function (_super) {
         if (this.indexPageView !== undefined) {
             this.indexPageView.remove();
         }
-        this.indexPageView = new IndexPageView();
-        this.indexPageView.renderCityImage(country, city);
+        this.indexPageView = new IndexPageView(country, city);
+    };
+    WeatherAggregatorRouter.prototype.weatherStateRoute = function (country, state, city) {
+        if (this.indexPageView !== undefined) {
+            this.indexPageView.remove();
+        }
+        this.indexPageView = new IndexPageView(country, city, state);
     };
     return WeatherAggregatorRouter;
 }(Backbone.Router));

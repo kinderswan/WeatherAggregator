@@ -7,7 +7,9 @@ class WeatherAggregatorRouter extends Backbone.Router {
 
 	routes: any = {
 		"": "indexRoute",
-		"(:country)/(:city)": "weatherRoute"
+		"(:country)/(:city)": "weatherRoute",
+		"(:country)/(:state)/(:city)": "weatherStateRoute"
+
 	};
 
 	constructor(options?: Backbone.RouterOptions) {
@@ -28,8 +30,14 @@ class WeatherAggregatorRouter extends Backbone.Router {
 		if (this.indexPageView !== undefined) {
 			this.indexPageView.remove();
 		}
-		this.indexPageView = new IndexPageView();
-		this.indexPageView.renderCityImage(country, city);
+		this.indexPageView = new IndexPageView(country, city);
+	}
+
+	weatherStateRoute(country, state, city) {
+		if (this.indexPageView !== undefined) {
+			this.indexPageView.remove();
+		}
+		this.indexPageView = new IndexPageView(country, city, state);
 	}
 }
 var router = new WeatherAggregatorRouter();

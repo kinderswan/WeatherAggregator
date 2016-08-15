@@ -9,6 +9,7 @@
 	<title>Weather service</title>
 	<link href="Content/css/app.css" rel="stylesheet">
 	<link href="Content/css/bootstrap.css" rel="stylesheet">
+	<link href="Content/css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="Content/css/shop-homepage.css" rel="stylesheet">
 
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -29,12 +30,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3">
-				<p class="lead">Select city</p>
+				<p class="lead">Select your location..</p>
 				<div class="list-group">
-					<a href="#" class="list-group-item">Category 1</a>
-					<a href="#" class="list-group-item">Category 2</a>
-					<a href="#" class="list-group-item">Category 3</a>
+					<div id="wapp-location-country"></div>
+					<br />
+					<div id="wapp-location-state"></div>
+					<br />
+					<div id="wapp-location-city"></div>
 				</div>
+
+				<script type="text/javascript">
+
+				</script>
 			</div>
 			<div class="col-md-9">
 				<div class="row" id="wapp-city-image-row">
@@ -60,19 +67,25 @@
 			</div>
 		</footer>
 	</div>
-<!-- /.container -->
-
+	<!-- /.container -->
 	<!-- Bootstrap Core JavaScript -->
 	<script src="Scripts/libs/bootstrap.min.js"></script>
+	<script src="Scripts/libs/bootstrap-select.js"></script>
 	<script src="Scripts/UtilGeolocation.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/UrlConstants.js"></script>
 
 	<script src="Scripts/WeatherAggregatorApp/Models/WeatherModel.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/Models/ImageModel.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Models/CityModel.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Models/StateModel.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Models/CountryModel.js"></script>
 
 	<script src="Scripts/WeatherAggregatorApp/Collections/CitiesCollection.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/Collections/CountriesCollection.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/Collections/WeatherCollection.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Views/ImageView.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Views/LocationView.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Views/WeatherBlocksView.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/Views/IndexPageView.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/App/WeatherAggregatorRouter.js"></script>
 </body>

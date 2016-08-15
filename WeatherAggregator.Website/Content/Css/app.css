@@ -10,7 +10,6 @@ span {
 	width: 100%;
 	height: 25em;
 	overflow: hidden;
-	
 }
 
 #wapp-city-image-placeHolder {
@@ -19,4 +18,15 @@ span {
 
 #wapp-city-image-row {
 	margin-bottom: 30px;
+}
+
+.absolute-text {
+	position: absolute;
+	bottom: 0;
+	font-size: 4em;
+	/*font-family: "vedana";*/
+	background: rgba(255,255,255,0.7);
+	padding: 10px 20px;
+	width: 100%;
+	text-align: center;
 }

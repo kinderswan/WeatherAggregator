@@ -42,14 +42,17 @@ class UtilGeolocation {
 			}
 		});
 	}
+
 }
 
 class CityGeoModel {
 	public CityName: string;
 	public CountryName: string;
+	public StateName: string;
 
-	constructor(city, country) {
+	constructor(city, country, stateName?) {
 		this.CityName = city;
 		this.CountryName = country;
+		this.StateName = stateName;
 	}
 }

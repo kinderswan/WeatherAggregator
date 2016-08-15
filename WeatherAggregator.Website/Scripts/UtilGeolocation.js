@@ -36,9 +36,10 @@ var UtilGeolocation = (function () {
     return UtilGeolocation;
 }());
 var CityGeoModel = (function () {
-    function CityGeoModel(city, country) {
+    function CityGeoModel(city, country, stateName) {
         this.CityName = city;
         this.CountryName = country;
+        this.StateName = stateName;
     }
     return CityGeoModel;
 }());

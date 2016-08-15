@@ -20,6 +20,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="Content\css\app.css" />
+    <Content Include="Content\css\bootstrap-select.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\shop-homepage.css" />
@@ -75,6 +76,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\libs\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\libs\bootstrap-select.js" />
     <Content Include="Scripts\libs\bootstrap.js" />
     <Content Include="Scripts\libs\bootstrap.min.js" />
     <Content Include="Scripts\libs\jquery-ui-1.12.0.js" />
@@ -85,8 +87,9 @@
     <Content Include="Scripts\libs\jquery-3.1.0.slim.min.js" />
     <Content Include="Scripts\libs\underscore.js" />
     <Content Include="Scripts\libs\underscore.min.js" />
-    <Content Include="Scripts\WeatherAggregatorApp\JavaScript1.js" />
+    <Content Include="Scripts\WeatherAggregatorApp\bootstrapper.js" />
     <Content Include="Scripts\WeatherAggregatorApp\Templates\CityImageTemplate.html" />
+    <Content Include="Scripts\WeatherAggregatorApp\Templates\LocationSelectPicker.html" />
     <Content Include="Scripts\WeatherAggregatorApp\Templates\WeatherInfoBlockTemplate.html" />
     <Content Include="web.config" />
     <Content Include="Scripts\libs\jquery-3.1.0.slim.min.map" />
@@ -112,9 +115,10 @@
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\StateModel.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Models\WeatherModel.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\UrlConstants.ts" />
-    <Content Include="Scripts\WeatherAggregatorApp\UtilGeo.js" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\ImageView.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\IndexPageView.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\LocationView.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\WeatherBlocksView.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
