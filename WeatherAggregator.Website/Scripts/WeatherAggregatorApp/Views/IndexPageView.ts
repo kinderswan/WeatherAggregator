@@ -1,10 +1,5 @@
 ﻿class IndexPageView extends Backbone.View<Backbone.Model> {
 
-	events(): any {
-		return {
-		};
-	}
-
 	private inputCountry: string;
 	private inputState: string;
 	private inputCity: string;
@@ -17,18 +12,19 @@
 		this.inputCountry = countryName;
 		this.inputState = stateName;
 		this.inputCity = cityName;
-		this.locationView = new LocationView();
+		this.locationView = new LocationView(countryName, cityName, stateName);
 		this.imageView = new ImageView(countryName, cityName, stateName);
-		this.render();
 	}
 
 	render(): any {
+		this.locationView.render();
 		this.imageView.render();
 	}
 
 	remove(): any {
 		$("#wapp-city-image-content").remove();
 		$("#wapp-city-image-description").remove();
+		$("#wapp-location-countries").remove();
 		$(".wapp-weather-info-block-class").remove();
 	}
 } 

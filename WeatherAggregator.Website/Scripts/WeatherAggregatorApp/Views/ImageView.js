@@ -13,9 +13,6 @@ var ImageView = (function (_super) {
         this.weatherblocksView = new WeatherBlocksView(countryName, cityName, stateName);
         //this.render();
     }
-    ImageView.prototype.events = function () {
-        return {};
-    };
     ImageView.prototype.render = function () {
         var cityImage = new ImageModel(this.inputCountry + " " + this.inputCity, 960);
         var self = this;

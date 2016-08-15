@@ -22,18 +22,22 @@ var WeatherAggregatorRouter = (function (_super) {
         navigator.geolocation.getCurrentPosition(function (location) {
             coords.codeLatLng(location.coords.latitude, location.coords.longitude);
         });
+        this.locationView = new LocationView();
+        this.locationView.render();
     };
     WeatherAggregatorRouter.prototype.weatherRoute = function (country, city) {
         if (this.indexPageView !== undefined) {
             this.indexPageView.remove();
         }
         this.indexPageView = new IndexPageView(country, city);
+        this.indexPageView.render();
     };
     WeatherAggregatorRouter.prototype.weatherStateRoute = function (country, state, city) {
         if (this.indexPageView !== undefined) {
             this.indexPageView.remove();
         }
         this.indexPageView = new IndexPageView(country, city, state);
+        this.indexPageView.render();
     };
     return WeatherAggregatorRouter;
 }(Backbone.Router));

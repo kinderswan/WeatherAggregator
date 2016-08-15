@@ -1,10 +1,5 @@
 ﻿class ImageView extends Backbone.View<ImageModel> {
-	events(): any {
-		return {
-
-		};
-	}
-
+	
 	private inputCountry: any;
 	private inputState: any;
 	private inputCity: any;

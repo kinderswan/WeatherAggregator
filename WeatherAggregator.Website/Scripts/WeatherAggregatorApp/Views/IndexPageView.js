@@ -10,19 +10,17 @@ var IndexPageView = (function (_super) {
         this.inputCountry = countryName;
         this.inputState = stateName;
         this.inputCity = cityName;
-        this.locationView = new LocationView();
+        this.locationView = new LocationView(countryName, cityName, stateName);
         this.imageView = new ImageView(countryName, cityName, stateName);
-        this.render();
     }
-    IndexPageView.prototype.events = function () {
-        return {};
-    };
     IndexPageView.prototype.render = function () {
+        this.locationView.render();
         this.imageView.render();
     };
     IndexPageView.prototype.remove = function () {
         $("#wapp-city-image-content").remove();
         $("#wapp-city-image-description").remove();
+        $("#wapp-location-countries").remove();
         $(".wapp-weather-info-block-class").remove();
     };
     return IndexPageView;

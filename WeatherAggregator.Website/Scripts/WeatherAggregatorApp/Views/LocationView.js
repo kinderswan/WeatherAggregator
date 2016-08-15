@@ -5,15 +5,24 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var LocationView = (function (_super) {
     __extends(LocationView, _super);
-    function LocationView() {
+    function LocationView(countryName, cityName, stateName) {
         _super.call(this);
-        //this.render();
+        this.inputCountry = countryName;
+        this.inputCity = cityName;
+        this.inputState = stateName;
     }
-    LocationView.prototype.events = function () {
-        return {};
-    };
     LocationView.prototype.render = function () {
-        return {};
+        var countriesCollection = new CountriesCollection();
+        $("#wapp-location-countries").append('<select class="selectpicker" data-live-search="true" data-size="7"></select>');
+        countriesCollection.fetch({
+            success: function (model) {
+                _.each(model.models, function (item) {
+                    $("#wapp-location-countries .selectpicker").append("<option>" + item.get("CountryName") + "</option>");
+                });
+            },
+            error: function () {
+            }
+        });
     };
     return LocationView;
 }(Backbone.View));

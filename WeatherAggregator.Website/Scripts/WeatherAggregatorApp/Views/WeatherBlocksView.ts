@@ -1,11 +1,5 @@
 ﻿class WeatherBlocksView extends Backbone.View<Backbone.Model> {
 
-	events(): any {
-		return {
-
-		};
-	}
-
 	private inputCountry: any;
 	private inputState: any;
 	private inputCity: any;
@@ -17,8 +11,9 @@
 		this.inputState = stateName;
 	}
 
-	render():any {
+	render(): any {
 		var weatherCollection = new WeatherCollection(this.inputCountry, this.inputCity, this.inputState);
+		var self = this;
 		weatherCollection.customFetch(function (weatherModel) {
 			$.get("Scripts/WeatherAggregatorApp/Templates/WeatherInfoBlockTemplate.html", function (data) {
 				var template = _.template(data);
@@ -26,8 +21,13 @@
 					model: weatherModel
 				});
 				$("#wapp-weather-info-row").append(result);
+				self.eventBinder();
 			}, "html");
 		});
-
+		
 	}
-} 
+
+	eventBinder(): void {
+	}
+}
+

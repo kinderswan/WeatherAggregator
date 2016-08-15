@@ -4,6 +4,7 @@
 
 class WeatherAggregatorRouter extends Backbone.Router {
 	private indexPageView: IndexPageView;
+	private locationView: LocationView;
 
 	routes: any = {
 		"": "indexRoute",
@@ -23,7 +24,8 @@ class WeatherAggregatorRouter extends Backbone.Router {
 		navigator.geolocation.getCurrentPosition(function (location) {
 			coords.codeLatLng(location.coords.latitude, location.coords.longitude);
 		});
-
+		this.locationView = new LocationView();
+		this.locationView.render();
 	}
 
 	weatherRoute(country, city) {
@@ -31,6 +33,7 @@ class WeatherAggregatorRouter extends Backbone.Router {
 			this.indexPageView.remove();
 		}
 		this.indexPageView = new IndexPageView(country, city);
+		this.indexPageView.render();
 	}
 
 	weatherStateRoute(country, state, city) {
@@ -38,6 +41,7 @@ class WeatherAggregatorRouter extends Backbone.Router {
 			this.indexPageView.remove();
 		}
 		this.indexPageView = new IndexPageView(country, city, state);
+		this.indexPageView.render();
 	}
 }
 var router = new WeatherAggregatorRouter();

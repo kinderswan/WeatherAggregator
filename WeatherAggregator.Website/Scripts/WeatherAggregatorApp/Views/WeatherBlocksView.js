@@ -11,11 +11,9 @@ var WeatherBlocksView = (function (_super) {
         this.inputCity = cityName;
         this.inputState = stateName;
     }
-    WeatherBlocksView.prototype.events = function () {
-        return {};
-    };
     WeatherBlocksView.prototype.render = function () {
         var weatherCollection = new WeatherCollection(this.inputCountry, this.inputCity, this.inputState);
+        var self = this;
         weatherCollection.customFetch(function (weatherModel) {
             $.get("Scripts/WeatherAggregatorApp/Templates/WeatherInfoBlockTemplate.html", function (data) {
                 var template = _.template(data);
@@ -23,8 +21,11 @@ var WeatherBlocksView = (function (_super) {
                     model: weatherModel
                 });
                 $("#wapp-weather-info-row").append(result);
+                self.eventBinder();
             }, "html");
         });
+    };
+    WeatherBlocksView.prototype.eventBinder = function () {
     };
     return WeatherBlocksView;
 }(Backbone.View));
