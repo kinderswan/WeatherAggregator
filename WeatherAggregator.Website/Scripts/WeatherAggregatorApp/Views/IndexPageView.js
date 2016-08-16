@@ -5,9 +5,19 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var IndexPageView = (function (_super) {
     __extends(IndexPageView, _super);
-    function IndexPageView() {
-        _super.apply(this, arguments);
+    function IndexPageView(countryName, cityName, stateName) {
+        _super.call(this);
+        this.imageView = new ImageView(countryName, cityName, stateName);
     }
+    IndexPageView.prototype.render = function () {
+        this.remove();
+        this.imageView.render();
+    };
+    IndexPageView.prototype.remove = function () {
+        $("#wapp-city-image-description").remove();
+        $(".wapp-weather-info-block-class").remove();
+        $("#wapp-city-image-content").remove();
+    };
     return IndexPageView;
 }(Backbone.View));
 //# sourceMappingURL=IndexPageView.js.map

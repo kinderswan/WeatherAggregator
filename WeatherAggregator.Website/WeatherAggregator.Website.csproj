@@ -19,7 +19,12 @@
     <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Content\Css\app.css" />
+    <Content Include="Content\css\app.css" />
+    <Content Include="Content\css\bootstrap-select.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\shop-homepage.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -62,10 +67,19 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="index.html" />
+    <Content Include="index1.html" />
     <Content Include="Scripts\libs\backbone.js" />
     <Content Include="Scripts\libs\backbone.min.js" />
     <Content Include="Scripts\libs\backbone.min.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\libs\jquery-3.1.0.intellisense.js" />
+    <Content Include="Scripts\libs\bootstrap-select.js" />
+    <Content Include="Scripts\libs\bootstrap-select.min.js" />
+    <Content Include="Scripts\libs\bootstrap.js" />
+    <Content Include="Scripts\libs\bootstrap.min.js" />
     <Content Include="Scripts\libs\jquery-ui-1.12.0.js" />
     <Content Include="Scripts\libs\jquery-ui-1.12.0.min.js" />
     <Content Include="Scripts\libs\jquery-3.1.0.js" />
@@ -74,19 +88,24 @@
     <Content Include="Scripts\libs\jquery-3.1.0.slim.min.js" />
     <Content Include="Scripts\libs\underscore.js" />
     <Content Include="Scripts\libs\underscore.min.js" />
-    <Content Include="Scripts\WeatherAggregatorApp\JavaScript1.js" />
+    <Content Include="Scripts\WeatherAggregatorApp\bootstrapper.js" />
     <Content Include="Scripts\WeatherAggregatorApp\Templates\CityImageTemplate.html" />
+    <Content Include="Scripts\WeatherAggregatorApp\Templates\LocationSelectPicker.html" />
+    <Content Include="Scripts\WeatherAggregatorApp\Templates\WeatherInfoBlockTemplate.html" />
     <Content Include="web.config" />
     <Content Include="Scripts\libs\jquery-3.1.0.slim.min.map" />
     <Content Include="Scripts\libs\jquery-3.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\typings\jqueryui\jqueryui.d.ts" />
-    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\WeatherAggregatorApp.ts" />
     <TypeScriptCompile Include="Scripts\typings\backbone\backbone-global.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\backbone\backbone.d.ts" />
-    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\google-maps\google-maps.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\googlemaps\google.maps.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jqueryui\jqueryui.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\underscore\underscore.d.ts" />
+    <TypeScriptCompile Include="Scripts\UtilGeolocation.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\WeatherAggregatorApp.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\App\WeatherAggregatorRouter.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\CitiesCollection.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Collections\CountriesCollection.ts" />
@@ -99,6 +118,8 @@
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\UrlConstants.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\ImageView.ts" />
     <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\IndexPageView.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\LocationView.ts" />
+    <TypeScriptCompile Include="Scripts\WeatherAggregatorApp\Views\WeatherBlocksView.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -140,6 +161,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
     <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>

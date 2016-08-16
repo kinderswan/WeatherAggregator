@@ -8,6 +8,7 @@ var WeatherModel = (function (_super) {
     function WeatherModel(url) {
         _super.call(this);
         this.url = url;
+        this.defaults();
     }
     WeatherModel.prototype.defaults = function () {
         return {

@@ -1,33 +1,86 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
-	<title>TypeScript HTML App</title>
-	<link rel="stylesheet" href="Content/Css/app.css" type="text/css" />
-	<script src="Scripts/libs/underscore.js"></script>
-	<script src="Scripts/libs/backbone.js"></script>
-	<script src="Scripts/libs/jquery-3.1.0.js"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Weather service</title>
+	<link href="Content/css/app.css" rel="stylesheet">
+	<link href="Content/css/bootstrap.css" rel="stylesheet">
+	<link href="Content/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="Content/css/shop-homepage.css" rel="stylesheet">
 
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+	<script src="Scripts/libs/underscore.js"></script>
+	<script src="Scripts/libs/jquery-3.1.0.js"></script>
+	<script src="Scripts/libs/backbone.js"></script>
+	<script src="Scripts/libs/bootstrap-select.min.js"></script>
+	<script src="Scripts/libs/bootstrap.min.js"></script>
 </head>
 <body>
-	<!--<h1>TypeScript HTML App</h1>-->
-
-	<div id="content"></div>
-	<script src="Scripts/libs/jquery-3.1.0.js"></script>
-	<script src="Scripts/libs/jquery-ui-1.12.0.js"></script>
-	<script src="Scripts/libs/backbone.js"></script>
-	<script src="Scripts/libs/underscore.js"></script>
-
-
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Weather services</a>
+			</div>
+		</div>
+	</nav>
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<p class="lead">Select your location..</p>
+				<div class="list-group">
+					<div id="wapp-location-countries"></div>
+					<div id="wapp-location-states"></div>
+					<div id="wapp-location-cities"></div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="row" id="wapp-city-image-row">
+					<div class="col-md-12">
+						<div id="wapp-city-image-placeHolder">
+						</div>
+					</div>
+				</div>
+				<div class="row" id="wapp-weather-info-row">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /.container -->
+	<div class="container">
+		<hr>
+		<!-- Footer -->
+		<footer>
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright &copy; Your Website 2014</p>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- /.container -->
+	<!-- Bootstrap Core JavaScript -->
+	<script src="Scripts/UtilGeolocation.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/UrlConstants.js"></script>
-	<script src="Scripts/WeatherAggregatorApp/App/WeatherAggregatorRouter.js"></script>
+
 	<script src="Scripts/WeatherAggregatorApp/Models/WeatherModel.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/Models/ImageModel.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Models/CityModel.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Models/StateModel.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Models/CountryModel.js"></script>
 
 	<script src="Scripts/WeatherAggregatorApp/Collections/CitiesCollection.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/Collections/CountriesCollection.js"></script>
 	<script src="Scripts/WeatherAggregatorApp/Collections/WeatherCollection.js"></script>
-	<script src="Scripts/WeatherAggregatorApp/JavaScript1.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Views/LocationView.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Views/ImageView.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Views/WeatherBlocksView.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/Views/IndexPageView.js"></script>
+	<script src="Scripts/WeatherAggregatorApp/App/WeatherAggregatorRouter.js"></script>
 </body>
 </html>
