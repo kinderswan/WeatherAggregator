@@ -1,14 +1,11 @@
 ﻿class LocationView extends Backbone.View<Backbone.Model> {
 
-	private inputCountry: any;
-	private inputState: any;
-	private inputCity: any;
+	public static inputCountry: string;
+	public static inputState: string;
+	public static inputCity: string;
 
-	constructor(countryName?: string, cityName?: string, stateName?: string) {
+	constructor() {
 		super();
-		this.inputCountry = countryName;
-		this.inputCity = cityName;
-		this.inputState = stateName;
 	}
 
 	render(): any {
@@ -16,8 +13,7 @@
 	}
 
 	private static renderCountries(): void {
-		$("#wapp-location-states").empty();
-		$("#wapp-location-cities").empty();
+		LocationView.clearAllSelects(true);
 
 		var countriesCollection = new CountriesCollection();
 		var self = this;
@@ -25,8 +21,13 @@
 			success: function (model) {
 				$("#wapp-location-countries")
 					.empty()
-					.append(self.templateBuilder(model, "CountryName"))
-					.bind("change", model, LocationView.renderStates);
+					.append(self.templateBuilder(model, "CountryName"));
+				$("#wapp-location-countries select").bind("change", model, LocationView.renderStates);
+				if (LocationView.inputCountry !== "") {
+					$("#wapp-location-countries select").val(LocationView.inputCountry);
+					$("#wapp-location-countries select").trigger("change", model);
+				}
+
 			},
 			error: function () {
 				alert("Exception");
@@ -35,7 +36,8 @@
 	}
 
 	private static renderStates(model): any {
-		$("#wapp-location-cities").empty();
+		LocationView.clearAllSelects(false);
+		model.stopPropagation();
 		var selectedCountry: string = $("#wapp-location-countries select").find(":selected").text();
 		var result = _.find(model.data.models, function (item: any) {
 			return item.get("CountryName") === selectedCountry;
@@ -44,14 +46,19 @@
 		if (result.get("States").length !== 0) {
 			$("#wapp-location-states")
 				.empty()
-				.append(LocationView.statesTemplateBuilder(result.get("States")))
-				.bind("change", LocationView.renderCities);
+				.append(LocationView.statesTemplateBuilder(result.get("States")));
+			$("#wapp-location-states select").bind("change", model, LocationView.renderCities);
+			if (LocationView.inputState !== "") {
+				$("#wapp-location-states select").val(LocationView.inputState);
+				$("#wapp-location-states select").trigger("change", model);
+			}
 		} else {
-			LocationView.renderCities();
+			LocationView.renderCities(model);
 		}
 	}
 
-	private static renderCities(): any {
+	private static renderCities(model): any {
+		model.stopPropagation();
 		var selectedCountry: string = $("#wapp-location-countries select").find(":selected").text();
 		var selectedState: string = $("#wapp-location-states select").find(":selected").text();
 
@@ -60,8 +67,15 @@
 			success: function (model) {
 				$("#wapp-location-cities")
 					.empty()
-					.append(LocationView.templateBuilder(model, "CityName"))
-					.bind("change", LocationView.showWeather);
+					.append(LocationView.templateBuilder(model, "CityName"));
+
+				$("#wapp-location-cities select").bind("change", LocationView.showWeather);
+
+				if (LocationView.inputCity !== "") {
+					$("#wapp-location-cities select").val(LocationView.inputCity);
+					$("#wapp-location-cities select").trigger("change");
+				}
+
 			},
 			error: function () {
 				alert("Exception");
@@ -99,5 +113,12 @@
 		});
 		htmlTemplate += "</select>";
 		return htmlTemplate;
+	}
+
+	private static clearAllSelects(clearStates: bool) {
+		if (clearStates) {
+			$("#wapp-location-states").empty();
+		}
+		$("#wapp-location-cities").empty();
 	}
 }

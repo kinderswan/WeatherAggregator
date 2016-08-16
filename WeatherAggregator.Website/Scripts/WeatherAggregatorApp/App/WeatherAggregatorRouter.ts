@@ -10,13 +10,14 @@ class WeatherAggregatorRouter extends Backbone.Router {
 		"": "indexRoute",
 		"(:country)/(:city)": "weatherRoute",
 		"(:country)/(:state)/(:city)": "weatherStateRoute"
-
 	};
 
 	constructor(options?: Backbone.RouterOptions) {
 		super(options);
 		Backbone.Router.apply(this, arguments);
 
+		this.locationView = new LocationView();
+		this.locationView.render();
 	}
 
 	indexRoute() {
@@ -24,23 +25,23 @@ class WeatherAggregatorRouter extends Backbone.Router {
 		navigator.geolocation.getCurrentPosition(function (location) {
 			coords.codeLatLng(location.coords.latitude, location.coords.longitude);
 		});
-		this.locationView = new LocationView();
-		this.locationView.render();
+		
 	}
 
 	weatherRoute(country, city) {
-		if (this.indexPageView !== undefined) {
-			this.indexPageView.remove();
-		}
+		LocationView.inputCountry = country;
+		LocationView.inputCity = city;
 		this.indexPageView = new IndexPageView(country, city);
+		this.indexPageView.remove();
 		this.indexPageView.render();
 	}
 
 	weatherStateRoute(country, state, city) {
-		if (this.indexPageView !== undefined) {
-			this.indexPageView.remove();
-		}
+		LocationView.inputCountry = country;
+		LocationView.inputCity = city;
+		LocationView.inputState = state;
 		this.indexPageView = new IndexPageView(country, city, state);
+		this.indexPageView.remove();
 		this.indexPageView.render();
 	}
 }

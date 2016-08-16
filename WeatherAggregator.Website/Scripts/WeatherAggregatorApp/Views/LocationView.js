@@ -5,11 +5,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var LocationView = (function (_super) {
     __extends(LocationView, _super);
-    function LocationView(countryName, cityName, stateName) {
+    function LocationView() {
         _super.call(this);
-        this.inputCountry = countryName;
-        this.inputCity = cityName;
-        this.inputState = stateName;
     }
     LocationView.prototype.render = function () {
         LocationView.renderCountries();
@@ -23,8 +20,12 @@ var LocationView = (function (_super) {
             success: function (model) {
                 $("#wapp-location-countries")
                     .empty()
-                    .append(self.templateBuilder(model, "CountryName"))
-                    .bind("change", model, LocationView.renderStates);
+                    .append(self.templateBuilder(model, "CountryName"));
+                $("#wapp-location-countries select").bind("change", model, LocationView.renderStates);
+                if (LocationView.inputCountry !== "") {
+                    $("#wapp-location-countries select").val(LocationView.inputCountry);
+                    $("#wapp-location-countries select").trigger("change", model);
+                }
             },
             error: function () {
                 alert("Exception");
@@ -33,6 +34,7 @@ var LocationView = (function (_super) {
     };
     LocationView.renderStates = function (model) {
         $("#wapp-location-cities").empty();
+        model.stopPropagation();
         var selectedCountry = $("#wapp-location-countries select").find(":selected").text();
         var result = _.find(model.data.models, function (item) {
             return item.get("CountryName") === selectedCountry;
@@ -40,14 +42,19 @@ var LocationView = (function (_super) {
         if (result.get("States").length !== 0) {
             $("#wapp-location-states")
                 .empty()
-                .append(LocationView.statesTemplateBuilder(result.get("States")))
-                .bind("change", LocationView.renderCities);
+                .append(LocationView.statesTemplateBuilder(result.get("States")));
+            $("#wapp-location-states select").bind("change", model, LocationView.renderCities);
+            if (LocationView.inputState !== "") {
+                $("#wapp-location-states select").val(LocationView.inputState);
+                $("#wapp-location-states select").trigger("change", model);
+            }
         }
         else {
-            LocationView.renderCities();
+            LocationView.renderCities(model);
         }
     };
-    LocationView.renderCities = function () {
+    LocationView.renderCities = function (model) {
+        model.stopPropagation();
         var selectedCountry = $("#wapp-location-countries select").find(":selected").text();
         var selectedState = $("#wapp-location-states select").find(":selected").text();
         var citiesCollection = new CitiesCollection(selectedCountry, selectedState);
@@ -55,8 +62,12 @@ var LocationView = (function (_super) {
             success: function (model) {
                 $("#wapp-location-cities")
                     .empty()
-                    .append(LocationView.templateBuilder(model, "CityName"))
-                    .bind("change", LocationView.showWeather);
+                    .append(LocationView.templateBuilder(model, "CityName"));
+                $("#wapp-location-cities select").bind("change", LocationView.showWeather);
+                if (LocationView.inputCity !== "") {
+                    $("#wapp-location-cities select").val(LocationView.inputCity);
+                    $("#wapp-location-cities select").trigger("change");
+                }
             },
             error: function () {
                 alert("Exception");

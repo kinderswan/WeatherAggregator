@@ -16,27 +16,28 @@ var WeatherAggregatorRouter = (function (_super) {
             "(:country)/(:state)/(:city)": "weatherStateRoute"
         };
         Backbone.Router.apply(this, arguments);
+        this.locationView = new LocationView();
+        this.locationView.render();
     }
     WeatherAggregatorRouter.prototype.indexRoute = function () {
         var coords = new UtilGeolocation();
         navigator.geolocation.getCurrentPosition(function (location) {
             coords.codeLatLng(location.coords.latitude, location.coords.longitude);
         });
-        this.locationView = new LocationView();
-        this.locationView.render();
     };
     WeatherAggregatorRouter.prototype.weatherRoute = function (country, city) {
-        if (this.indexPageView !== undefined) {
-            this.indexPageView.remove();
-        }
+        LocationView.inputCountry = country;
+        LocationView.inputCity = city;
         this.indexPageView = new IndexPageView(country, city);
+        this.indexPageView.remove();
         this.indexPageView.render();
     };
     WeatherAggregatorRouter.prototype.weatherStateRoute = function (country, state, city) {
-        if (this.indexPageView !== undefined) {
-            this.indexPageView.remove();
-        }
+        LocationView.inputCountry = country;
+        LocationView.inputCity = city;
+        LocationView.inputState = state;
         this.indexPageView = new IndexPageView(country, city, state);
+        this.indexPageView.remove();
         this.indexPageView.render();
     };
     return WeatherAggregatorRouter;
