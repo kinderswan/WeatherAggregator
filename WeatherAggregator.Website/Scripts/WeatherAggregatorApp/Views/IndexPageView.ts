@@ -17,6 +17,7 @@
 	}
 
 	render(): any {
+		this.remove();
 		this.locationView.render();
 		this.imageView.render();
 	}
@@ -24,7 +25,6 @@
 	remove(): any {
 		$("#wapp-city-image-content").remove();
 		$("#wapp-city-image-description").remove();
-		$("#wapp-location-countries").remove();
 		$(".wapp-weather-info-block-class").remove();
 	}
 } 

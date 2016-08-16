@@ -49,8 +49,6 @@
 		} else {
 			LocationView.renderCities();
 		}
-
-
 	}
 
 	private static renderCities(): any {
@@ -58,17 +56,29 @@
 		var selectedState: string = $("#wapp-location-states select").find(":selected").text();
 
 		var citiesCollection = new CitiesCollection(selectedCountry, selectedState);
-		var self = this;
 		citiesCollection.fetch({
 			success: function (model) {
 				$("#wapp-location-cities")
 					.empty()
-					.append(LocationView.templateBuilder(model, "CityName"));
+					.append(LocationView.templateBuilder(model, "CityName"))
+					.bind("change", LocationView.showWeather);
 			},
 			error: function () {
 				alert("Exception");
 			}
 		});
+	}
+
+	private static showWeather() {
+		var selectedCountry: string = $("#wapp-location-countries select").find(":selected").text();
+		var selectedState: string = $("#wapp-location-states select").find(":selected").text();
+		var selectedCity: string = $("#wapp-location-cities select").find(":selected").text();
+
+		if (selectedState !== "") {
+			router.navigate(selectedCountry + "/" + selectedState + "/" + selectedCity, { trigger: true });
+		} else {
+			router.navigate(selectedCountry + "/" + selectedCity, { trigger: true });
+		}
 	}
 
 	private static templateBuilder(model: any, parameterName: string): string {

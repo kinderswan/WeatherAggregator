@@ -51,17 +51,28 @@ var LocationView = (function (_super) {
         var selectedCountry = $("#wapp-location-countries select").find(":selected").text();
         var selectedState = $("#wapp-location-states select").find(":selected").text();
         var citiesCollection = new CitiesCollection(selectedCountry, selectedState);
-        var self = this;
         citiesCollection.fetch({
             success: function (model) {
                 $("#wapp-location-cities")
                     .empty()
-                    .append(LocationView.templateBuilder(model, "CityName"));
+                    .append(LocationView.templateBuilder(model, "CityName"))
+                    .bind("change", LocationView.showWeather);
             },
             error: function () {
                 alert("Exception");
             }
         });
+    };
+    LocationView.showWeather = function () {
+        var selectedCountry = $("#wapp-location-countries select").find(":selected").text();
+        var selectedState = $("#wapp-location-states select").find(":selected").text();
+        var selectedCity = $("#wapp-location-cities select").find(":selected").text();
+        if (selectedState !== "") {
+            router.navigate(selectedCountry + "/" + selectedState + "/" + selectedCity, { trigger: true });
+        }
+        else {
+            router.navigate(selectedCountry + "/" + selectedCity, { trigger: true });
+        }
     };
     LocationView.templateBuilder = function (model, parameterName) {
         var htmlTemplate = '<select class="form-control selectmargin">';

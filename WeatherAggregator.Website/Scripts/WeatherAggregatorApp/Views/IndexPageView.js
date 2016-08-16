@@ -14,13 +14,13 @@ var IndexPageView = (function (_super) {
         this.imageView = new ImageView(countryName, cityName, stateName);
     }
     IndexPageView.prototype.render = function () {
+        this.remove();
         this.locationView.render();
         this.imageView.render();
     };
     IndexPageView.prototype.remove = function () {
         $("#wapp-city-image-content").remove();
         $("#wapp-city-image-description").remove();
-        $("#wapp-location-countries").remove();
         $(".wapp-weather-info-block-class").remove();
     };
     return IndexPageView;
