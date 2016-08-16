@@ -30,3 +30,7 @@ span {
 	width: 100%;
 	text-align: center;
 }
+
+.selectmargin {
+	margin: 10px 10px 10px 10px; 
+}

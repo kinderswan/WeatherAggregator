@@ -12,18 +12,82 @@
 	}
 
 	render(): any {
+		LocationView.renderCountries();
+	}
+
+	private static renderCountries(): void {
+		$("#wapp-location-states").empty();
+		$("#wapp-location-cities").empty();
+
 		var countriesCollection = new CountriesCollection();
-		$("#wapp-location-countries").append('<select class="selectpicker" data-live-search="true" data-size="7"></select>');
+		var self = this;
 		countriesCollection.fetch({
 			success: function (model) {
-				_.each(model.models, function (item: CountryModel) {
-					$("#wapp-location-countries .selectpicker").append("<option>" + item.get("CountryName") + "</option>");
-				});
+				$("#wapp-location-countries")
+					.empty()
+					.append(self.templateBuilder(model, "CountryName"))
+					.bind("change", model, LocationView.renderStates);
 			},
 			error: function () {
-
+				alert("Exception");
 			}
 		});
+	}
 
+	private static renderStates(model): any {
+		$("#wapp-location-cities").empty();
+		var selectedCountry: string = $("#wapp-location-countries select").find(":selected").text();
+		var result = _.find(model.data.models, function (item: any) {
+			return item.get("CountryName") === selectedCountry;
+		});
+
+		if (result.get("States").length !== 0) {
+			$("#wapp-location-states")
+				.empty()
+				.append(LocationView.statesTemplateBuilder(result.get("States")))
+				.bind("change", LocationView.renderCities);
+		} else {
+			LocationView.renderCities();
+		}
+
+
+	}
+
+	private static renderCities(): any {
+		var selectedCountry: string = $("#wapp-location-countries select").find(":selected").text();
+		var selectedState: string = $("#wapp-location-states select").find(":selected").text();
+
+		var citiesCollection = new CitiesCollection(selectedCountry, selectedState);
+		var self = this;
+		citiesCollection.fetch({
+			success: function (model) {
+				$("#wapp-location-cities")
+					.empty()
+					.append(LocationView.templateBuilder(model, "CityName"));
+			},
+			error: function () {
+				alert("Exception");
+			}
+		});
+	}
+
+	private static templateBuilder(model: any, parameterName: string): string {
+		var htmlTemplate: string = '<select class="form-control selectmargin">';
+		htmlTemplate += "<option disabled selected value> -- select an option -- </option>";
+		_.each(model.models, function (item: any) {
+			htmlTemplate += "<option>" + item.get(parameterName) + "</option>";
+		});
+		htmlTemplate += "</select>";
+		return htmlTemplate;
+	}
+
+	private static statesTemplateBuilder(model: any): string {
+		var htmlTemplate: string = '<select class="form-control selectmargin">';
+		htmlTemplate += "<option disabled selected value> -- select an option -- </option>";
+		_.each(model, function (item: any) {
+			htmlTemplate += "<option>" + item.StateName + "</option>";
+		});
+		htmlTemplate += "</select>";
+		return htmlTemplate;
 	}
 }
