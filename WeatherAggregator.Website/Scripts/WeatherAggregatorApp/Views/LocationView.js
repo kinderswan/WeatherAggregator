@@ -10,10 +10,10 @@ var LocationView = (function (_super) {
     }
     LocationView.prototype.render = function () {
         LocationView.renderCountries();
+        LocationView.defaultOptionValue = " -- select an option -- ";
     };
     LocationView.renderCountries = function () {
-        $("#wapp-location-states").empty();
-        $("#wapp-location-cities").empty();
+        LocationView.clearAllSelects(true);
         var countriesCollection = new CountriesCollection();
         var self = this;
         countriesCollection.fetch({
@@ -22,7 +22,7 @@ var LocationView = (function (_super) {
                     .empty()
                     .append(self.templateBuilder(model, "CountryName"));
                 $("#wapp-location-countries select").bind("change", model, LocationView.renderStates);
-                if (LocationView.inputCountry !== "") {
+                if (LocationView.inputCountry !== "" || LocationView.inputCity !== LocationView.defaultOptionValue) {
                     $("#wapp-location-countries select").val(LocationView.inputCountry);
                     $("#wapp-location-countries select").trigger("change", model);
                 }
@@ -33,9 +33,12 @@ var LocationView = (function (_super) {
         });
     };
     LocationView.renderStates = function (model) {
-        $("#wapp-location-cities").empty();
+        LocationView.clearAllSelects(false);
         model.stopPropagation();
         var selectedCountry = $("#wapp-location-countries select").find(":selected").text();
+        if (LocationView.inputCountry !== selectedCountry) {
+            LocationView.inputState = "";
+        }
         var result = _.find(model.data.models, function (item) {
             return item.get("CountryName") === selectedCountry;
         });
@@ -44,7 +47,7 @@ var LocationView = (function (_super) {
                 .empty()
                 .append(LocationView.statesTemplateBuilder(result.get("States")));
             $("#wapp-location-states select").bind("change", model, LocationView.renderCities);
-            if (LocationView.inputState !== "") {
+            if (LocationView.inputState) {
                 $("#wapp-location-states select").val(LocationView.inputState);
                 $("#wapp-location-states select").trigger("change", model);
             }
@@ -57,6 +60,12 @@ var LocationView = (function (_super) {
         model.stopPropagation();
         var selectedCountry = $("#wapp-location-countries select").find(":selected").text();
         var selectedState = $("#wapp-location-states select").find(":selected").text();
+        if (LocationView.inputCountry !== selectedCountry) {
+            LocationView.inputCity = "";
+        }
+        if (LocationView.inputState !== selectedState && LocationView.inputState) {
+            LocationView.inputCity = "";
+        }
         var citiesCollection = new CitiesCollection(selectedCountry, selectedState);
         citiesCollection.fetch({
             success: function (model) {
@@ -64,7 +73,7 @@ var LocationView = (function (_super) {
                     .empty()
                     .append(LocationView.templateBuilder(model, "CityName"));
                 $("#wapp-location-cities select").bind("change", LocationView.showWeather);
-                if (LocationView.inputCity !== "") {
+                if (LocationView.inputCity) {
                     $("#wapp-location-cities select").val(LocationView.inputCity);
                     $("#wapp-location-cities select").trigger("change");
                 }
@@ -87,7 +96,7 @@ var LocationView = (function (_super) {
     };
     LocationView.templateBuilder = function (model, parameterName) {
         var htmlTemplate = '<select class="form-control selectmargin">';
-        htmlTemplate += "<option disabled selected value> -- select an option -- </option>";
+        htmlTemplate += "<option disabled selected value>" + LocationView.defaultOptionValue + "</option>";
         _.each(model.models, function (item) {
             htmlTemplate += "<option>" + item.get(parameterName) + "</option>";
         });
@@ -96,12 +105,18 @@ var LocationView = (function (_super) {
     };
     LocationView.statesTemplateBuilder = function (model) {
         var htmlTemplate = '<select class="form-control selectmargin">';
-        htmlTemplate += "<option disabled selected value> -- select an option -- </option>";
+        htmlTemplate += "<option disabled selected value>" + LocationView.defaultOptionValue + "</option>";
         _.each(model, function (item) {
             htmlTemplate += "<option>" + item.StateName + "</option>";
         });
         htmlTemplate += "</select>";
         return htmlTemplate;
+    };
+    LocationView.clearAllSelects = function (clearStates) {
+        if (clearStates) {
+            $("#wapp-location-states").empty();
+        }
+        $("#wapp-location-cities").empty();
     };
     return LocationView;
 }(Backbone.View));
