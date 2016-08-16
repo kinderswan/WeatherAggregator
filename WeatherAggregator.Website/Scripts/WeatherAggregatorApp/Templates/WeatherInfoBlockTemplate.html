@@ -1,0 +1,26 @@
+﻿<div class="col-sm-4 col-lg-4 col-md-4 wapp-weather-info-block-class">
+	<div class="thumbnail">
+		<img src="http://placehold.it/320x150" alt="">
+		<div class="caption">
+			<h4 class="pull-right"><%=model.get("City")%></h4>
+			<h4>
+				<a href="#" id="abcabc"><%=model.get("Country")%></a>
+			</h4>
+			<p>
+				Temperature: <%=model.get("Temperature")%> °C<br />
+				Humidity: <%= parseInt(model.get("Humidity"))%> %<br />
+				WindSpeed: <%=model.get("WindSpeed")%> m/s<br />
+			</p>
+		</div>
+		<div class="ratings">
+			<p class="pull-right"></p>
+			<p>
+				<%if(model.get("Feelslike")){%>
+				It feels like <%=model.get("Feelslike")%> °C
+				<%} else{%>
+				It feels like <%=model.get("Temperature")%> °C
+				<%}%>
+			</p>
+		</div>
+	</div>
+</div>

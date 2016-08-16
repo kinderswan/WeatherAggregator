@@ -1,11 +1,9 @@
 ﻿/// <reference path="../UrlConstants.ts" />
 class ImageModel extends Backbone.Model {
 
-	private imageSearchQuery: string;
-
-	constructor(imageSearchQuery: string) {
+	constructor(imageSearchQuery: string, imageSize?: number) {
 		super();
-		this.url = UrlConstants.Hostname + UrlConstants.ImageApiUrl + imageSearchQuery;
+		this.url = this.createUrl(imageSearchQuery, imageSize);
 	}
 
 	defaults(): { ImageUrl: string } {
@@ -15,6 +13,14 @@ class ImageModel extends Backbone.Model {
 	}
 
 	url: string;
+
+	private createUrl(imageSearchQuery: string, imageSize: number): string {
+		if (imageSize === undefined) {
+			imageSize = 640;
+		}
+
+		return UrlConstants.Hostname + UrlConstants.ImageApiUrl + imageSearchQuery + "/" + imageSize;
+	}
 }
 
 

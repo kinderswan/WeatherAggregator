@@ -12,11 +12,19 @@ var WeatherCollection = (function (_super) {
         this.cityName = cityName;
         this.stateName = stateName;
     }
-    WeatherCollection.prototype.customFetch = function () {
+    WeatherCollection.prototype.customFetch = function (success, error) {
+        var self = this;
         for (var i = 0; i < UrlConstants.WeatherApiUrls.length; i++) {
             var weatherModel = new WeatherModel(this.buildUrl(UrlConstants.WeatherApiUrls[i]));
-            weatherModel.fetch();
-            this.add(weatherModel);
+            weatherModel.fetch({
+                success: function (model) {
+                    if (!model.get("City")) {
+                        return;
+                    }
+                    self.add(model);
+                    success(model);
+                }
+            });
         }
     };
     WeatherCollection.prototype.buildUrl = function (uri) {

@@ -6,18 +6,28 @@ class WeatherCollection extends Backbone.Collection<WeatherModel> {
 	private cityName: string;
 	private stateName: string;
 
-	constructor(countryName: string, cityName: string, stateName: string) {
+	constructor(countryName: string, cityName: string, stateName?: string) {
 		super();
 		this.countryName = countryName;
 		this.cityName = cityName;
 		this.stateName = stateName;
 	}
 
-	customFetch(): void {
+	customFetch(success?: Function, error?: Function): void {
+		var self = this;
 		for (var i = 0; i < UrlConstants.WeatherApiUrls.length; i++) {
 			var weatherModel = new WeatherModel(this.buildUrl(UrlConstants.WeatherApiUrls[i]));
-			weatherModel.fetch();
-			this.add(weatherModel);
+			weatherModel.fetch({
+				success: function (model) {
+					if (!model.get("City")) {
+						return;
+					}
+					self.add(model);
+					success(model);
+				}
+			});
+			
+			
 		}
 	}
 
