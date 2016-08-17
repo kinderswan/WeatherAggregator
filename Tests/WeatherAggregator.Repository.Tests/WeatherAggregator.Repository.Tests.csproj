@@ -80,6 +80,10 @@
       <Project>{1DE2CFE3-9602-4F00-953F-A46796448A71}</Project>
       <Name>WeatherAggregator.Rest</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\WeatherAggregator.WebApi\WeatherAggregator.WebApi.csproj">
+      <Project>{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}</Project>
+      <Name>WeatherAggregator.WebApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Choose>
