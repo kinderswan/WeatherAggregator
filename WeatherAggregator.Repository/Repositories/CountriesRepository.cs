@@ -14,7 +14,7 @@ namespace WeatherAggregator.Repository.Repositories
 
 		public CountriesCollectionModel GetCountriesCollection()
 		{
-			var response = base.GetResponseFromUrl(ApisUrlsNames.BaseCountriesUrl);
+			IRestResponse<CountriesCollectionModel> response = base.GetResponseFromUrl(ApisUrlsNames.BaseCountriesUrl);
 			return response.StatusCode == HttpStatusCode.OK
 				? response.Data
 				: default(CountriesCollectionModel);

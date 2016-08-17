@@ -11,23 +11,28 @@ namespace WeatherAggregator.Repository.Repositories
 		public CitiesRepository() { }
 
 		public CitiesRepository(IHttpRequestor requestor) : base(requestor) { }
-		
+
 		public CitiesCollectionModel GetCitiesCollection(string countryName)
 		{
 			string url = string.Format(ApisUrlsNames.BaseCitiesUrl, countryName);
-			var response = base.GetResponseFromUrl(url);
-			return response.StatusCode == HttpStatusCode.OK 
-				? response.Data.CitiesContainer 
-				: default(CitiesCollectionModel);
+			IRestResponse<CitiesContainerResponse> response = base.GetResponseFromUrl(url);
+
+			return response.Data == null
+				? default(CitiesCollectionModel)
+				: (response.StatusCode == HttpStatusCode.OK
+				? response.Data.CitiesContainer
+				: default(CitiesCollectionModel));
 		}
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName, string stateName)
 		{
 			string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, countryName, stateName);
-			var response = base.GetResponseFromUrl(url);
-			return response.StatusCode == HttpStatusCode.OK
+			IRestResponse<CitiesContainerResponse> response = base.GetResponseFromUrl(url);
+			return response.Data == null
+				? default(CitiesCollectionModel)
+				: (response.StatusCode == HttpStatusCode.OK
 				? response.Data.CitiesContainer
-				: default(CitiesCollectionModel);
+				: default(CitiesCollectionModel));
 		}
 	}
 }

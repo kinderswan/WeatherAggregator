@@ -20,7 +20,7 @@ namespace WeatherAggregator.Rest
 
 		public IRestResponse<TResponse> PerformRequest<TResponse>(string url, HttpMethod method)
 		{
-			var result = Task.Run(() => this.ExecuteMethod(url, method)).Result;
+			HttpResponseMessage result = Task.Run(() => this.ExecuteMethod(url, method)).Result;
 			return new RestResponse<TResponse>(result);
 		}
 

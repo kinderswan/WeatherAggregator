@@ -15,7 +15,7 @@ namespace WeatherAggregator.Repository.Repositories
 		public ImagesCollectionModel GetImagesFromUrl(string imagesSearchQuery)
 		{
 			string url = string.Format(ApisUrlsNames.BaseImageUrl, imagesSearchQuery);
-			var response = base.GetResponseFromUrl(url);
+			IRestResponse<ImagesCollectionModel> response = base.GetResponseFromUrl(url);
 			return response.StatusCode == HttpStatusCode.OK
 				? response.Data
 				: default(ImagesCollectionModel);

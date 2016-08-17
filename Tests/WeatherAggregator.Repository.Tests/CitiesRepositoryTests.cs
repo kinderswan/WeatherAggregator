@@ -39,58 +39,88 @@ namespace WeatherAggregator.Repository.Tests
 			this.citiesRepository = new CitiesRepository(this.httpRequestorMock.Object);
 		}
 
-		[TestMethod]
+		[TestMethod, TestCategory("Repositories")]
 		public void GetCitiesCollection_ShouldReturn_CitiesCollectionModel()
 		{
-			var url = string.Format(ApisUrlsNames.BaseCitiesUrl, "Test");
+			string url = string.Format(ApisUrlsNames.BaseCitiesUrl, "Test");
 
 			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y=> y == url), HttpMethod.Get).Data)
 				.Returns(() => this.citiesResponse);
 			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
 				.Returns(() => HttpStatusCode.OK);
 
-			var result = this.citiesRepository.GetCitiesCollection("Test");
+			CitiesCollectionModel result = this.citiesRepository.GetCitiesCollection("Test");
 			Assert.AreEqual("StateName", result.Cities[0].StateName);
 			Assert.AreEqual("CityName", result.Cities[0].CityName);
 			Assert.AreEqual("CountryName", result.Cities[0].CountryName);
 			this.httpRequestorMock.Verify(c => c.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
 		}
 
-		[TestMethod]
+		[TestMethod, TestCategory("Repositories")]
 		public void GetCitiesCollection_ShouldReturn_DefaultOfCitiesCollectionModel()
 		{
-			var url = string.Format(ApisUrlsNames.BaseCitiesUrl, "Test");
+			string url = string.Format(ApisUrlsNames.BaseCitiesUrl, "Test");
 			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).Data)
 				.Returns(() => this.citiesResponse);
-			var result = this.citiesRepository.GetCitiesCollection("Test");
+			CitiesCollectionModel result = this.citiesRepository.GetCitiesCollection("Test");
 			Assert.IsNull(result);
 			this.httpRequestorMock.Verify(c => c.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
 		}
 
-		[TestMethod]
+		[TestMethod, TestCategory("Repositories")]
 		public void GetCitiesStatesCollection_ShouldReturn_CitiesCollectionModel()
 		{
-			var url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, "Test", "Test");
+			string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, "Test", "Test");
 
 			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).Data)
 				.Returns(() => this.citiesResponse);
 			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
 				.Returns(() => HttpStatusCode.OK);
 
-			var result = this.citiesRepository.GetCitiesCollection("Test", "Test");
+			CitiesCollectionModel result = this.citiesRepository.GetCitiesCollection("Test", "Test");
 			Assert.AreEqual("StateName", result.Cities[0].StateName);
 			Assert.AreEqual("CityName", result.Cities[0].CityName);
 			Assert.AreEqual("CountryName", result.Cities[0].CountryName);
 			this.httpRequestorMock.Verify(c => c.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
 		}
 
-		[TestMethod]
+		[TestMethod, TestCategory("Repositories")]
 		public void GetCitiesStatesCollection_ShouldReturn_DefaultOfCitiesCollectionModel()
 		{
-			var url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, "Test", "Test");
+			string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, "Test", "Test");
 			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).Data)
 				.Returns(() => this.citiesResponse);
-			var result = this.citiesRepository.GetCitiesCollection("Test", "Test");
+			CitiesCollectionModel result = this.citiesRepository.GetCitiesCollection("Test", "Test");
+			Assert.IsNull(result);
+			this.httpRequestorMock.Verify(c => c.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
+		}
+
+		[TestMethod, TestCategory("Repositories")]
+		public void GetCitiesCollection_ShouldReturn_DefaultOfCitiesCollectionModel_IfResponseDataIsNull()
+		{
+			string url = string.Format(ApisUrlsNames.BaseCitiesUrl, "Test");
+
+			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).Data)
+				.Returns(() => default(CitiesContainerResponse));
+			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
+				.Returns(() => HttpStatusCode.OK);
+
+			CitiesCollectionModel result = this.citiesRepository.GetCitiesCollection("Test");
+			Assert.IsNull(result);
+			this.httpRequestorMock.Verify(c => c.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
+		}
+
+		[TestMethod, TestCategory("Repositories")]
+		public void GetCitiesStatesCollection_ShouldReturn_DefaultOfCitiesCollectionModel_IfResponseDataIsNull()
+		{
+			string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, "Test", "Test");
+
+			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).Data)
+				.Returns(() => default(CitiesContainerResponse));
+			this.httpRequestorMock.Setup(x => x.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
+				.Returns(() => HttpStatusCode.OK);
+
+			CitiesCollectionModel result = this.citiesRepository.GetCitiesCollection("Test", "Test");
 			Assert.IsNull(result);
 			this.httpRequestorMock.Verify(c => c.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
 		}

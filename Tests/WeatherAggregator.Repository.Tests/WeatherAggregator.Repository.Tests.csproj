@@ -58,8 +58,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ImagesRepositoryTests.cs" />
     <Compile Include="CitiesRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CountriesRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
