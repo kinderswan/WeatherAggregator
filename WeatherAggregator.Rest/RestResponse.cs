@@ -35,7 +35,7 @@ namespace WeatherAggregator.Rest
 			{
 				result = JsonConvert.DeserializeObject<T>(responseString);
 			}
-			catch (JsonSerializationException exception)
+			catch
 			{
 				return default(T);
 			}

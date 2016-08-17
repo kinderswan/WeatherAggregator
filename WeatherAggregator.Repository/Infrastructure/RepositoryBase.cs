@@ -3,11 +3,14 @@ using WeatherAggregator.Rest.Interfaces;
 
 namespace WeatherAggregator.Repository.Infrastructure
 {
-	public abstract class RepositoryBase<T> where T: class
+	public abstract class RepositoryBase<T> where T : class
 	{
 		private readonly IHttpRequestor httpRequestor;
 
-		protected RepositoryBase() { }
+		protected RepositoryBase()
+		{
+			
+		}
 
 		protected RepositoryBase(IHttpRequestor requestor)
 		{
