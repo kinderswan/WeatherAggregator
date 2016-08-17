@@ -33,6 +33,7 @@ namespace WeatherAggregator.WebApi
             builder.RegisterMetadataRegistrationSources();
 
             builder.Register(c => new HttpRequestor(new HttpClient())).As<IHttpRequestor>().SingleInstance();
+
             builder.RegisterGeneric(typeof(RestResponse<>)).As(typeof(IRestResponse<>)).InstancePerRequest();
             
             builder.RegisterAssemblyTypes(typeof(IImagesRepository).Assembly)

@@ -18,19 +18,16 @@ namespace WeatherAggregator.Rest.Tests
 		private HttpClient httpClient;
 
 		private MockHttpMessageHandler mockHttp;
-		private string testResponse;
 
 		[TestInitialize]
 		public void Initialize()
 		{
-			this.testResponse = JsonConvert.SerializeObject(new TestResponse
+			this.mockHttp = new MockHttpMessageHandler();
+			mockHttp.When("http://localhost/*").Respond("application/json", JsonConvert.SerializeObject(new TestResponse
 			{
 				Name = "Test",
 				Surname = "Test"
-			});
-
-			this.mockHttp = new MockHttpMessageHandler();
-			mockHttp.When("http://localhost/*").Respond("application/json", this.testResponse);
+			}));
 			this.httpClient = new HttpClient(mockHttp);
 			this.requestor = new HttpRequestor(this.httpClient);
 		}
@@ -50,6 +47,7 @@ namespace WeatherAggregator.Rest.Tests
 			var json = result.Data;
 			Assert.AreEqual("Test", json.Name);
 			Assert.AreEqual("Test", json.Surname);
+
 			mockHttp.VerifyNoOutstandingExpectation();
 		}
 
@@ -60,6 +58,7 @@ namespace WeatherAggregator.Rest.Tests
 			this.mockHttp.When("http://localhost/*").Respond("application/json", "some unexpected values");
 			var result = this.requestor.PerformRequest<TestResponse>("http://localhost/api", HttpMethod.Get);
 			Assert.AreEqual(result.Data, default(TestResponse));
+
 			mockHttp.VerifyNoOutstandingExpectation();
 		}
 

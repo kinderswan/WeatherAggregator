@@ -34,7 +34,10 @@ namespace WeatherAggregator.Rest
 		{
 			if (disposing)
 			{
-				if (httpClient != null) httpClient.Dispose();
+				if (httpClient != null)
+				{
+					httpClient.Dispose();
+				}
 			}
 		}
 
