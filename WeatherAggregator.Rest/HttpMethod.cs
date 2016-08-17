@@ -1,6 +1,6 @@
 ﻿namespace WeatherAggregator.Rest
 {
-	public enum HttpMethod:byte
+	public enum HttpMethod : byte
 	{
 		Get,
 		Post,

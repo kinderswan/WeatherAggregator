@@ -5,7 +5,7 @@ using WeatherAggregator.Rest.Interfaces;
 
 namespace WeatherAggregator.Rest
 {
-	public class HttpRequestor : IHttpRequestor
+	public class HttpRequestor : IHttpRequestor, IDisposable
 	{
 		private readonly HttpClient httpClient;
 
@@ -19,7 +19,21 @@ namespace WeatherAggregator.Rest
 			var result = Task.Run(() => this.ExecuteMethod(url, method)).Result;
 			return new RestResponse<TResponse>(result);
 		}
-		
+
+		public void Dispose()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+				if (httpClient != null) httpClient.Dispose();
+			}
+		}
+
 		private async Task<HttpResponseMessage> ExecuteMethod(string url, HttpMethod method)
 		{ 
 			switch (method)
