@@ -22,7 +22,7 @@ namespace WeatherAggregator.Repository {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ApisUrlsNames {
+    public class ApisUrlsNames {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace WeatherAggregator.Repository {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WeatherAggregator.Repository.ApisUrlsNames", typeof(ApisUrlsNames).Assembly);
@@ -51,7 +51,7 @@ namespace WeatherAggregator.Repository {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace WeatherAggregator.Repository {
         /// <summary>
         ///   Looks up a localized string similar to http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}.json.
         /// </summary>
-        internal static string BaseCitiesUrl {
+        public static string BaseCitiesUrl {
             get {
                 return ResourceManager.GetString("BaseCitiesUrl", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace WeatherAggregator.Repository {
         /// <summary>
         ///   Looks up a localized string similar to https://api.theprintful.com/countries.
         /// </summary>
-        internal static string BaseCountriesUrl {
+        public static string BaseCountriesUrl {
             get {
                 return ResourceManager.GetString("BaseCountriesUrl", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace WeatherAggregator.Repository {
         /// <summary>
         ///   Looks up a localized string similar to https://pixabay.com/api/?key=3018114-ef10ea70a2ba5da78d32b52be&amp;q={0}&amp;image_type=photo.
         /// </summary>
-        internal static string BaseImageUrl {
+        public static string BaseImageUrl {
             get {
                 return ResourceManager.GetString("BaseImageUrl", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace WeatherAggregator.Repository {
         /// <summary>
         ///   Looks up a localized string similar to http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}.json.
         /// </summary>
-        internal static string BaseStateCitiesUrl {
+        public static string BaseStateCitiesUrl {
             get {
                 return ResourceManager.GetString("BaseStateCitiesUrl", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace WeatherAggregator.Repository {
         /// <summary>
         ///   Looks up a localized string similar to http://api.openweathermap.org/data/2.5/weather?q={0},{1},{2}&amp;appid=5c534ef4999710bd65efedf91d6295e4&amp;units=metric.
         /// </summary>
-        internal static string OpenWeatherMapCountryStateURL {
+        public static string OpenWeatherMapCountryStateURL {
             get {
                 return ResourceManager.GetString("OpenWeatherMapCountryStateURL", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace WeatherAggregator.Repository {
         /// <summary>
         ///   Looks up a localized string similar to http://api.openweathermap.org/data/2.5/weather?q={0},{1}&amp;appid=5c534ef4999710bd65efedf91d6295e4&amp;units=metric.
         /// </summary>
-        internal static string OpenWeatherMapCountryURL {
+        public static string OpenWeatherMapCountryURL {
             get {
                 return ResourceManager.GetString("OpenWeatherMapCountryURL", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace WeatherAggregator.Repository {
         /// <summary>
         ///   Looks up a localized string similar to http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}/{2}.json.
         /// </summary>
-        internal static string WundergroundCountryStateURL {
+        public static string WundergroundCountryStateURL {
             get {
                 return ResourceManager.GetString("WundergroundCountryStateURL", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace WeatherAggregator.Repository {
         /// <summary>
         ///   Looks up a localized string similar to http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}.json.
         /// </summary>
-        internal static string WundergroundCountryURL {
+        public static string WundergroundCountryURL {
             get {
                 return ResourceManager.GetString("WundergroundCountryURL", resourceCulture);
             }

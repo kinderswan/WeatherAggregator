@@ -1,10 +1,5 @@
-﻿using System.Diagnostics;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 using Newtonsoft.Json;
 using RichardSzalay.MockHttp;
 
@@ -41,7 +36,7 @@ namespace WeatherAggregator.Rest.Tests
 		}
 
 		[TestMethod]
-		public void ShouldReturnResponseIfRequestedByGetVerb()
+		public void PerformRequest_Get_ShouldReturn_Response()
 		{
 			var result = this.requestor.PerformRequest<TestResponse>("http://localhost/api", HttpMethod.Get);
 			var json = result.Data;
@@ -52,7 +47,7 @@ namespace WeatherAggregator.Rest.Tests
 		}
 
 		[TestMethod]
-		public void ShouldReturnDefaultTypeValueIfResponseCantBeObtained()
+		public void PerformRequest_Get_ShouldReturn_DefaultTypeValue()
 		{
 			this.mockHttp.Clear();
 			this.mockHttp.When("http://localhost/*").Respond("application/json", "some unexpected values");
