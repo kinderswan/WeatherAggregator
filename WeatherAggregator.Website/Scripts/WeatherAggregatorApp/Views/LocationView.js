@@ -7,10 +7,10 @@ var LocationView = (function (_super) {
     __extends(LocationView, _super);
     function LocationView() {
         _super.call(this);
+        LocationView.defaultOptionValue = " -- select an option -- ";
     }
     LocationView.prototype.render = function () {
         LocationView.renderCountries();
-        LocationView.defaultOptionValue = " -- select an option -- ";
     };
     LocationView.renderCountries = function () {
         LocationView.clearAllSelects(true);

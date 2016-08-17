@@ -8,11 +8,11 @@
 
 	constructor() {
 		super();
+		LocationView.defaultOptionValue = " -- select an option -- ";
 	}
 
 	render(): any {
 		LocationView.renderCountries();
-		LocationView.defaultOptionValue = " -- select an option -- ";
 	}
 
 	private static renderCountries(): void {

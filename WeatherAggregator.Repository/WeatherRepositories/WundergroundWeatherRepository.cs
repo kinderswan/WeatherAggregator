@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Net;
+using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
@@ -9,27 +10,25 @@ using WeatherAggregator.Rest.Interfaces;
 
 namespace WeatherAggregator.Repository.WeatherRepositories
 {
-    public class WundergroundWeatherRepository : RepositoryBase<WundergroundWeatherModel>, IRepository<WundergroundWeatherModel>, IWeatherRepository
-    {
-        private const string WeatherCountryStateURL = @"http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}/{2}.json";
+	public class WundergroundWeatherRepository : RepositoryBase<WundergroundWeatherModel>, IRepository<WundergroundWeatherModel>, IWeatherRepository
+	{
+		public WundergroundWeatherRepository(){}
 
-        private const string WeatherCountryURL = @"http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}.json";
+		public WundergroundWeatherRepository(IHttpRequestor requestor) : base(requestor){}
 
-        public WundergroundWeatherRepository() { }
+		public WeatherConventionModel GetWeatherData(CityModel cityModel)
+		{
+			var response = base.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
+			return response.StatusCode == HttpStatusCode.OK
+				? Mapper.Map<WundergroundWeatherModel, WeatherConventionModel>(response.Data)
+				: default(WeatherConventionModel);
+		}
 
-        public WundergroundWeatherRepository(IHttpRequestor requestor) : base(requestor) { }
-
-        public WeatherConventionModel GetWeatherData(CityModel cityModel)
-        {
-            var result = base.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
-            return Mapper.Map<WundergroundWeatherModel, WeatherConventionModel>(result);
-        }
-
-        private string BuildGetRequestUrl(CityModel model)
-        {
-            return string.IsNullOrEmpty(model.StateName) ?
-                string.Format(WundergroundWeatherRepository.WeatherCountryURL, model.CountryName, model.CityName) :
-                string.Format(WundergroundWeatherRepository.WeatherCountryStateURL, model.CountryName, model.StateName, model.CityName);
-        }
-    }
+		private string BuildGetRequestUrl(CityModel model)
+		{
+			return string.IsNullOrEmpty(model.StateName) ?
+				string.Format(ApisUrlsNames.WundergroundCountryURL, model.CountryName, model.CityName) :
+				string.Format(ApisUrlsNames.WundergroundCountryStateURL, model.CountryName, model.StateName, model.CityName);
+		}
+	}
 }

@@ -11,7 +11,11 @@ namespace WeatherAggregator.Rest
 
 		public HttpRequestor()
 		{
-			this.httpClient = new HttpClient();
+		}
+
+		public HttpRequestor(HttpClient client)
+		{
+			this.httpClient = client;
 		}
 
 		public IRestResponse<TResponse> PerformRequest<TResponse>(string url, HttpMethod method)
@@ -30,7 +34,10 @@ namespace WeatherAggregator.Rest
 		{
 			if (disposing)
 			{
-				if (httpClient != null) httpClient.Dispose();
+				if (httpClient != null)
+				{
+					httpClient.Dispose();
+				}
 			}
 		}
 
