@@ -61,7 +61,7 @@ namespace WeatherAggregator.Repository {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to openweathermap.
+        ///   Looks up a localized string similar to OpenWeatherMap.
         /// </summary>
         public static string openweathermap {
             get {
@@ -70,7 +70,7 @@ namespace WeatherAggregator.Repository {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to wunderground.
+        ///   Looks up a localized string similar to Wunderground.
         /// </summary>
         public static string wunderground {
             get {

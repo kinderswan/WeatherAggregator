@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Countries;
-using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Repository.Repositories;
 using WeatherAggregator.Rest;
 using WeatherAggregator.Rest.Interfaces;

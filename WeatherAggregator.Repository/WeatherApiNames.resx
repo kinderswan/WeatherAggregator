@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="openweathermap" xml:space="preserve">
-    <value>openweathermap</value>
+    <value>OpenWeatherMap</value>
   </data>
   <data name="wunderground" xml:space="preserve">
-    <value>wunderground</value>
+    <value>Wunderground</value>
   </data>
 </root>
