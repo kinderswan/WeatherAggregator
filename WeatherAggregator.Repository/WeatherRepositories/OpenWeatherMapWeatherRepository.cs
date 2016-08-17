@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Net;
+using AutoMapper;
 using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.OpenWeatherMap;
@@ -9,27 +10,25 @@ using WeatherAggregator.Rest.Interfaces;
 
 namespace WeatherAggregator.Repository.WeatherRepositories
 {
-    public class OpenWeatherMapWeatherRepository : RepositoryBase<OpenWeatherMapWeatherModel>, IRepository<OpenWeatherMapWeatherModel>, IWeatherRepository
-    {
-        private const string WeatherCountryStateURL = @"http://api.openweathermap.org/data/2.5/weather?q={0},{1},{2}&appid=5c534ef4999710bd65efedf91d6295e4&units=metric";
+	public class OpenWeatherMapWeatherRepository : RepositoryBase<OpenWeatherMapWeatherModel>, IRepository<OpenWeatherMapWeatherModel>, IWeatherRepository
+	{
+		public OpenWeatherMapWeatherRepository() { }
 
-        private const string WeatherCountryURL = @"http://api.openweathermap.org/data/2.5/weather?q={0},{1}&appid=5c534ef4999710bd65efedf91d6295e4&units=metric";
+		public OpenWeatherMapWeatherRepository(IHttpRequestor requestor) : base(requestor) { }
 
-        public OpenWeatherMapWeatherRepository() { }
+		public WeatherConventionModel GetWeatherData(CityModel cityModel)
+		{
+			var response = base.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
+			return response.StatusCode == HttpStatusCode.OK
+				? Mapper.Map<OpenWeatherMapWeatherModel, WeatherConventionModel>(response.Data)
+				: default(WeatherConventionModel);
+		}
 
-        public OpenWeatherMapWeatherRepository(IHttpRequestor requestor) : base(requestor) { }
-
-        public WeatherConventionModel GetWeatherData(CityModel cityModel)
-        {
-            var result = base.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
-            return Mapper.Map<OpenWeatherMapWeatherModel, WeatherConventionModel>(result);
-        }
-
-        private string BuildGetRequestUrl(CityModel model)
-        {
-            return string.IsNullOrEmpty(model.StateName) ?
-                string.Format(OpenWeatherMapWeatherRepository.WeatherCountryURL, model.CountryName, model.CityName) :
-                string.Format(OpenWeatherMapWeatherRepository.WeatherCountryStateURL, model.CountryName, model.StateName, model.CityName);
-        }
-    }
+		private string BuildGetRequestUrl(CityModel model)
+		{
+			return string.IsNullOrEmpty(model.StateName) ?
+				string.Format(ApisUrlsNames.OpenWeatherMapCountryURL, model.CountryName, model.CityName) :
+				string.Format(ApisUrlsNames.OpenWeatherMapCountryStateURL, model.CountryName, model.StateName, model.CityName);
+		}
+	}
 }

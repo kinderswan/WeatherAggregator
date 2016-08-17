@@ -1,4 +1,5 @@
-﻿using WeatherAggregator.Models.Models.Core.Cities;
+﻿using System.Net;
+using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.Interfaces;
 using WeatherAggregator.Rest.Interfaces;
@@ -7,24 +8,26 @@ namespace WeatherAggregator.Repository.Repositories
 {
 	public class CitiesRepository : RepositoryBase<CitiesContainerResponse>, ICitiesRepository
 	{
-		private const string BaseCitiesUrl = @"http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}.json";
-
-		private const string BaseStateCitiesUrl = @"http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}.json";
-
 		public CitiesRepository() { }
 
 		public CitiesRepository(IHttpRequestor requestor) : base(requestor) { }
 		
 		public CitiesCollectionModel GetCitiesCollection(string countryName)
 		{
-			string url = string.Format(CitiesRepository.BaseCitiesUrl, countryName);
-			return base.GetResponseFromUrl(url).CitiesContainer;
+			string url = string.Format(ApisUrlsNames.BaseCitiesUrl, countryName);
+			var response = base.GetResponseFromUrl(url);
+			return response.StatusCode == HttpStatusCode.OK 
+				? response.Data.CitiesContainer 
+				: default(CitiesCollectionModel);
 		}
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName, string stateName)
 		{
-			string url = string.Format(CitiesRepository.BaseStateCitiesUrl, countryName, stateName);
-			return base.GetResponseFromUrl(url).CitiesContainer;
+			string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, countryName, stateName);
+			var response = base.GetResponseFromUrl(url);
+			return response.StatusCode == HttpStatusCode.OK
+				? response.Data.CitiesContainer
+				: default(CitiesCollectionModel);
 		}
 	}
 }
