@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Models.Models.Core.Weather;
+using WeatherAggregator.Repository;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.WeatherRepositories.Interfaces;
 using WeatherAggregator.Services.Interfaces;
@@ -38,10 +39,13 @@ namespace WeatherAggregator.Services
 
 		private RepositorySet SelectRepositorySet(string name)
 		{
-			switch (name.ToLowerInvariant())
+			string resourceName = WeatherApiNames.ResourceManager.GetObject(name) as string;
+
+			foreach (string x in Enum.GetNames(typeof(RepositorySet))
+				.Where(x => string.Equals(x, resourceName, StringComparison.CurrentCultureIgnoreCase))
+				.Where(x => x != null))
 			{
-				case "wunderground": return RepositorySet.Wunderground;
-				case "openweathermap": return RepositorySet.OpenWeatherMap;
+				return (RepositorySet)Enum.Parse(typeof(RepositorySet), x);
 			}
 
 			throw new ArgumentException("There are no such weather apis / select");
