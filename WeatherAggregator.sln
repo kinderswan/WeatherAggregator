@@ -13,13 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Rest", "W
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{870CBCE5-09C7-4AEC-9379-421A46B098AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Rest.Tests", "WeatherAggregator.Rest.Tests\WeatherAggregator.Rest.Tests.csproj", "{82375CA9-9D74-48C3-8941-42DDCFE9BD83}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Rest.Tests", "Tests\WeatherAggregator.Rest.Tests\WeatherAggregator.Rest.Tests.csproj", "{82375CA9-9D74-48C3-8941-42DDCFE9BD83}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.WebApi", "WeatherAggregator.WebApi\WeatherAggregator.WebApi.csproj", "{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Models", "WeatherAggregator.Models\WeatherAggregator.Models.csproj", "{15B8220F-515A-4CD7-B65B-7D36F59C0DD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Repository.Tests", "WeatherAggregator.Repository.Tests\WeatherAggregator.Repository.Tests.csproj", "{CE1063F7-AC66-440E-9D2D-7A309199666F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Repository.Tests", "Tests\WeatherAggregator.Repository.Tests\WeatherAggregator.Repository.Tests.csproj", "{CE1063F7-AC66-440E-9D2D-7A309199666F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
