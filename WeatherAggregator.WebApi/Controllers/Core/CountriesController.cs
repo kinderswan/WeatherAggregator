@@ -24,7 +24,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getcountries")]
 		public IHttpActionResult GetCountries()
 		{
-			var result = this.countriesService.GetCountriesCollection();
+			CountriesCollectionModel result = this.countriesService.GetCountriesCollection();
 			return Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result).Countries);
 		}
 	}

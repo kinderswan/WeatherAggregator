@@ -27,7 +27,7 @@ namespace WeatherAggregator.WebApi
 
 		private static void SetAutofacContainer()
 		{
-			var builder = new ContainerBuilder();
+			ContainerBuilder builder = new ContainerBuilder();
 
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
 			builder.RegisterMetadataRegistrationSources();

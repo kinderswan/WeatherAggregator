@@ -117,35 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BaseCitiesUrl" xml:space="preserve">
-    <value>http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}.json</value>
-    <comment>simple cities api string</comment>
+  <data name="openweathermap" xml:space="preserve">
+    <value>openweathermap</value>
   </data>
-  <data name="BaseCountriesUrl" xml:space="preserve">
-    <value>https://api.theprintful.com/countries</value>
-    <comment>url to get countries list</comment>
-  </data>
-  <data name="BaseImageUrl" xml:space="preserve">
-    <value>https://pixabay.com/api/?key=3018114-ef10ea70a2ba5da78d32b52be&amp;q={0}&amp;image_type=photo</value>
-    <comment>default image api resourse</comment>
-  </data>
-  <data name="BaseStateCitiesUrl" xml:space="preserve">
-    <value>http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}.json</value>
-    <comment>cities api string where countries have states</comment>
-  </data>
-  <data name="DefaultImageSource" xml:space="preserve">
-    <value>https://lh3.ggpht.com/ApTda64T1v2cef_XzU6NHvt0nKPFTTJ1ZuBo6iuqovXTvqEGVxXxAnBH-XOz7ijNRYMONA=w{0}</value>
-  </data>
-  <data name="OpenWeatherMapCountryStateURL" xml:space="preserve">
-    <value>http://api.openweathermap.org/data/2.5/weather?q={0},{1},{2}&amp;appid=5c534ef4999710bd65efedf91d6295e4&amp;units=metric</value>
-  </data>
-  <data name="OpenWeatherMapCountryURL" xml:space="preserve">
-    <value>http://api.openweathermap.org/data/2.5/weather?q={0},{1}&amp;appid=5c534ef4999710bd65efedf91d6295e4&amp;units=metric</value>
-  </data>
-  <data name="WundergroundCountryStateURL" xml:space="preserve">
-    <value>http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}/{2}.json</value>
-  </data>
-  <data name="WundergroundCountryURL" xml:space="preserve">
-    <value>http://api.wunderground.com/api/d560e8d2602ee998/conditions/q/{0}/{1}.json</value>
+  <data name="wunderground" xml:space="preserve">
+    <value>wunderground</value>
   </data>
 </root>

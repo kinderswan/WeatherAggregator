@@ -50,6 +50,11 @@
     </Compile>
     <Compile Include="Infrastructure\Interfaces\IRepository.cs" />
     <Compile Include="Infrastructure\IRepositorySet.cs" />
+    <Compile Include="WeatherApiNames.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeatherApiNames.resx</DependentUpon>
+    </Compile>
     <Compile Include="WeatherRepositories\Interfaces\IWeatherRepository.cs" />
     <Compile Include="Repositories\CitiesRepository.cs" />
     <Compile Include="Repositories\ImagesRepository.cs" />
@@ -80,6 +85,10 @@
     <EmbeddedResource Include="ApisUrlsNames.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ApisUrlsNames.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeatherApiNames.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WeatherApiNames.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

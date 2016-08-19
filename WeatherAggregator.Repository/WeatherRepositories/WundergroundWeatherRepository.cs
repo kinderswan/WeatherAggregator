@@ -18,7 +18,7 @@ namespace WeatherAggregator.Repository.WeatherRepositories
 
 		public WeatherConventionModel GetWeatherData(CityModel cityModel)
 		{
-			var response = base.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
+			IRestResponse<WundergroundWeatherModel> response = base.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
 			return response.StatusCode == HttpStatusCode.OK
 				? Mapper.Map<WundergroundWeatherModel, WeatherConventionModel>(response.Data)
 				: default(WeatherConventionModel);

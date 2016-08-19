@@ -24,7 +24,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getcities/{countryName}")]
 		public IHttpActionResult GetCountries(string countryName)
 		{
-			var result = this.sitiesService.GetCitiesCollection(countryName);
+			CitiesCollectionModel result = this.sitiesService.GetCitiesCollection(countryName);
 			return Json(Mapper.Map<CitiesCollectionModel, CitiesCollectionViewModel>(result).Cities);
 		}
 
@@ -32,7 +32,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getcities/{countryName}/{stateName}")]
 		public IHttpActionResult GetCountries(string countryName, string stateName)
 		{
-			var result = this.sitiesService.GetCitiesCollection(countryName, stateName);
+			CitiesCollectionModel result = this.sitiesService.GetCitiesCollection(countryName, stateName);
 			return Json(Mapper.Map<CitiesCollectionModel, CitiesCollectionViewModel>(result).Cities);
 		}
 	}

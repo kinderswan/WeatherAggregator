@@ -97,6 +97,15 @@ namespace WeatherAggregator.Repository {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://lh3.ggpht.com/ApTda64T1v2cef_XzU6NHvt0nKPFTTJ1ZuBo6iuqovXTvqEGVxXxAnBH-XOz7ijNRYMONA=w{0}.
+        /// </summary>
+        public static string DefaultImageSource {
+            get {
+                return ResourceManager.GetString("DefaultImageSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://api.openweathermap.org/data/2.5/weather?q={0},{1},{2}&amp;appid=5c534ef4999710bd65efedf91d6295e4&amp;units=metric.
         /// </summary>
         public static string OpenWeatherMapCountryStateURL {

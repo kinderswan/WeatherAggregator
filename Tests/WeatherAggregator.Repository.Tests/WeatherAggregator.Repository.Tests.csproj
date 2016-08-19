@@ -58,8 +58,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ImagesRepositoryTests.cs" />
     <Compile Include="CitiesRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CountriesRepositoryTests.cs" />
+    <Compile Include="WeatherRepositories\WundergroundWeatherRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -77,7 +80,12 @@
       <Project>{1DE2CFE3-9602-4F00-953F-A46796448A71}</Project>
       <Name>WeatherAggregator.Rest</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\WeatherAggregator.WebApi\WeatherAggregator.WebApi.csproj">
+      <Project>{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}</Project>
+      <Name>WeatherAggregator.WebApi</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
