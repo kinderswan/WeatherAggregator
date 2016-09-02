@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Models", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Repository.Tests", "Tests\WeatherAggregator.Repository.Tests\WeatherAggregator.Repository.Tests.csproj", "{CE1063F7-AC66-440E-9D2D-7A309199666F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Service.Tests", "WeatherAggregator.Service.Tests\WeatherAggregator.Service.Tests.csproj", "{5F45AF05-CEF6-4F13-BBDB-D3F5B6178930}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Controller.Tests", "WeatherAggregator.Controller.Tests\WeatherAggregator.Controller.Tests.csproj", "{323EFCC5-64CE-4AD6-98E7-C45DF2CE9214}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +63,14 @@ Global
 		{CE1063F7-AC66-440E-9D2D-7A309199666F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE1063F7-AC66-440E-9D2D-7A309199666F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE1063F7-AC66-440E-9D2D-7A309199666F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F45AF05-CEF6-4F13-BBDB-D3F5B6178930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F45AF05-CEF6-4F13-BBDB-D3F5B6178930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F45AF05-CEF6-4F13-BBDB-D3F5B6178930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F45AF05-CEF6-4F13-BBDB-D3F5B6178930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{323EFCC5-64CE-4AD6-98E7-C45DF2CE9214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{323EFCC5-64CE-4AD6-98E7-C45DF2CE9214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{323EFCC5-64CE-4AD6-98E7-C45DF2CE9214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{323EFCC5-64CE-4AD6-98E7-C45DF2CE9214}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +78,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{82375CA9-9D74-48C3-8941-42DDCFE9BD83} = {870CBCE5-09C7-4AEC-9379-421A46B098AE}
 		{CE1063F7-AC66-440E-9D2D-7A309199666F} = {870CBCE5-09C7-4AEC-9379-421A46B098AE}
+		{5F45AF05-CEF6-4F13-BBDB-D3F5B6178930} = {870CBCE5-09C7-4AEC-9379-421A46B098AE}
+		{323EFCC5-64CE-4AD6-98E7-C45DF2CE9214} = {870CBCE5-09C7-4AEC-9379-421A46B098AE}
 	EndGlobalSection
 EndGlobal
