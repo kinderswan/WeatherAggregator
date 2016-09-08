@@ -1,6 +1,8 @@
-﻿using System.Web.Http;
+﻿using System.IO;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
+using log4net.Config;
 
 namespace WeatherAggregator.WebApi
 {
@@ -12,6 +14,8 @@ namespace WeatherAggregator.WebApi
 		protected void Application_Start()
 		{
 			AreaRegistration.RegisterAllAreas();
+
+		    log4net.Config.XmlConfigurator.Configure();
 
 			WebApiConfig.Register(GlobalConfiguration.Configuration);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System.Globalization;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
@@ -15,13 +16,16 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 	[RoutePrefix("api/images")]
 	public class ImageController : ApiController
 	{
-		private readonly IImagesService imageService;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ImageController).Name);
+
+        private readonly IImagesService imageService;
 
 		public ImageController() { }
 
 		public ImageController(IImagesService imageService)
 		{
-			this.imageService = imageService;
+            log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
+            this.imageService = imageService;
 		}
 
 
@@ -40,7 +44,9 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getimage/{searchQuery}/{size=640}")]
 		public IHttpActionResult GetImage(string searchQuery, int size)
 		{
-		    if (string.IsNullOrEmpty(searchQuery))
+            log.InfoFormat(CultureInfo.InvariantCulture, "GetImage");
+
+            if (string.IsNullOrEmpty(searchQuery))
 		    {
 		        Json(default(ImageViewModel));
 		    }
@@ -54,7 +60,9 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 
 		private int CheckRequestedSize(int size)
 		{
-			if (!(size == 180 || size == 340 || size == 640 || size == 960))
+            log.InfoFormat(CultureInfo.InvariantCulture, "CheckRequestedSize");
+
+            if (!(size == 180 || size == 340 || size == 640 || size == 960))
 			{
 				return 640;
 			}

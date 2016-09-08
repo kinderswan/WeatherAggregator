@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 using WeatherAggregator.Rest.Interfaces;
@@ -7,29 +8,35 @@ namespace WeatherAggregator.Rest
 {
 	public class HttpRequestor : IHttpRequestor, IDisposable
 	{
-		private readonly HttpClient httpClient;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(HttpRequestor).Name);
 
-		public HttpRequestor()
-		{
-		}
+        private readonly HttpClient httpClient;
+
+		public HttpRequestor() { }
 
 		public HttpRequestor(HttpClient client)
 		{
+            log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
 			this.httpClient = client;
 		}
 
 		public IRestResponse<TResponse> PerformRequest<TResponse>(string url, HttpMethod method)
 		{
-		    if (string.IsNullOrEmpty(url))
+            log.InfoFormat(CultureInfo.InvariantCulture, "PerformRequest has been called with {0} and {1} method", url, method.ToString());
+
+            if (string.IsNullOrEmpty(url))
 		    {
+                log.ErrorFormat(CultureInfo.InvariantCulture, "PerformRequest");
 		        throw new ArgumentException(url, "url");
 		    }
+
 			HttpResponseMessage result = Task.Run(() => this.ExecuteMethod(url, method)).Result;
 			return new RestResponse<TResponse>(result);
 		}
 
 		public void Dispose()
 		{
+            log.InfoFormat(CultureInfo.InvariantCulture, "HttpRequestor has been disposed");
 			Dispose(true);
 			GC.SuppressFinalize(this);
 		}
@@ -46,8 +53,10 @@ namespace WeatherAggregator.Rest
 		}
 
 		private async Task<HttpResponseMessage> ExecuteMethod(string url, HttpMethod method)
-		{ 
-			switch (method)
+		{
+            log.InfoFormat(CultureInfo.InvariantCulture, "ExecuteMethod");
+
+            switch (method)
 			{
 				case HttpMethod.Get:
 					return await this.httpClient.GetAsync(url);
@@ -55,7 +64,8 @@ namespace WeatherAggregator.Rest
 				case HttpMethod.Post:
 				case HttpMethod.Put:
 				default:
-					throw new NotImplementedException("Method is not implemented");
+                    log.ErrorFormat(CultureInfo.InvariantCulture, "ExecuteMethod");
+                    throw new NotImplementedException("Method is not implemented");
 			}
 		}
 	}

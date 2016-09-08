@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Net;
 using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Repository.Infrastructure;
@@ -9,14 +10,22 @@ namespace WeatherAggregator.Repository.Repositories
 {
 	public class CitiesRepository : RepositoryBase<CitiesContainerResponse>, ICitiesRepository
 	{
-		public CitiesRepository() { }
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CitiesRepository).Name);
 
-		public CitiesRepository(IHttpRequestor requestor) : base(requestor) { }
+        public CitiesRepository() { }
+
+	    public CitiesRepository(IHttpRequestor requestor) : base(requestor)
+	    {
+	        log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
+	    }
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName)
 		{
+            log.InfoFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called");
+
             if (string.IsNullOrEmpty(countryName))
             {
+                log.ErrorFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called with countryName: {0}", countryName);
                 throw new ArgumentException(countryName, "countryName");
             }
 
@@ -32,13 +41,19 @@ namespace WeatherAggregator.Repository.Repositories
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName, string stateName)
 		{
-		    if (string.IsNullOrEmpty(countryName))
+            log.InfoFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called");
+
+            if (string.IsNullOrEmpty(countryName))
 		    {
-		        throw new ArgumentException(countryName, "countryName");
+                log.ErrorFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called with countryName: {0}", countryName);
+
+                throw new ArgumentException(countryName, "countryName");
 		    }
 
             if (string.IsNullOrEmpty(stateName))
             {
+                log.ErrorFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called with stateName: {0}", stateName);
+
                 throw new ArgumentException(stateName, "stateName");
             }
 

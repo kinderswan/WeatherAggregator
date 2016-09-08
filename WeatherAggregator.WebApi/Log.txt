@@ -1,0 +1,69 @@
+2016-09-09 00:51:09,318 [10] INFO  RepositoryBase`1 Ctrl has been called
+2016-09-09 00:51:09,331 [10] INFO  ImagesRepository Ctrl has been called
+2016-09-09 00:51:09,416 [10] INFO  ImagesRepository GetImagesFromUrl has been called
+2016-09-09 00:51:09,419 [10] INFO  RepositoryBase`1 GetResponseFromUrl has bee called
+2016-09-09 00:51:12,753 [10] INFO  RestResponse`1 Ctrl has been called
+2016-09-09 00:51:12,754 [10] INFO  RestResponse`1 GetDataFromResponseContent has been called
+2016-09-09 00:51:12,755 [10] INFO  RestResponse`1 JsonTryDeserialize has been called
+2016-09-09 00:52:00,240 [15] INFO  RepositoryBase`1 Ctrl has been called
+2016-09-09 00:52:00,240 [15] INFO  CountriesRepository Ctrl has been called
+2016-09-09 00:52:00,243 [15] INFO  CountriesRepository GetCountriesCollection has been called
+2016-09-09 00:52:00,243 [15] INFO  RepositoryBase`1 GetResponseFromUrl has bee called
+2016-09-09 00:52:01,527 [15] INFO  RestResponse`1 Ctrl has been called
+2016-09-09 00:52:01,527 [15] INFO  RestResponse`1 GetDataFromResponseContent has been called
+2016-09-09 00:52:01,528 [15] INFO  RestResponse`1 JsonTryDeserialize has been called
+2016-09-09 00:52:23,123 [10] INFO  RepositoryBase`1 Ctrl has been called
+2016-09-09 00:52:23,123 [10] INFO  ImagesRepository Ctrl has been called
+2016-09-09 00:52:23,124 [10] INFO  ImagesRepository GetImagesFromUrl has been called
+2016-09-09 00:52:23,124 [10] INFO  RepositoryBase`1 GetResponseFromUrl has bee called
+2016-09-09 00:52:35,004 [15] INFO  RepositoryBase`1 Ctrl has been called
+2016-09-09 00:52:35,004 [15] INFO  ImagesRepository Ctrl has been called
+2016-09-09 00:52:35,004 [15] INFO  ImagesRepository GetImagesFromUrl has been called
+2016-09-09 00:52:35,004 [15] INFO  RepositoryBase`1 GetResponseFromUrl has bee called
+2016-09-09 00:52:35,157 [15] INFO  RestResponse`1 Ctrl has been called
+2016-09-09 00:52:35,157 [15] INFO  RestResponse`1 GetDataFromResponseContent has been called
+2016-09-09 00:52:35,158 [15] INFO  RestResponse`1 JsonTryDeserialize has been called
+2016-09-09 00:52:36,629 [12] INFO  RepositoryBase`1 Ctrl has been called
+2016-09-09 00:52:36,629 [12] INFO  ImagesRepository Ctrl has been called
+2016-09-09 00:52:36,629 [12] INFO  ImagesRepository GetImagesFromUrl has been called
+2016-09-09 00:52:36,629 [12] INFO  RepositoryBase`1 GetResponseFromUrl has bee called
+2016-09-09 00:52:36,675 [12] INFO  RestResponse`1 Ctrl has been called
+2016-09-09 00:52:36,676 [12] INFO  RestResponse`1 GetDataFromResponseContent has been called
+2016-09-09 00:52:36,676 [12] INFO  RestResponse`1 JsonTryDeserialize has been called
+2016-09-09 00:52:36,878 [12] FATAL RestResponse`1 JsonTryDeserialize threw an error System.Collections.ListDictionaryInternal Cannot deserialize the current JSON array (e.g. [1,2,3]) into type 'WeatherAggregator.Models.Models.Core.Images.ImagesCollectionModel' because the type requires a JSON object (e.g. {"name":"value"}) to deserialize correctly.
+To fix this error either change the JSON to a JSON object (e.g. {"name":"value"}) or change the deserialized type to an array or a type that implements a collection interface (e.g. ICollection, IList) like List<T> that can be deserialized from a JSON array. JsonArrayAttribute can also be added to the type to force it to deserialize from a JSON array.
+Path '', line 1, position 1.
+2016-09-09 00:52:55,431 [10] INFO  RestResponse`1 Ctrl has been called
+2016-09-09 00:52:55,431 [10] INFO  RestResponse`1 GetDataFromResponseContent has been called
+2016-09-09 00:52:55,432 [10] INFO  RestResponse`1 JsonTryDeserialize has been called
+2016-09-09 01:27:26,093 [9] INFO  HttpRequestor Ctrl has been called
+2016-09-09 01:27:26,111 [9] INFO  RepositoryBase`1 Ctrl has been called
+2016-09-09 01:27:26,111 [9] INFO  ImagesRepository Ctrl has been called
+2016-09-09 01:27:26,133 [9] INFO  ImagesService Ctrl has been called
+2016-09-09 01:27:26,135 [9] INFO  ImageController Ctrl has been called
+2016-09-09 01:27:26,214 [9] INFO  ImageController GetImage
+2016-09-09 01:27:26,214 [9] INFO  ImageController CheckRequestedSize
+2016-09-09 01:27:26,214 [9] INFO  ImagesService GetImage
+2016-09-09 01:27:26,215 [9] INFO  ImagesRepository GetImagesFromUrl has been called
+2016-09-09 01:27:26,219 [9] INFO  RepositoryBase`1 GetResponseFromUrl has bee called
+2016-09-09 01:27:26,220 [9] INFO  HttpRequestor PerformRequest has been called with https://pixabay.com/api/?key=3018114-ef10ea70a2ba5da78d32b52be&q=Minsk&image_type=photo and Get method
+2016-09-09 01:27:26,222 [10] INFO  HttpRequestor ExecuteMethod
+2016-09-09 01:27:26,588 [9] INFO  RestResponse`1 Ctrl has been called
+2016-09-09 01:27:26,588 [9] INFO  RestResponse`1 GetDataFromResponseContent has been called
+2016-09-09 01:27:26,590 [9] INFO  RestResponse`1 JsonTryDeserialize has been called
+2016-09-09 01:27:26,769 [9] INFO  ImagesService CheckImageResponseConditions
+2016-09-09 01:28:02,607 [9] INFO  RepositoryBase`1 Ctrl has been called
+2016-09-09 01:28:02,607 [9] INFO  ImagesRepository Ctrl has been called
+2016-09-09 01:28:02,607 [9] INFO  ImagesService Ctrl has been called
+2016-09-09 01:28:02,607 [9] INFO  ImageController Ctrl has been called
+2016-09-09 01:28:02,607 [9] INFO  ImageController GetImage
+2016-09-09 01:28:02,607 [9] INFO  ImageController CheckRequestedSize
+2016-09-09 01:28:02,607 [9] INFO  ImagesService GetImage
+2016-09-09 01:28:02,607 [9] INFO  ImagesRepository GetImagesFromUrl has been called
+2016-09-09 01:28:02,607 [9] INFO  RepositoryBase`1 GetResponseFromUrl has bee called
+2016-09-09 01:28:02,607 [9] INFO  HttpRequestor PerformRequest has been called with https://pixabay.com/api/?key=3018114-ef10ea70a2ba5da78d32b52be&q=Minsk&image_type=photo and Get method
+2016-09-09 01:28:02,607 [10] INFO  HttpRequestor ExecuteMethod
+2016-09-09 01:28:02,680 [9] INFO  RestResponse`1 Ctrl has been called
+2016-09-09 01:28:02,681 [9] INFO  RestResponse`1 GetDataFromResponseContent has been called
+2016-09-09 01:28:02,681 [9] INFO  RestResponse`1 JsonTryDeserialize has been called
+2016-09-09 01:28:02,682 [9] INFO  ImagesService CheckImageResponseConditions
