@@ -17,7 +17,7 @@ namespace WeatherAggregator.Service.Tests
 
 		private CountriesService countriesService;
 
-		private CountriesCollectionModel response = new CountriesCollectionModel()
+		private readonly CountriesCollectionModel response = new CountriesCollectionModel()
 		{
 			Countries = new List<CountryModel>
 			{
@@ -50,5 +50,18 @@ namespace WeatherAggregator.Service.Tests
 
 			this.countriesRepositoryMock.Verify(x => x.GetCountriesCollection(), Times.Once);
 		}
-	}
+
+        [TestMethod, TestCategory("Services")]
+        public void GetCountriesCollection_ShouldReturn_Default()
+        {
+            this.countriesRepositoryMock.Setup(x => x.GetCountriesCollection())
+                .Returns(() => default(CountriesCollectionModel));
+
+            var result = this.countriesService.GetCountriesCollection();
+
+            Assert.IsNull(result);
+
+            this.countriesRepositoryMock.Verify(x => x.GetCountriesCollection(), Times.Once);
+        }
+    }
 }

@@ -24,7 +24,7 @@ namespace WeatherAggregator.Controller.Tests
 
 		private CitiesController citiesController;
 
-		private CitiesCollectionModel response = new CitiesCollectionModel()
+		private readonly CitiesCollectionModel response = new CitiesCollectionModel()
 		{
 			Cities = new List<CityModel>
 			{
@@ -54,7 +54,7 @@ namespace WeatherAggregator.Controller.Tests
             {
                 var result = this.citiesController.GetCountries("CountryName") as JsonResult<List<CityViewModel>>;
                 Assert.IsNotNull(result);
-                Assert.AreEqual("TestCity", result.Content.FirstOrDefault().CityName);
+                Assert.AreEqual("CityName", result.Content.FirstOrDefault().CityName);
 	        }
 
             this.citiesServiceMock.VerifyAll();

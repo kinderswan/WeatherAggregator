@@ -20,7 +20,7 @@ namespace WeatherAggregator.Service.Tests
 
 		private ImagesService imagesService;
 
-		private ImagesCollectionModel response = new ImagesCollectionModel
+		private readonly ImagesCollectionModel response = new ImagesCollectionModel
 		{
 			Images = new List<ImageModel>
 			{
@@ -37,7 +37,6 @@ namespace WeatherAggregator.Service.Tests
 			this.imagesRepositoryMock = new Mock<IImagesRepository>();
 			this.imagesService = new ImagesService(this.imagesRepositoryMock.Object);
 		}
-
 
 		[TestMethod, TestCategory("Services")]
 		public void GetImagesCollection_ShouldReturn_ImagesCollectionModel()

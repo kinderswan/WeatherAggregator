@@ -99,6 +99,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="WeatherControllerTests.cs" />
+    <Compile Include="ImagesControllerTest.cs" />
     <Compile Include="CountriesControllerTest.cs" />
     <Compile Include="CitiesControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,15 +110,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WeatherAggregator.Models\WeatherAggregator.Models.csproj">
+    <ProjectReference Include="..\..\WeatherAggregator.Models\WeatherAggregator.Models.csproj">
       <Project>{15B8220F-515A-4CD7-B65B-7D36F59C0DD8}</Project>
       <Name>WeatherAggregator.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WeatherAggregator.Services\WeatherAggregator.Services.csproj">
+    <ProjectReference Include="..\..\WeatherAggregator.Services\WeatherAggregator.Services.csproj">
       <Project>{302F3803-3DFD-4C4C-A679-52FFE6D31E9E}</Project>
       <Name>WeatherAggregator.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WeatherAggregator.WebApi\WeatherAggregator.WebApi.csproj">
+    <ProjectReference Include="..\..\WeatherAggregator.WebApi\WeatherAggregator.WebApi.csproj">
       <Project>{772D8ECC-3F31-46CD-9DEF-16DFFF2D6838}</Project>
       <Name>WeatherAggregator.WebApi</Name>
     </ProjectReference>

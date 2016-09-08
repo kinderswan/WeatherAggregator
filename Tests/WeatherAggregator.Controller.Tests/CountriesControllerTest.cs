@@ -24,7 +24,7 @@ namespace WeatherAggregator.Controller.Tests
 
         private CountriesController CountriesController;
 
-        private CountriesCollectionModel response = new CountriesCollectionModel()
+        private readonly CountriesCollectionModel response = new CountriesCollectionModel()
         {
             Countries = new List<CountryModel>
             {

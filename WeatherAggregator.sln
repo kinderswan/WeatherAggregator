@@ -21,9 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Models", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Repository.Tests", "Tests\WeatherAggregator.Repository.Tests\WeatherAggregator.Repository.Tests.csproj", "{CE1063F7-AC66-440E-9D2D-7A309199666F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Service.Tests", "WeatherAggregator.Service.Tests\WeatherAggregator.Service.Tests.csproj", "{5F45AF05-CEF6-4F13-BBDB-D3F5B6178930}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Service.Tests", "Tests\WeatherAggregator.Service.Tests\WeatherAggregator.Service.Tests.csproj", "{5F45AF05-CEF6-4F13-BBDB-D3F5B6178930}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Controller.Tests", "WeatherAggregator.Controller.Tests\WeatherAggregator.Controller.Tests.csproj", "{323EFCC5-64CE-4AD6-98E7-C45DF2CE9214}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAggregator.Controller.Tests", "Tests\WeatherAggregator.Controller.Tests\WeatherAggregator.Controller.Tests.csproj", "{323EFCC5-64CE-4AD6-98E7-C45DF2CE9214}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

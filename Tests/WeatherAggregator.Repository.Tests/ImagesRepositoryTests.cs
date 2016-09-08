@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -77,5 +78,19 @@ namespace WeatherAggregator.Repository.Tests
 			Assert.IsNull(result);
 			this.httpRequestorMock.Verify(c => c.PerformRequest<ImagesCollectionModel>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
 		}
-	}
+
+        [TestMethod, TestCategory("Repositories")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetImagesFromUrl_StringEmpty_ArgumentException()
+        {
+            this.imagesRepository.GetImagesFromUrl(string.Empty);
+        }
+
+        [TestMethod, TestCategory("Repositories")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetImagesFromUrl_StringNull_ArgumentException()
+        {
+            this.imagesRepository.GetImagesFromUrl(null);
+        }
+    }
 }

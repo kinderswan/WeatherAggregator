@@ -29,7 +29,7 @@ namespace WeatherAggregator.Service.Tests
 		private Mock<IRepositorySet> openWeatherMockSet; 
 		private Mock<IRepositorySet> wunderWeatherMockSet; 
 
-		private WeatherConventionModel response = new WeatherConventionModel
+		private readonly WeatherConventionModel response = new WeatherConventionModel
 		{
 			Temperature = 20
 		};
@@ -58,7 +58,7 @@ namespace WeatherAggregator.Service.Tests
 		}
 
 		[TestMethod]
-		public void GetWeatherData_ShouldBeCalledTheProperRepository()
+		public void GetWeatherData_ShouldBeCalledTheOpenWeatherMap()
 		{
 			this.openWeatherMapRepositoryMock.Setup(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")))
 				.Returns(this.response);
@@ -72,5 +72,21 @@ namespace WeatherAggregator.Service.Tests
 			this.openWeatherMapRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Once);
 			this.wundergroundWeatherRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Never);
 		}
-	}
+
+        [TestMethod]
+        public void GetWeatherData_ShouldBeCalledTheWunderweather()
+        {
+            this.wundergroundWeatherRepositoryMock.Setup(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")))
+                .Returns(this.response);
+
+            var result = this.weatherService.GetWeatherData(new CityModel
+            {
+                CityName = "CityName"
+            }, "wunderweather");
+
+            Assert.AreEqual(result.Temperature, 20);
+            this.wundergroundWeatherRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Once);
+            this.openWeatherMapRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Never);
+        }
+    }
 }

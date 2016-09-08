@@ -69,19 +69,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WeatherAggregator.Models\WeatherAggregator.Models.csproj">
+    <ProjectReference Include="..\..\WeatherAggregator.Models\WeatherAggregator.Models.csproj">
       <Project>{15B8220F-515A-4CD7-B65B-7D36F59C0DD8}</Project>
       <Name>WeatherAggregator.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WeatherAggregator.Repository\WeatherAggregator.Repository.csproj">
+    <ProjectReference Include="..\..\WeatherAggregator.Repository\WeatherAggregator.Repository.csproj">
       <Project>{3018748d-4679-4c37-a1df-2fe4ef679051}</Project>
       <Name>WeatherAggregator.Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WeatherAggregator.Rest\WeatherAggregator.Rest.csproj">
+    <ProjectReference Include="..\..\WeatherAggregator.Rest\WeatherAggregator.Rest.csproj">
       <Project>{1DE2CFE3-9602-4F00-953F-A46796448A71}</Project>
       <Name>WeatherAggregator.Rest</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WeatherAggregator.Services\WeatherAggregator.Services.csproj">
+    <ProjectReference Include="..\..\WeatherAggregator.Services\WeatherAggregator.Services.csproj">
       <Project>{302f3803-3dfd-4c4c-a679-52ffe6d31e9e}</Project>
       <Name>WeatherAggregator.Services</Name>
     </ProjectReference>

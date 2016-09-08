@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.Interfaces;
@@ -14,6 +15,10 @@ namespace WeatherAggregator.Repository.Repositories
 
 		public ImagesCollectionModel GetImagesFromUrl(string imagesSearchQuery)
 		{
+		    if (string.IsNullOrEmpty(imagesSearchQuery))
+		    {
+		        throw new ArgumentException(imagesSearchQuery, "imagesSearchQuery");
+		    }
 			string url = string.Format(ApisUrlsNames.BaseImageUrl, imagesSearchQuery);
 			IRestResponse<ImagesCollectionModel> response = base.GetResponseFromUrl(url);
 			return response.StatusCode == HttpStatusCode.OK
