@@ -35,7 +35,7 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 		}
 
 		[TestMethod, TestCategory("Repositories")]
-		public void GetCitiesCollection_ShouldReturn_WeatherConventionModel()
+		public void GetWeatherData_ShouldReturn_WeatherConventionModel()
 		{
 			string url = string.Format(ApisUrlsNames.WundergroundCountryURL, "CountryName", "CityName");
 
@@ -48,6 +48,27 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 			{
 				CityName = "CityName",
 				CountryName = "CountryName"
+			});
+
+			Assert.AreEqual(20, result.Temperature);
+			this.httpRequestorMock.Verify(c => c.PerformRequest<WundergroundWeatherModel>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
+		}
+
+		[TestMethod, TestCategory("Repositories")]
+		public void GetWeatherDataState_ShouldReturn_WeatherConventionModel()
+		{
+			string url = string.Format(ApisUrlsNames.WundergroundCountryStateURL, "CountryName","StateName","CityName");
+
+			this.httpRequestorMock.Setup(x => x.PerformRequest<WundergroundWeatherModel>(It.Is<string>(y => y == url), HttpMethod.Get).Data)
+				.Returns(() => this.weatherResponse);
+			this.httpRequestorMock.Setup(x => x.PerformRequest<WundergroundWeatherModel>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
+				.Returns(() => HttpStatusCode.OK);
+
+			var result = this.weatherRepository.GetWeatherData(new CityModel
+			{
+				CityName = "CityName",
+				CountryName = "CountryName",
+				StateName = "StateName"
 			});
 
 			Assert.AreEqual(20, result.Temperature);

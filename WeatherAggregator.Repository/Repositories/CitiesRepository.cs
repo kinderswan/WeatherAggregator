@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.Interfaces;
@@ -14,7 +15,12 @@ namespace WeatherAggregator.Repository.Repositories
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName)
 		{
-			string url = string.Format(ApisUrlsNames.BaseCitiesUrl, countryName);
+            if (string.IsNullOrEmpty(countryName))
+            {
+                throw new ArgumentException(countryName, "countryName");
+            }
+
+            string url = string.Format(ApisUrlsNames.BaseCitiesUrl, countryName);
 			IRestResponse<CitiesContainerResponse> response = base.GetResponseFromUrl(url);
 
 			return response.Data == null
@@ -26,7 +32,17 @@ namespace WeatherAggregator.Repository.Repositories
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName, string stateName)
 		{
-			string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, countryName, stateName);
+		    if (string.IsNullOrEmpty(countryName))
+		    {
+		        throw new ArgumentException(countryName, "countryName");
+		    }
+
+            if (string.IsNullOrEmpty(stateName))
+            {
+                throw new ArgumentException(stateName, "stateName");
+            }
+
+            string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, countryName, stateName);
 			IRestResponse<CitiesContainerResponse> response = base.GetResponseFromUrl(url);
 			return response.Data == null
 				? default(CitiesCollectionModel)

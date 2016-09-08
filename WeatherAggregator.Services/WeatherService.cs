@@ -40,15 +40,9 @@ namespace WeatherAggregator.Services
 		private RepositorySet SelectRepositorySet(string name)
 		{
 			string resourceName = WeatherApiNames.ResourceManager.GetObject(name) as string;
-
-			foreach (string x in Enum.GetNames(typeof(RepositorySet))
-				.Where(x => string.Equals(x, resourceName, StringComparison.CurrentCultureIgnoreCase))
-				.Where(x => x != null))
-			{
-				return (RepositorySet)Enum.Parse(typeof(RepositorySet), x);
-			}
-
-			throw new ArgumentException("There are no such weather apis / select");
+			RepositorySet resultRepositorySet;
+			Enum.TryParse(resourceName, true, out resultRepositorySet);
+			return resultRepositorySet;
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -124,5 +125,36 @@ namespace WeatherAggregator.Repository.Tests
 			Assert.IsNull(result);
 			this.httpRequestorMock.Verify(c => c.PerformRequest<CitiesContainerResponse>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
 		}
-	}
+
+        [TestMethod, TestCategory("Repositories")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetCitiesStatesCollection_StringEmpty()
+        {
+            this.citiesRepository.GetCitiesCollection(string.Empty, string.Empty);
+        }
+
+
+        [TestMethod, TestCategory("Repositories")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetCitiesStatesCollection_StringNull()
+        {
+            this.citiesRepository.GetCitiesCollection(null, null);
+        }
+
+
+        [TestMethod, TestCategory("Repositories")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetCitiesCollection_StringEmpty()
+        {
+            this.citiesRepository.GetCitiesCollection(string.Empty);
+        }
+
+
+        [TestMethod, TestCategory("Repositories")]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetCitiesCollection_StringNull()
+        {
+            this.citiesRepository.GetCitiesCollection(null);
+        }
+    }
 }

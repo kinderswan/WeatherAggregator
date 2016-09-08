@@ -35,15 +35,19 @@ namespace WeatherAggregator.Services
 
 		private ImageModel CheckImageResponseConditions(ImagesCollectionModel imagesCollection, int size)
 		{
+		    size = size <= 0 ? 640 : size;
+
 			if (imagesCollection == null)
 			{
 				return this.ReturnDefaultImage(size);
 			}
+
 			ImageModel image = imagesCollection.Images.FirstOrDefault();
 			if (image == null)
 			{
 				return this.ReturnDefaultImage(size);
 			}
+
 			return string.IsNullOrEmpty(image.ImageUrl) ? this.ReturnDefaultImage(size) : image;
 		}
 	}

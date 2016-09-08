@@ -40,6 +40,11 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getimage/{searchQuery}/{size=640}")]
 		public IHttpActionResult GetImage(string searchQuery, int size)
 		{
+		    if (string.IsNullOrEmpty(searchQuery))
+		    {
+		        Json(default(ImageViewModel));
+		    }
+
 			string encodedSearchQuery = HttpUtility.UrlPathEncode(searchQuery);
 
 			ImageModel result = this.imageService.GetImage(encodedSearchQuery, this.CheckRequestedSize(size));
