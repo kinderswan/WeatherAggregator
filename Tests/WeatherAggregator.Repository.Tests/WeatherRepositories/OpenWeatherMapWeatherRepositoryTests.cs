@@ -12,7 +12,7 @@ using WeatherAggregator.WebApi;
 namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 {
 	[TestClass]
-	public class OpenWeatherMapWeatherRepositoryTests : WeatherBaseRepositoryTest
+	public class OpenWeatherMapWeatherRepositoryTests
 	{
 		private Mock<IHttpRequestor> httpRequestorMock;
 

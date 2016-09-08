@@ -63,7 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CountriesRepositoryTests.cs" />
     <Compile Include="WeatherRepositories\OpenWeatherMapWeatherRepositoryTests.cs" />
-    <Compile Include="WeatherRepositories\WeatherBaseRepositoryTests.cs" />
     <Compile Include="WeatherRepositories\WundergroundWeatherRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
