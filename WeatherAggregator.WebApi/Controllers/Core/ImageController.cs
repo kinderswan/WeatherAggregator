@@ -3,6 +3,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
+using log4net;
 using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Services.Interfaces;
 using WeatherAggregator.WebApi.Models;
@@ -16,16 +17,19 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 	[RoutePrefix("api/images")]
 	public class ImageController : ApiController
 	{
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ImageController).Name);
+	    private readonly ILog log;
 
         private readonly IImagesService imageService;
 
 		public ImageController() { }
 
-		public ImageController(IImagesService imageService)
+		public ImageController(IImagesService imageService, ILog log)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
+		    this.log = log;
             this.imageService = imageService;
+
+            log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
+            
 		}
 
 
