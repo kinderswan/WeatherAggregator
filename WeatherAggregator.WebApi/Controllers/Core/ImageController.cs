@@ -28,7 +28,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		    this.log = log;
             this.imageService = imageService;
 
-            log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
+            log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
             
 		}
 
@@ -48,7 +48,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getimage/{searchQuery}/{size=640}")]
 		public IHttpActionResult GetImage(string searchQuery, int size)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "GetImage");
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with searchQuery '{0}', size '{1}'", searchQuery, size);
 
             if (string.IsNullOrEmpty(searchQuery))
 		    {
@@ -64,7 +64,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 
 		private int CheckRequestedSize(int size)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "CheckRequestedSize");
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'", size);
 
             if (!(size == 180 || size == 340 || size == 640 || size == 960))
 			{

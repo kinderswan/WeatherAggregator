@@ -32,7 +32,7 @@ namespace WeatherAggregator.WebApi
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
 			builder.RegisterMetadataRegistrationSources();
 
-		    builder.RegisterModule(new log4net.AutoFac.LoggingModule());
+			builder.RegisterModule(new log4net.AutoFac.LoggingModule());
 
 			builder.Register(c => new HttpRequestor(new HttpClient())).As<IHttpRequestor>().InstancePerRequest();
 

@@ -2,35 +2,37 @@
 using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
+using log4net;
 using WeatherAggregator.Models.Models.Core.Countries;
 using WeatherAggregator.Services.Interfaces;
 using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("api/location")]
-    public class CountriesController : ApiController
-    {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CountriesController).Name);
+	[EnableCors(origins: "*", headers: "*", methods: "*")]
+	[RoutePrefix("api/location")]
+	public class CountriesController : ApiController
+	{
+		private readonly log4net.ILog log;
 
-        private readonly ICountriesService countriesService;
+		private readonly ICountriesService countriesService;
 
-        public CountriesController() { }
+		public CountriesController() { }
 
-        public CountriesController(ICountriesService countriesService)
-        {
-            log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
-            this.countriesService = countriesService;
-        }
+		public CountriesController(ICountriesService countriesService, ILog log)
+		{
+			this.log = log;
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+			this.countriesService = countriesService;
+		}
 
-        [HttpGet]
-        [Route("getcountries")]
-        public IHttpActionResult GetCountries()
-        {
-            log.InfoFormat(CultureInfo.InvariantCulture, "GetCountries");
-            CountriesCollectionModel result = this.countriesService.GetCountriesCollection();
-            return Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result).Countries);
-        }
-    }
+		[HttpGet]
+		[Route("getcountries")]
+		public IHttpActionResult GetCountries()
+		{
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			CountriesCollectionModel result = this.countriesService.GetCountriesCollection();
+			return Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result).Countries);
+		}
+	}
 }

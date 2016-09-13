@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Linq;
+using log4net;
 using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Repository;
 using WeatherAggregator.Repository.Repositories.Interfaces;
@@ -9,24 +10,25 @@ namespace WeatherAggregator.Services
 {
 	public class ImagesService : IImagesService
 	{
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ImagesService).Name);
+		private readonly log4net.ILog log;
 
 
-        private readonly IImagesRepository imageRepository;
+		private readonly IImagesRepository imageRepository;
 
 		public ImagesService() { }
 
-		public ImagesService(IImagesRepository imageRepository)
+		public ImagesService(IImagesRepository imageRepository, ILog log)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
+			this.log = log;
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 			this.imageRepository = imageRepository;
 		}
 
 		public ImageModel GetImage(string imagesSearchQuery, int size)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "GetImage");
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with imagesSearchQuery '{0}', size '{1}'", imagesSearchQuery, size);
 
-            ImagesCollectionModel images = this.imageRepository.GetImagesFromUrl(imagesSearchQuery);
+			ImagesCollectionModel images = this.imageRepository.GetImagesFromUrl(imagesSearchQuery);
 			ImageModel image = this.CheckImageResponseConditions(images, size);
 			image.ImageUrl = image.ImageUrl.Replace("_640", "_" + size);
 			return image;
@@ -34,9 +36,9 @@ namespace WeatherAggregator.Services
 
 		private ImageModel ReturnDefaultImage(int size)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "ReturnDefaultImage");
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'",  size);
 
-            return new ImageModel
+			return new ImageModel
 			{
 				ImageUrl = string.Format(ApisUrlsNames.DefaultImageSource, size)
 			};
@@ -44,9 +46,9 @@ namespace WeatherAggregator.Services
 
 		private ImageModel CheckImageResponseConditions(ImagesCollectionModel imagesCollection, int size)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "CheckImageResponseConditions");
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'", size);
 
-            size = size <= 0 ? 640 : size;
+			size = size <= 0 ? 640 : size;
 
 			if (imagesCollection == null)
 			{

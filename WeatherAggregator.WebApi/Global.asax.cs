@@ -15,7 +15,7 @@ namespace WeatherAggregator.WebApi
 		protected void Application_Start()
 		{
 			AreaRegistration.RegisterAllAreas();
-            
+			log4net.Config.XmlConfigurator.Configure();
 			WebApiConfig.Register(GlobalConfiguration.Configuration);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -27,8 +27,6 @@ namespace WeatherAggregator.WebApi
 	    protected void Session_Start(object sender, EventArgs e)
 	    {
             log4net.ThreadContext.Properties["SessionID"] = Session.SessionID;
-
-            log4net.Config.XmlConfigurator.Configure();
         }
 	}
 }

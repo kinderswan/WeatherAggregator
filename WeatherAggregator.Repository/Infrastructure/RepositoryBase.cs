@@ -17,13 +17,13 @@ namespace WeatherAggregator.Repository.Infrastructure
 
 		protected RepositoryBase(IHttpRequestor requestor)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
+            log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 			this.httpRequestor = requestor;
 		}
 
 		public virtual IRestResponse<T> GetResponseFromUrl(string url)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "GetResponseFromUrl has bee called");
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}'", url);
 			return this.httpRequestor.PerformRequest<T>(url, HttpMethod.Get);
 		}
 	}

@@ -15,12 +15,12 @@ namespace WeatherAggregator.Repository.Repositories
 
 	    public CountriesRepository(IHttpRequestor requestor) : base(requestor)
 	    {
-	        log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
+	        log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 	    }
 
 		public CountriesCollectionModel GetCountriesCollection()
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "GetCountriesCollection has been called");
+            log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
 
 			IRestResponse<CountriesCollectionModel> response = base.GetResponseFromUrl(ApisUrlsNames.BaseCountriesUrl);
 			return response.StatusCode == HttpStatusCode.OK

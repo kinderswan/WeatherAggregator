@@ -10,26 +10,27 @@ namespace WeatherAggregator.Repository.Repositories
 {
 	public class CitiesRepository : RepositoryBase<CitiesContainerResponse>, ICitiesRepository
 	{
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CitiesRepository).Name);
+		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CitiesRepository).Name);
 
-        public CitiesRepository() { }
+		public CitiesRepository() { }
 
-	    public CitiesRepository(IHttpRequestor requestor) : base(requestor)
-	    {
-	        log.InfoFormat(CultureInfo.InvariantCulture, "Ctrl has been called");
-	    }
+		public CitiesRepository(IHttpRequestor requestor)
+			: base(requestor)
+		{
+			log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+		}
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called");
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with countryName '{0}'", countryName);
 
-            if (string.IsNullOrEmpty(countryName))
-            {
-                log.ErrorFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called with countryName: {0}", countryName);
-                throw new ArgumentException(countryName, "countryName");
-            }
+			if (string.IsNullOrEmpty(countryName))
+			{
+				log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because countryName was null or empty");
+				throw new ArgumentException(countryName, "countryName");
+			}
 
-            string url = string.Format(ApisUrlsNames.BaseCitiesUrl, countryName);
+			string url = string.Format(ApisUrlsNames.BaseCitiesUrl, countryName);
 			IRestResponse<CitiesContainerResponse> response = base.GetResponseFromUrl(url);
 
 			return response.Data == null
@@ -41,23 +42,23 @@ namespace WeatherAggregator.Repository.Repositories
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName, string stateName)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called");
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with countryName '{0}', stateName '{1}'", countryName, stateName);
 
-            if (string.IsNullOrEmpty(countryName))
-		    {
-                log.ErrorFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called with countryName: {0}", countryName);
+			if (string.IsNullOrEmpty(countryName))
+			{
+				log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because countryName was null or empty");
 
-                throw new ArgumentException(countryName, "countryName");
-		    }
+				throw new ArgumentException(countryName, "countryName");
+			}
 
-            if (string.IsNullOrEmpty(stateName))
-            {
-                log.ErrorFormat(CultureInfo.InvariantCulture, "GetCitiesCollection has been called with stateName: {0}", stateName);
+			if (string.IsNullOrEmpty(stateName))
+			{
+				log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because stateName was null or empty");
 
-                throw new ArgumentException(stateName, "stateName");
-            }
+				throw new ArgumentException(stateName, "stateName");
+			}
 
-            string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, countryName, stateName);
+			string url = string.Format(ApisUrlsNames.BaseStateCitiesUrl, countryName, stateName);
 			IRestResponse<CitiesContainerResponse> response = base.GetResponseFromUrl(url);
 			return response.Data == null
 				? default(CitiesCollectionModel)
