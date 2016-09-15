@@ -7,6 +7,7 @@ using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Http.Results;
 using AutoMapper;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
@@ -25,6 +26,8 @@ namespace WeatherAggregator.Controller.Tests
     {
         private Mock<IWeatherService> weatherServiceMock;
 
+        private Mock<ILog> logMock; 
+
         private WeatherController weatherController;
 
         private readonly WeatherConventionModel response = new WeatherConventionModel
@@ -36,8 +39,26 @@ namespace WeatherAggregator.Controller.Tests
         public void Initialize()
         {
             this.weatherServiceMock = new Mock<IWeatherService>();
-            this.weatherController = new WeatherController(this.weatherServiceMock.Object);
+            this.logMock = new Mock<ILog>();
+            this.weatherController = new WeatherController(this.weatherServiceMock.Object, this.logMock.Object);
             AutoMapperConfig.Configure();
+        }
+
+        [TestMethod, TestCategory("Controllers")]
+        public void GetWeather_ShouldReturnWeatherViewModel()
+        {
+            this.weatherServiceMock.Setup(x => x.GetWeatherData(It.Is<CityModel>(k => k.CountryName == "CountryName" && k.CityName == "CityName"),
+                It.Is<string>(y => y == "wunderground")))
+                .Returns(this.response).Verifiable();
+
+            using (this.weatherController)
+            {
+                var result = this.weatherController.ShowWeather("wunderground", "CountryName", "CityName") as JsonResult<WeatherViewModel>;
+                Assert.IsNotNull(result);
+                Assert.AreEqual(20, result.Content.Temperature);
+            }
+
+            this.weatherServiceMock.VerifyAll();
         }
     }
 }

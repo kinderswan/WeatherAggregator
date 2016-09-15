@@ -43,6 +43,7 @@ namespace WeatherAggregator.Controller.Tests
 		public void Initialize()
 		{
 			this.citiesServiceMock = new Mock<ICitiesService>();
+            this.logMock = new Mock<ILog>();
 			this.citiesController = new CitiesController(this.citiesServiceMock.Object, this.logMock.Object);
 			AutoMapperConfig.Configure();
 		}

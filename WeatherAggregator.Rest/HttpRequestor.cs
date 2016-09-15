@@ -2,21 +2,23 @@
 using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
+using log4net;
 using WeatherAggregator.Rest.Interfaces;
 
 namespace WeatherAggregator.Rest
 {
 	public class HttpRequestor : IHttpRequestor, IDisposable
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(HttpRequestor).Name);
+		private readonly log4net.ILog log;
 
 		private readonly HttpClient httpClient;
 
 		public HttpRequestor() { }
 
-		public HttpRequestor(HttpClient client)
+		public HttpRequestor(HttpClient client, ILog log)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+		    this.log = log;
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 			this.httpClient = client;
 		}
 

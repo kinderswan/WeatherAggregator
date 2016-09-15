@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Http;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using Newtonsoft.Json;
 using RichardSzalay.MockHttp;
 using WeatherAggregator.Rest.Interfaces;
@@ -16,17 +18,20 @@ namespace WeatherAggregator.Rest.Tests
 
         private MockHttpMessageHandler mockHttp;
 
+        private Mock<ILog> logMock;
+
         [TestInitialize]
         public void Initialize()
         {
             this.mockHttp = new MockHttpMessageHandler();
+            this.logMock = new Mock<ILog>();
             mockHttp.When("http://localhost/*").Respond("application/json", JsonConvert.SerializeObject(new TestResponse
             {
                 Name = "Test",
                 Surname = "Test"
             }));
             this.httpClient = new HttpClient(mockHttp);
-            this.requestor = new HttpRequestor(this.httpClient);
+            this.requestor = new HttpRequestor(this.httpClient, this.logMock.Object);
         }
 
         [TestCleanup]
@@ -44,17 +49,6 @@ namespace WeatherAggregator.Rest.Tests
             TestResponse json = result.Data;
             Assert.AreEqual("Test", json.Name);
             Assert.AreEqual("Test", json.Surname);
-
-            mockHttp.VerifyNoOutstandingExpectation();
-        }
-
-        [TestMethod, TestCategory("RestRequestor")]
-        public void PerformRequest_Get_ShouldReturn_DefaultTypeValue()
-        {
-            this.mockHttp.Clear();
-            this.mockHttp.When("http://localhost/*").Respond("application/json", "some unexpected values");
-            IRestResponse<TestResponse> result = this.requestor.PerformRequest<TestResponse>("http://localhost/api", HttpMethod.Get);
-            Assert.AreEqual(result.Data, default(TestResponse));
 
             mockHttp.VerifyNoOutstandingExpectation();
         }

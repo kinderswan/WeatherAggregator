@@ -37,6 +37,7 @@ namespace WeatherAggregator.Controller.Tests
         public void Initialize()
         {
             this.imagesServiceMock = new Mock<IImagesService>();
+            this.logMock = new Mock<ILog>();
 			this.imagesController = new ImageController(this.imagesServiceMock.Object, this.logMock.Object);
             AutoMapperConfig.Configure();
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Net;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Countries;
@@ -13,6 +14,8 @@ namespace WeatherAggregator.Repository.Tests
 	public class CountriesRepositoryTests
 	{
 		private Mock<IHttpRequestor> httpRequestorMock;
+
+	    private Mock<ILog> logMock;
 
 		private CountriesRepository countriesRepository;
 
@@ -33,7 +36,8 @@ namespace WeatherAggregator.Repository.Tests
 		public void Initialize()
 		{
 			this.httpRequestorMock = new Mock<IHttpRequestor>();
-			this.countriesRepository = new CountriesRepository(this.httpRequestorMock.Object);
+            this.logMock = new Mock<ILog>();
+			this.countriesRepository = new CountriesRepository(this.httpRequestorMock.Object, this.logMock.Object);
 		}
 
 		[TestMethod, TestCategory("Repositories")]

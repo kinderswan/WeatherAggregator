@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Net;
+using log4net;
 using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.Interfaces;
@@ -10,14 +11,15 @@ namespace WeatherAggregator.Repository.Repositories
 {
 	public class ImagesRepository : RepositoryBase<ImagesCollectionModel>, IImagesRepository
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ImagesRepository).Name);
+		private readonly log4net.ILog log;
 
 		public ImagesRepository() { }
 
-		public ImagesRepository(IHttpRequestor requestor)
+		public ImagesRepository(IHttpRequestor requestor, ILog log)
 			: base(requestor)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+		    this.log = log;
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 		}
 
 		public ImagesCollectionModel GetImagesFromUrl(string imagesSearchQuery)

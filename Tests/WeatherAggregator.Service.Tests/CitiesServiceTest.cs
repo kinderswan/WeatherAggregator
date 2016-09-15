@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Cities;
@@ -13,6 +14,8 @@ namespace WeatherAggregator.Service.Tests
     public class CitiesServiceTest
     {
         private Mock<ICitiesRepository> citiesRepositoryMock;
+
+        private Mock<ILog> logMock;
 
         private CitiesService citiesService;
 
@@ -33,7 +36,8 @@ namespace WeatherAggregator.Service.Tests
         public void Initialize()
         {
             this.citiesRepositoryMock = new Mock<ICitiesRepository>();
-            this.citiesService = new CitiesService(this.citiesRepositoryMock.Object);
+            this.logMock = new Mock<ILog>();
+            this.citiesService = new CitiesService(this.citiesRepositoryMock.Object, this.logMock.Object);
         }
 
 

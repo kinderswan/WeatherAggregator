@@ -26,7 +26,7 @@ namespace WeatherAggregator.Services
 
 		public ImageModel GetImage(string imagesSearchQuery, int size)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with imagesSearchQuery '{0}', size '{1}'", imagesSearchQuery, size);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with imagesSearchQuery '{0}', size '{1}'", imagesSearchQuery, size);
 
 			ImagesCollectionModel images = this.imageRepository.GetImagesFromUrl(imagesSearchQuery);
 			ImageModel image = this.CheckImageResponseConditions(images, size);

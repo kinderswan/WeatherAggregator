@@ -21,7 +21,10 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 
         private readonly IImagesService imageService;
 
-		public ImageController() { }
+	    public ImageController()
+	    {
+	        
+	    }
 
 		public ImageController(IImagesService imageService, ILog log)
 		{
@@ -29,10 +32,8 @@ namespace WeatherAggregator.WebApi.Controllers.Core
             this.imageService = imageService;
 
             log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
-            
-		}
-
-
+        }
+        
 		/// <summary>
 		/// Endpoint for obtaining images
 		/// </summary>
@@ -48,7 +49,7 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getimage/{searchQuery}/{size=640}")]
 		public IHttpActionResult GetImage(string searchQuery, int size)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with searchQuery '{0}', size '{1}'", searchQuery, size);
+            log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with searchQuery '{0}', size '{1}'", searchQuery, size);
 
             if (string.IsNullOrEmpty(searchQuery))
 		    {

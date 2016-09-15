@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Net;
+using log4net;
 using WeatherAggregator.Models.Models.Core.Countries;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.Interfaces;
@@ -9,13 +10,14 @@ namespace WeatherAggregator.Repository.Repositories
 {
 	public class CountriesRepository : RepositoryBase<CountriesCollectionModel>, ICountriesRepository
 	{
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(CountriesRepository).Name);
+	    private readonly log4net.ILog log;
 
         public CountriesRepository() { }
 
-	    public CountriesRepository(IHttpRequestor requestor) : base(requestor)
+	    public CountriesRepository(IHttpRequestor requestor, ILog log) : base(requestor)
 	    {
-	        log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+	        this.log = log;
+	        this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 	    }
 
 		public CountriesCollectionModel GetCountriesCollection()

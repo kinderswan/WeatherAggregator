@@ -6,6 +6,8 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.Mef;
 using Autofac.Integration.WebApi;
+using log4net;
+using log4net.Core;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.Interfaces;
 using WeatherAggregator.Repository.WeatherRepositories;
@@ -28,13 +30,12 @@ namespace WeatherAggregator.WebApi
 		private static void SetAutofacContainer()
 		{
 			ContainerBuilder builder = new ContainerBuilder();
+            builder.RegisterInstance(LogManager.GetLogger("Logger")).As<ILog>();
 
-			builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
 			builder.RegisterMetadataRegistrationSources();
 
-			builder.RegisterModule(new log4net.AutoFac.LoggingModule());
-
-			builder.Register(c => new HttpRequestor(new HttpClient())).As<IHttpRequestor>().InstancePerRequest();
+			builder.Register(c => new HttpRequestor(new HttpClient(), c.Resolve<ILog>())).As<IHttpRequestor>().InstancePerRequest();
 
 			builder.RegisterGeneric(typeof(RestResponse<>)).As(typeof(IRestResponse<>)).InstancePerRequest();
 
@@ -49,19 +50,21 @@ namespace WeatherAggregator.WebApi
 			#region Weather containers resolving
 
 			builder.Register(c => new WundergroundWeatherRepository(
-				c.Resolve<IHttpRequestor>()))
+				new HttpRequestor(), c.Resolve<ILog>()))
 				.As<IWeatherRepository>()
 				.WithMetadata<IRepositorySet>(m =>
 					m.For(em => em.RepositorySet, RepositorySet.Wunderground));
 
 			builder.Register(c => new OpenWeatherMapWeatherRepository(
-				c.Resolve<IHttpRequestor>()))
+				c.Resolve<IHttpRequestor>(),
+                c.Resolve<ILog>()))
 				.As<IWeatherRepository>()
 				.WithMetadata<IRepositorySet>(m =>
 					m.For(em => em.RepositorySet, RepositorySet.OpenWeatherMap));
 
 			builder.Register(c => new WeatherService(
-				c.Resolve<IEnumerable<Lazy<IWeatherRepository, IRepositorySet>>>()))
+				c.Resolve<IEnumerable<Lazy<IWeatherRepository, IRepositorySet>>>(),
+                c.Resolve<ILog>()))
 				.As<IWeatherService>().InstancePerRequest();
 
 			#endregion

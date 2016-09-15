@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Net;
 using AutoMapper;
+using log4net;
 using WeatherAggregator.Models.Models.Core.Cities;
 using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.OpenWeatherMap;
@@ -13,14 +14,15 @@ namespace WeatherAggregator.Repository.WeatherRepositories
 {
 	public class OpenWeatherMapWeatherRepository : RepositoryBase<OpenWeatherMapWeatherModel>, IRepository<OpenWeatherMapWeatherModel>, IWeatherRepository
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(OpenWeatherMapWeatherRepository).Name);
+		private readonly log4net.ILog log;
 
 		public OpenWeatherMapWeatherRepository() { }
 
-		public OpenWeatherMapWeatherRepository(IHttpRequestor requestor)
+		public OpenWeatherMapWeatherRepository(IHttpRequestor requestor, ILog log)
 			: base(requestor)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+		    this.log = log;
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 		}
 
 		public WeatherConventionModel GetWeatherData(CityModel cityModel)

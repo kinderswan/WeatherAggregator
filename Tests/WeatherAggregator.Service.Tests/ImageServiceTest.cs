@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Cities;
@@ -17,6 +18,8 @@ namespace WeatherAggregator.Service.Tests
 	public class ImageServiceTest
 	{
 		private Mock<IImagesRepository> imagesRepositoryMock;
+
+	    private Mock<ILog> logMock;
 
 		private ImagesService imagesService;
 
@@ -35,7 +38,8 @@ namespace WeatherAggregator.Service.Tests
 		public void Initialize()
 		{
 			this.imagesRepositoryMock = new Mock<IImagesRepository>();
-			this.imagesService = new ImagesService(this.imagesRepositoryMock.Object);
+            this.logMock = new Mock<ILog>();
+			this.imagesService = new ImagesService(this.imagesRepositoryMock.Object, this.logMock.Object);
 		}
 
 		[TestMethod, TestCategory("Services")]

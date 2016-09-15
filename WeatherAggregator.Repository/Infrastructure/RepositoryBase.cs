@@ -6,7 +6,7 @@ namespace WeatherAggregator.Repository.Infrastructure
 {
 	public abstract class RepositoryBase<T> where T : class
 	{
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(RepositoryBase<T>).Name);
+        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(RepositoryBase<T>).Name);
 
         private readonly IHttpRequestor httpRequestor;
 

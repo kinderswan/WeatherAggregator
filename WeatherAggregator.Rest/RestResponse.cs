@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using log4net;
 using Newtonsoft.Json;
 using WeatherAggregator.Rest.Interfaces;
 
@@ -10,9 +11,9 @@ namespace WeatherAggregator.Rest
 {
 	public class RestResponse<T> : IRestResponse<T>
 	{
-		private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(RestResponse<T>).Name);
+        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(RestResponse<T>).Name);
 
-		public HttpStatusCode StatusCode { get; private set; }
+        public HttpStatusCode StatusCode { get; private set; }
 
 		public T Data { get; private set; }
 
@@ -21,7 +22,7 @@ namespace WeatherAggregator.Rest
 		public RestResponse(HttpResponseMessage httpResponseMessage)
 			: this()
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 			this.StatusCode = httpResponseMessage.StatusCode;
 			this.Data = this.GetDataFromResponseContent(httpResponseMessage.Content);
 		}
