@@ -2,7 +2,7 @@
 var UrlConstants = (function () {
     function UrlConstants() {
     }
-    UrlConstants.Hostname = "localhost:57620/";
+    UrlConstants.Hostname = "https://10.143.12.189:888/";
     UrlConstants.CityApiUrl = "api/location/getcities/";
     UrlConstants.CountryApiUrl = "api/location/getcountries/";
     UrlConstants.ImageApiUrl = "api/images/getimage/";

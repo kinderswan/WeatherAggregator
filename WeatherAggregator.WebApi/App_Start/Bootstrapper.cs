@@ -50,7 +50,7 @@ namespace WeatherAggregator.WebApi
 			#region Weather containers resolving
 
 			builder.Register(c => new WundergroundWeatherRepository(
-				new HttpRequestor(), c.Resolve<ILog>()))
+				c.Resolve<IHttpRequestor>(), c.Resolve<ILog>()))
 				.As<IWeatherRepository>()
 				.WithMetadata<IRepositorySet>(m =>
 					m.For(em => em.RepositorySet, RepositorySet.Wunderground));
