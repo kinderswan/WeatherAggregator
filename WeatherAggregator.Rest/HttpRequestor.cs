@@ -7,7 +7,7 @@ using WeatherAggregator.Rest.Interfaces;
 
 namespace WeatherAggregator.Rest
 {
-	public class HttpRequestor : IHttpRequestor, IDisposable
+	public class HttpRequestor : IHttpRequestor
 	{
 		private readonly HttpClient httpClient;
 		private readonly ILog log;
@@ -20,19 +20,12 @@ namespace WeatherAggregator.Rest
 		{
 			this.log = log;
 			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
-			this.httpClient = client;
-		}
-
-		public void Dispose()
-		{
-			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
-			this.Dispose(true);
-			GC.SuppressFinalize(this);
+            this.httpClient = client;
 		}
 
 		public IRestResponse<TResponse> PerformRequest<TResponse>(string url, HttpMethod method)
 		{
-			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}', method '{1}'", url, method);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}', method '{1}', httpClient hashCode '{2}'", url, method, this.httpClient.GetHashCode());
 
 			if (string.IsNullOrEmpty(url))
 			{
@@ -42,17 +35,6 @@ namespace WeatherAggregator.Rest
 
 			HttpResponseMessage result = Task.Run(() => this.ExecuteMethod(url, method)).Result;
 			return new RestResponse<TResponse>(result);
-		}
-
-		protected virtual void Dispose(bool disposing)
-		{
-			if (disposing)
-			{
-				if (this.httpClient != null)
-				{
-					this.httpClient.Dispose();
-				}
-			}
 		}
 
 		private async Task<HttpResponseMessage> ExecuteMethod(string url, HttpMethod method)
