@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Cities;
@@ -16,6 +17,8 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 	{
 		private Mock<IHttpRequestor> httpRequestorMock;
 
+	    private Mock<ILog> logMock;
+
 		private WundergroundWeatherRepository weatherRepository;
 
 		private readonly WundergroundWeatherModel weatherResponse = new WundergroundWeatherModel
@@ -30,7 +33,8 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 		public void Initialize()
 		{
 			this.httpRequestorMock = new Mock<IHttpRequestor>();
-			this.weatherRepository = new WundergroundWeatherRepository(this.httpRequestorMock.Object);
+            this.logMock = new Mock<ILog>();
+			this.weatherRepository = new WundergroundWeatherRepository(this.httpRequestorMock.Object, this.logMock.Object);
 			AutoMapperConfig.Configure();
 		}
 

@@ -1,7 +1,9 @@
-﻿using System.Web;
+﻿using System.Globalization;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using AutoMapper;
+using log4net;
 using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Services.Interfaces;
 using WeatherAggregator.WebApi.Models;
@@ -15,16 +17,23 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 	[RoutePrefix("api/images")]
 	public class ImageController : ApiController
 	{
-		private readonly IImagesService imageService;
+	    private readonly ILog log;
 
-		public ImageController() { }
+        private readonly IImagesService imageService;
 
-		public ImageController(IImagesService imageService)
+	    public ImageController()
+	    {
+	        
+	    }
+
+		public ImageController(IImagesService imageService, ILog log)
 		{
-			this.imageService = imageService;
-		}
+		    this.log = log;
+            this.imageService = imageService;
 
-
+            log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+        }
+        
 		/// <summary>
 		/// Endpoint for obtaining images
 		/// </summary>
@@ -40,7 +49,9 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getimage/{searchQuery}/{size=640}")]
 		public IHttpActionResult GetImage(string searchQuery, int size)
 		{
-		    if (string.IsNullOrEmpty(searchQuery))
+            log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with searchQuery '{0}', size '{1}'", searchQuery, size);
+
+            if (string.IsNullOrEmpty(searchQuery))
 		    {
 		        Json(default(ImageViewModel));
 		    }
@@ -54,7 +65,9 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 
 		private int CheckRequestedSize(int size)
 		{
-			if (!(size == 180 || size == 340 || size == 640 || size == 960))
+			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'", size);
+
+            if (!(size == 180 || size == 340 || size == 640 || size == 960))
 			{
 				return 640;
 			}

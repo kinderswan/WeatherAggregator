@@ -6,6 +6,7 @@ using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Http.Results;
 using AutoMapper;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
@@ -21,6 +22,8 @@ namespace WeatherAggregator.Controller.Tests
 	public class CitiesControllerTest
 	{
 		private Mock<ICitiesService> citiesServiceMock;
+
+		private Mock<ILog> logMock;
 
 		private CitiesController citiesController;
 
@@ -40,7 +43,8 @@ namespace WeatherAggregator.Controller.Tests
 		public void Initialize()
 		{
 			this.citiesServiceMock = new Mock<ICitiesService>();
-			this.citiesController = new CitiesController(this.citiesServiceMock.Object);
+            this.logMock = new Mock<ILog>();
+			this.citiesController = new CitiesController(this.citiesServiceMock.Object, this.logMock.Object);
 			AutoMapperConfig.Configure();
 		}
 

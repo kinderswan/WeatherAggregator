@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Cities;
@@ -27,7 +28,9 @@ namespace WeatherAggregator.Service.Tests
 		private Mock<IWeatherRepository> openWeatherMapRepositoryMock;
 
 		private Mock<IRepositorySet> openWeatherMockSet; 
-		private Mock<IRepositorySet> wunderWeatherMockSet; 
+		private Mock<IRepositorySet> wunderWeatherMockSet;
+
+	    private Mock<ILog> logMock;
 
 		private readonly WeatherConventionModel response = new WeatherConventionModel
 		{
@@ -54,7 +57,8 @@ namespace WeatherAggregator.Service.Tests
 					this.openWeatherMockSet.Object)
 			};
 
-			this.weatherService = new WeatherService(di);
+            this.logMock = new Mock<ILog>();
+			this.weatherService = new WeatherService(di, this.logMock.Object);
 		}
 
 		[TestMethod]

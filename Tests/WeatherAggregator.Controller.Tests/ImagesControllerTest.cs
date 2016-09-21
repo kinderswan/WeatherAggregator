@@ -6,6 +6,7 @@ using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Http.Results;
 using AutoMapper;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
@@ -23,6 +24,8 @@ namespace WeatherAggregator.Controller.Tests
     {
         private Mock<IImagesService> imagesServiceMock;
 
+	    private Mock<ILog> logMock; 
+
         private ImageController imagesController;
 
         private readonly ImageModel response = new ImageModel
@@ -34,7 +37,8 @@ namespace WeatherAggregator.Controller.Tests
         public void Initialize()
         {
             this.imagesServiceMock = new Mock<IImagesService>();
-            this.imagesController = new ImageController(this.imagesServiceMock.Object);
+            this.logMock = new Mock<ILog>();
+			this.imagesController = new ImageController(this.imagesServiceMock.Object, this.logMock.Object);
             AutoMapperConfig.Configure();
         }
 

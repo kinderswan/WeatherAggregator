@@ -6,6 +6,7 @@ using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Http.Results;
 using AutoMapper;
+using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
@@ -21,6 +22,8 @@ namespace WeatherAggregator.Controller.Tests
     public class CountriesControllerTest
     {
         private Mock<ICountriesService> CountriesServiceMock;
+
+        private Mock<ILog> logMock;
 
         private CountriesController CountriesController;
 
@@ -39,7 +42,8 @@ namespace WeatherAggregator.Controller.Tests
         public void Initialize()
         {
             this.CountriesServiceMock = new Mock<ICountriesService>();
-            this.CountriesController = new CountriesController(this.CountriesServiceMock.Object);
+            this.logMock = new Mock<ILog>();
+            this.CountriesController = new CountriesController(this.CountriesServiceMock.Object, this.logMock.Object);
             AutoMapperConfig.Configure();
         }
 
