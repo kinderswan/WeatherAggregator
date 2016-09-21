@@ -14,12 +14,6 @@ namespace WeatherAggregator.Repository.Tests
 	[TestClass]
 	public class ImagesRepositoryTests
 	{
-		private Mock<IHttpRequestor> httpRequestorMock;
-
-	    private Mock<ILog> logMock;
-
-		private ImagesRepository imagesRepository;
-
 		private readonly ImagesCollectionModel imagesResponse = new ImagesCollectionModel
 		{
 			Images = new List<ImageModel>
@@ -31,11 +25,17 @@ namespace WeatherAggregator.Repository.Tests
 			}
 		};
 
+		private Mock<IHttpRequestor> httpRequestorMock;
+
+		private ImagesRepository imagesRepository;
+
+		private Mock<ILog> logMock;
+
 		[TestInitialize]
 		public void Initialize()
 		{
 			this.httpRequestorMock = new Mock<IHttpRequestor>();
-            this.logMock = new Mock<ILog>();
+			this.logMock = new Mock<ILog>();
 			this.imagesRepository = new ImagesRepository(this.httpRequestorMock.Object, this.logMock.Object);
 		}
 
@@ -83,18 +83,18 @@ namespace WeatherAggregator.Repository.Tests
 			this.httpRequestorMock.Verify(c => c.PerformRequest<ImagesCollectionModel>(It.Is<string>(y => y == url), HttpMethod.Get), Times.Once());
 		}
 
-        [TestMethod, TestCategory("Repositories")]
-        [ExpectedException(typeof(ArgumentException))]
-        public void GetImagesFromUrl_StringEmpty_ArgumentException()
-        {
-            this.imagesRepository.GetImagesFromUrl(string.Empty);
-        }
+		[TestMethod, TestCategory("Repositories")]
+		[ExpectedException(typeof (ArgumentException))]
+		public void GetImagesFromUrl_StringEmpty_ArgumentException()
+		{
+			this.imagesRepository.GetImagesFromUrl(string.Empty);
+		}
 
-        [TestMethod, TestCategory("Repositories")]
-        [ExpectedException(typeof(ArgumentException))]
-        public void GetImagesFromUrl_StringNull_ArgumentException()
-        {
-            this.imagesRepository.GetImagesFromUrl(null);
-        }
-    }
+		[TestMethod, TestCategory("Repositories")]
+		[ExpectedException(typeof (ArgumentException))]
+		public void GetImagesFromUrl_StringNull_ArgumentException()
+		{
+			this.imagesRepository.GetImagesFromUrl(null);
+		}
+	}
 }

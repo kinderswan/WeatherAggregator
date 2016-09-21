@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using WeatherAggregator.Models.Models.Core.Cities;
-using WeatherAggregator.Models.Models.Core.Countries;
 using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Repository;
 using WeatherAggregator.Repository.Repositories.Interfaces;
@@ -17,12 +13,6 @@ namespace WeatherAggregator.Service.Tests
 	[TestClass]
 	public class ImageServiceTest
 	{
-		private Mock<IImagesRepository> imagesRepositoryMock;
-
-	    private Mock<ILog> logMock;
-
-		private ImagesService imagesService;
-
 		private readonly ImagesCollectionModel response = new ImagesCollectionModel
 		{
 			Images = new List<ImageModel>
@@ -34,11 +24,17 @@ namespace WeatherAggregator.Service.Tests
 			}
 		};
 
+		private Mock<IImagesRepository> imagesRepositoryMock;
+
+		private ImagesService imagesService;
+
+		private Mock<ILog> logMock;
+
 		[TestInitialize]
 		public void Initialize()
 		{
 			this.imagesRepositoryMock = new Mock<IImagesRepository>();
-            this.logMock = new Mock<ILog>();
+			this.logMock = new Mock<ILog>();
 			this.imagesService = new ImagesService(this.imagesRepositoryMock.Object, this.logMock.Object);
 		}
 
@@ -48,7 +44,7 @@ namespace WeatherAggregator.Service.Tests
 			this.imagesRepositoryMock.Setup(x => x.GetImagesFromUrl(It.Is<string>(y => y == "ImageUrl")))
 				.Returns(() => this.response);
 
-			var result = this.imagesService.GetImage("ImageUrl", 640);
+			ImageModel result = this.imagesService.GetImage("ImageUrl", 640);
 
 			Assert.AreEqual(result.ImageUrl, "ImageUrl");
 
@@ -61,7 +57,7 @@ namespace WeatherAggregator.Service.Tests
 			this.imagesRepositoryMock.Setup(x => x.GetImagesFromUrl(It.Is<string>(y => y == "ImageUrl")))
 				.Returns(() => null);
 
-			var result = this.imagesService.GetImage("ImageUrl", 640);
+			ImageModel result = this.imagesService.GetImage("ImageUrl", 640);
 
 			string baseUrl = string.Format(CultureInfo.InvariantCulture, ApisUrlsNames.DefaultImageSource, "640");
 

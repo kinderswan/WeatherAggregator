@@ -9,15 +9,16 @@ using WeatherAggregator.WebApi.Models;
 
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
-	[EnableCors(origins: "*", headers: "*", methods: "*")]
+	[EnableCors("*", "*", "*")]
 	[RoutePrefix("api/location")]
 	public class CountriesController : ApiController
 	{
-		private readonly log4net.ILog log;
-
 		private readonly ICountriesService countriesService;
+		private readonly ILog log;
 
-		public CountriesController() { }
+		public CountriesController()
+		{
+		}
 
 		public CountriesController(ICountriesService countriesService, ILog log)
 		{
@@ -30,9 +31,9 @@ namespace WeatherAggregator.WebApi.Controllers.Core
 		[Route("getcountries")]
 		public IHttpActionResult GetCountries()
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
 			CountriesCollectionModel result = this.countriesService.GetCountriesCollection();
-			return Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result).Countries);
+			return this.Json(Mapper.Map<CountriesCollectionModel, CountriesCollectionViewModel>(result).Countries);
 		}
 	}
 }

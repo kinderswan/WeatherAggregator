@@ -9,26 +9,34 @@ namespace WeatherAggregator.Rest
 {
 	public class HttpRequestor : IHttpRequestor, IDisposable
 	{
-		private readonly log4net.ILog log;
-
 		private readonly HttpClient httpClient;
+		private readonly ILog log;
 
-		public HttpRequestor() { }
+		public HttpRequestor()
+		{
+		}
 
 		public HttpRequestor(HttpClient client, ILog log)
 		{
-		    this.log = log;
+			this.log = log;
 			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 			this.httpClient = client;
 		}
 
+		public void Dispose()
+		{
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			this.Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+
 		public IRestResponse<TResponse> PerformRequest<TResponse>(string url, HttpMethod method)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}', method '{1}'", url, method);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}', method '{1}'", url, method);
 
 			if (string.IsNullOrEmpty(url))
 			{
-				log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because url was null or empty");
+				this.log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because url was null or empty");
 				throw new ArgumentException(url, "url");
 			}
 
@@ -36,37 +44,27 @@ namespace WeatherAggregator.Rest
 			return new RestResponse<TResponse>(result);
 		}
 
-		public void Dispose()
-		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
-			Dispose(true);
-			GC.SuppressFinalize(this);
-		}
-
 		protected virtual void Dispose(bool disposing)
 		{
 			if (disposing)
 			{
-				if (httpClient != null)
+				if (this.httpClient != null)
 				{
-					httpClient.Dispose();
+					this.httpClient.Dispose();
 				}
 			}
 		}
 
 		private async Task<HttpResponseMessage> ExecuteMethod(string url, HttpMethod method)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}', method '{1}'", url, method);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}', method '{1}'", url, method);
 
 			switch (method)
 			{
 				case HttpMethod.Get:
 					return await this.httpClient.GetAsync(url);
-				case HttpMethod.Delete:
-				case HttpMethod.Post:
-				case HttpMethod.Put:
 				default:
-					log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because such method is not implemented");
+					this.log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because such method is not implemented");
 					throw new NotImplementedException("Method is not implemented");
 			}
 		}

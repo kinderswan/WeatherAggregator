@@ -2,8 +2,8 @@
 
 namespace WeatherAggregator.Services.Interfaces
 {
-    public interface IImagesService
-    {
-        ImageModel GetImage(string imagesSearchQuery, int size);
-    }
+	public interface IImagesService
+	{
+		ImageModel GetImage(string imagesSearchQuery, int size);
+	}
 }

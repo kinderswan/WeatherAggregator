@@ -15,7 +15,7 @@ namespace WeatherAggregator.WebApi.Mappings
 		[Obsolete("Use the constructor instead. Will be removed in 6.0")]
 		protected override void Configure()
 		{
-			CreateMap<ImageModel, ImageViewModel>()
+			this.CreateMap<ImageModel, ImageViewModel>()
 				.ForMember(url => url.ImageUrl, x => x.MapFrom(src => src.ImageUrl));
 		}
 	}

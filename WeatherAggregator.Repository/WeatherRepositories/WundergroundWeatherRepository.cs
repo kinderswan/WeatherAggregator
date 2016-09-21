@@ -14,20 +14,23 @@ namespace WeatherAggregator.Repository.WeatherRepositories
 {
 	public class WundergroundWeatherRepository : RepositoryBase<WundergroundWeatherModel>, IRepository<WundergroundWeatherModel>, IWeatherRepository
 	{
-	    private readonly log4net.ILog log;
-		public WundergroundWeatherRepository() { }
+		private readonly ILog log;
+
+		public WundergroundWeatherRepository()
+		{
+		}
 
 		public WundergroundWeatherRepository(IHttpRequestor requestor, ILog log)
 			: base(requestor)
 		{
-		    this.log = log;
+			this.log = log;
 			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
 		}
 
 		public WeatherConventionModel GetWeatherData(CityModel cityModel)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
-			IRestResponse<WundergroundWeatherModel> response = base.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			IRestResponse<WundergroundWeatherModel> response = this.GetResponseFromUrl(this.BuildGetRequestUrl(cityModel));
 			return response.StatusCode == HttpStatusCode.OK
 				? Mapper.Map<WundergroundWeatherModel, WeatherConventionModel>(response.Data)
 				: default(WeatherConventionModel);
@@ -35,10 +38,10 @@ namespace WeatherAggregator.Repository.WeatherRepositories
 
 		private string BuildGetRequestUrl(CityModel model)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
-			return string.IsNullOrEmpty(model.StateName) ?
-				string.Format(ApisUrlsNames.WundergroundCountryURL, model.CountryName, model.CityName) :
-				string.Format(ApisUrlsNames.WundergroundCountryStateURL, model.CountryName, model.StateName, model.CityName);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			return string.IsNullOrEmpty(model.StateName)
+				? string.Format(ApisUrlsNames.WundergroundCountryURL, model.CountryName, model.CityName)
+				: string.Format(ApisUrlsNames.WundergroundCountryStateURL, model.CountryName, model.StateName, model.CityName);
 		}
 	}
 }

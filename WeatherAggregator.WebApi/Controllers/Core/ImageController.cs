@@ -11,63 +11,62 @@ using WeatherAggregator.WebApi.Models;
 namespace WeatherAggregator.WebApi.Controllers.Core
 {
 	/// <summary>
-	/// The image controller.
+	///     The image controller.
 	/// </summary>
-	[EnableCors(origins: "*", headers: "*", methods: "*")]
+	[EnableCors("*", "*", "*")]
 	[RoutePrefix("api/images")]
 	public class ImageController : ApiController
 	{
-	    private readonly ILog log;
+		private readonly IImagesService imageService;
+		private readonly ILog log;
 
-        private readonly IImagesService imageService;
-
-	    public ImageController()
-	    {
-	        
-	    }
+		public ImageController()
+		{
+		}
 
 		public ImageController(IImagesService imageService, ILog log)
 		{
-		    this.log = log;
-            this.imageService = imageService;
+			this.log = log;
+			this.imageService = imageService;
 
-            log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
-        }
-        
+			log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+		}
+
 		/// <summary>
-		/// Endpoint for obtaining images
+		///     Endpoint for obtaining images
 		/// </summary>
 		/// <param name="searchQuery"></param>
 		/// <param name="size">
-		/// little - 180
-		/// small - 340
-		/// medium - 640
-		/// big - 960
+		///     little - 180
+		///     small - 340
+		///     medium - 640
+		///     big - 960
 		/// </param>
 		/// <returns></returns>
 		[HttpGet]
 		[Route("getimage/{searchQuery}/{size=640}")]
 		public IHttpActionResult GetImage(string searchQuery, int size)
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with searchQuery '{0}', size '{1}'", searchQuery, size);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with searchQuery '{0}', size '{1}'", searchQuery, size);
 
-            if (string.IsNullOrEmpty(searchQuery))
-		    {
-		        Json(default(ImageViewModel));
-		    }
+			if (string.IsNullOrEmpty(searchQuery))
+			{
+				this.Json(default(ImageViewModel));
+			}
 
+			// ReSharper disable once AssignNullToNotNullAttribute
 			string encodedSearchQuery = HttpUtility.UrlPathEncode(searchQuery);
 
 			ImageModel result = this.imageService.GetImage(encodedSearchQuery, this.CheckRequestedSize(size));
 
-			return Json(Mapper.Map<ImageModel, ImageViewModel>(result));
+			return this.Json(Mapper.Map<ImageModel, ImageViewModel>(result));
 		}
 
 		private int CheckRequestedSize(int size)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'", size);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'", size);
 
-            if (!(size == 180 || size == 340 || size == 640 || size == 960))
+			if (!((size == 180) || (size == 340) || (size == 640) || (size == 960)))
 			{
 				return 640;
 			}

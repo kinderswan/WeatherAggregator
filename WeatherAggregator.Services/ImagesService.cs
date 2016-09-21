@@ -10,12 +10,12 @@ namespace WeatherAggregator.Services
 {
 	public class ImagesService : IImagesService
 	{
-		private readonly log4net.ILog log;
-
-
 		private readonly IImagesRepository imageRepository;
+		private readonly ILog log;
 
-		public ImagesService() { }
+		public ImagesService()
+		{
+		}
 
 		public ImagesService(IImagesRepository imageRepository, ILog log)
 		{
@@ -36,7 +36,7 @@ namespace WeatherAggregator.Services
 
 		private ImageModel ReturnDefaultImage(int size)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'",  size);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'", size);
 
 			return new ImageModel
 			{
@@ -46,7 +46,7 @@ namespace WeatherAggregator.Services
 
 		private ImageModel CheckImageResponseConditions(ImagesCollectionModel imagesCollection, int size)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'", size);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with size '{0}'", size);
 
 			size = size <= 0 ? 640 : size;
 

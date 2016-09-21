@@ -10,21 +10,23 @@ namespace WeatherAggregator.Repository.Repositories
 {
 	public class CountriesRepository : RepositoryBase<CountriesCollectionModel>, ICountriesRepository
 	{
-	    private readonly log4net.ILog log;
+		private readonly ILog log;
 
-        public CountriesRepository() { }
+		public CountriesRepository()
+		{
+		}
 
-	    public CountriesRepository(IHttpRequestor requestor, ILog log) : base(requestor)
-	    {
-	        this.log = log;
-	        this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
-	    }
+		public CountriesRepository(IHttpRequestor requestor, ILog log) : base(requestor)
+		{
+			this.log = log;
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
+		}
 
 		public CountriesCollectionModel GetCountriesCollection()
 		{
-            log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
 
-			IRestResponse<CountriesCollectionModel> response = base.GetResponseFromUrl(ApisUrlsNames.BaseCountriesUrl);
+			IRestResponse<CountriesCollectionModel> response = this.GetResponseFromUrl(ApisUrlsNames.BaseCountriesUrl);
 			return response.StatusCode == HttpStatusCode.OK
 				? response.Data
 				: default(CountriesCollectionModel);

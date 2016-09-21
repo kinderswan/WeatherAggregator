@@ -8,11 +8,12 @@ namespace WeatherAggregator.Services
 {
 	public class CountriesService : ICountriesService
 	{
-		private readonly log4net.ILog log;
-
 		private readonly ICountriesRepository countriesRepository;
+		private readonly ILog log;
 
-		public CountriesService() { }
+		public CountriesService()
+		{
+		}
 
 		public CountriesService(ICountriesRepository countriesRepository, ILog log)
 		{
@@ -23,7 +24,7 @@ namespace WeatherAggregator.Services
 
 		public CountriesCollectionModel GetCountriesCollection()
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
 			return this.countriesRepository.GetCountriesCollection();
 		}
 	}

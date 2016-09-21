@@ -4,6 +4,7 @@ using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Cities;
+using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.OpenWeatherMap;
 using WeatherAggregator.Repository.WeatherRepositories;
 using WeatherAggregator.Rest;
@@ -15,12 +16,6 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 	[TestClass]
 	public class OpenWeatherMapWeatherRepositoryTests
 	{
-		private Mock<IHttpRequestor> httpRequestorMock;
-
-	    private Mock<ILog> logMock;
-
-		private OpenWeatherMapWeatherRepository weatherRepository;
-
 		private readonly OpenWeatherMapWeatherModel weatherResponse = new OpenWeatherMapWeatherModel
 		{
 			OpenWeatherMapMain = new OpenWeatherMapMain
@@ -36,12 +31,18 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 			}
 		};
 
+		private Mock<IHttpRequestor> httpRequestorMock;
+
+		private Mock<ILog> logMock;
+
+		private OpenWeatherMapWeatherRepository weatherRepository;
+
 		[TestInitialize]
 		public void Initialize()
 		{
 			this.httpRequestorMock = new Mock<IHttpRequestor>();
-            this.logMock = new Mock<ILog>();
-			this.weatherRepository = new OpenWeatherMapWeatherRepository(this.httpRequestorMock.Object, logMock.Object);
+			this.logMock = new Mock<ILog>();
+			this.weatherRepository = new OpenWeatherMapWeatherRepository(this.httpRequestorMock.Object, this.logMock.Object);
 			AutoMapperConfig.Configure();
 		}
 
@@ -55,7 +56,7 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 			this.httpRequestorMock.Setup(x => x.PerformRequest<OpenWeatherMapWeatherModel>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
 				.Returns(() => HttpStatusCode.OK);
 
-			var result = this.weatherRepository.GetWeatherData(new CityModel
+			WeatherConventionModel result = this.weatherRepository.GetWeatherData(new CityModel
 			{
 				CityName = "CityName",
 				CountryName = "CountryName"
@@ -75,7 +76,7 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 			this.httpRequestorMock.Setup(x => x.PerformRequest<OpenWeatherMapWeatherModel>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
 				.Returns(() => HttpStatusCode.OK);
 
-			var result = this.weatherRepository.GetWeatherData(new CityModel
+			WeatherConventionModel result = this.weatherRepository.GetWeatherData(new CityModel
 			{
 				CityName = "CityName",
 				CountryName = "CountryName",
