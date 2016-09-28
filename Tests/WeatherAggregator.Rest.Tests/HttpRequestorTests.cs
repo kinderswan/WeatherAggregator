@@ -37,7 +37,6 @@ namespace WeatherAggregator.Rest.Tests
 		public void CleanUp()
 		{
 			this.httpClient.Dispose();
-			this.requestor.Dispose();
 			this.mockHttp.Clear();
 		}
 

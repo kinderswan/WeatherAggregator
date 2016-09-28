@@ -34,8 +34,8 @@ namespace WeatherAggregator.WebApi
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
 			builder.RegisterMetadataRegistrationSources();
 
-		    builder.Register(c => new HttpRequestor(new HttpClient(), c.Resolve<ILog>()))
-		        .As<IHttpRequestor>().SingleInstance();
+			builder.Register(c => new HttpRequestor(new HttpClient(), c.Resolve<ILog>()))
+				.As<IHttpRequestor>().SingleInstance();
 
 			builder.RegisterGeneric(typeof (RestResponse<>)).As(typeof (IRestResponse<>)).InstancePerRequest();
 

@@ -20,12 +20,13 @@ namespace WeatherAggregator.Rest
 		{
 			this.log = log;
 			this.log.InfoFormat(CultureInfo.InvariantCulture, "has been called");
-            this.httpClient = client;
+			this.httpClient = client;
 		}
 
 		public IRestResponse<TResponse> PerformRequest<TResponse>(string url, HttpMethod method)
 		{
-			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}', method '{1}', httpClient hashCode '{2}'", url, method, this.httpClient.GetHashCode());
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with url '{0}', method '{1}', httpClient hashCode '{2}'", url, method,
+				this.httpClient.GetHashCode());
 
 			if (string.IsNullOrEmpty(url))
 			{
