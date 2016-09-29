@@ -8,9 +8,9 @@ The back-end side of WeatherAggregator is written on C# 5.0 and the front-end is
 
 
 ### How to deploy
-First of all, if you do not have the IIS server, [install it](http://www.howtogeek.com/112455/how-to-install-iis-8-on-windows-8/) to deploy your changes locally.
+First of all, if you do not have the IIS server, [install it](http://www.howtogeek.com/112455/how-to-install-iis-8-on-windows-8/) to deploy your changes locally. You can skip all the information below if you know how to do it or you are going to deploy it somewhere else.
 
-1. Create two application pools for running the application. You can name them like [WeatherApi and WeatherWebsite](https://i.imgur.com/0eUl2Nt.png)
+1. Create two application pools to run the application locally. You can name them like [WeatherApi and WeatherWebsite](https://i.imgur.com/0eUl2Nt.png)
 2. Open advanced settings and change the application identity to [local system](https://i.imgur.com/dd7armm.png)
 3. Create two websites like [this](https://i.imgur.com/Hnh4uPa.png)
 4. My application requires ssl certificates. How to add website with https you can find [there](https://www.digicert.com/ssl-certificate-installation-microsoft-iis-7.htm)
