@@ -15,9 +15,9 @@ namespace WeatherAggregator.WebApi.Mappings
 		[Obsolete("Use the constructor instead. Will be removed in 6.0")]
 		protected override void Configure()
 		{
-			CreateMap<CitiesCollectionModel, CitiesCollectionViewModel>();
-			
-			CreateMap<CityModel, CityViewModel>()
+			this.CreateMap<CitiesCollectionModel, CitiesCollectionViewModel>();
+
+			this.CreateMap<CityModel, CityViewModel>()
 				.ForMember(x => x.CountryName, y => y.MapFrom(src => src.CountryName))
 				.ForMember(x => x.CityName, y => y.MapFrom(src => src.CityName))
 				.ForMember(x => x.StateName, y => y.MapFrom(src => src.StateName));

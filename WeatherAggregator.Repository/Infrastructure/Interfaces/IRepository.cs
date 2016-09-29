@@ -2,7 +2,7 @@
 
 namespace WeatherAggregator.Repository.Infrastructure.Interfaces
 {
-	public interface IRepository<T> where T : class
+	public interface IRepository<out T> where T : class
 	{
 		IRestResponse<T> GetResponseFromUrl(string url);
 	}

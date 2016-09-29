@@ -7,7 +7,6 @@ using Autofac;
 using Autofac.Integration.Mef;
 using Autofac.Integration.WebApi;
 using log4net;
-using log4net.Core;
 using WeatherAggregator.Repository.Infrastructure;
 using WeatherAggregator.Repository.Repositories.Interfaces;
 using WeatherAggregator.Repository.WeatherRepositories;
@@ -23,27 +22,28 @@ namespace WeatherAggregator.WebApi
 	{
 		public static void Run()
 		{
-			Bootstrapper.SetAutofacContainer();
+			SetAutofacContainer();
 			AutoMapperConfig.Configure();
 		}
 
 		private static void SetAutofacContainer()
 		{
 			ContainerBuilder builder = new ContainerBuilder();
-            builder.RegisterInstance(LogManager.GetLogger("Logger")).As<ILog>();
+			builder.RegisterInstance(LogManager.GetLogger("Logger")).As<ILog>();
 
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
+			builder.RegisterApiControllers(Assembly.GetExecutingAssembly()).InstancePerRequest();
 			builder.RegisterMetadataRegistrationSources();
 
-			builder.Register(c => new HttpRequestor(new HttpClient(), c.Resolve<ILog>())).As<IHttpRequestor>().InstancePerRequest();
+			builder.Register(c => new HttpRequestor(new HttpClient(), c.Resolve<ILog>()))
+				.As<IHttpRequestor>().SingleInstance();
 
-			builder.RegisterGeneric(typeof(RestResponse<>)).As(typeof(IRestResponse<>)).InstancePerRequest();
+			builder.RegisterGeneric(typeof (RestResponse<>)).As(typeof (IRestResponse<>)).InstancePerRequest();
 
-			builder.RegisterAssemblyTypes(typeof(IImagesRepository).Assembly)
+			builder.RegisterAssemblyTypes(typeof (IImagesRepository).Assembly)
 				.Where(t => t.Name.EndsWith("Repository") && !t.Name.Contains("Weather"))
 				.AsImplementedInterfaces().InstancePerRequest();
 
-			builder.RegisterAssemblyTypes(typeof(ICitiesService).Assembly)
+			builder.RegisterAssemblyTypes(typeof (ICitiesService).Assembly)
 				.Where(t => t.Name.EndsWith("Service") && !t.Name.Contains("Weather"))
 				.AsImplementedInterfaces().InstancePerRequest();
 
@@ -57,14 +57,14 @@ namespace WeatherAggregator.WebApi
 
 			builder.Register(c => new OpenWeatherMapWeatherRepository(
 				c.Resolve<IHttpRequestor>(),
-                c.Resolve<ILog>()))
+				c.Resolve<ILog>()))
 				.As<IWeatherRepository>()
 				.WithMetadata<IRepositorySet>(m =>
 					m.For(em => em.RepositorySet, RepositorySet.OpenWeatherMap));
 
 			builder.Register(c => new WeatherService(
 				c.Resolve<IEnumerable<Lazy<IWeatherRepository, IRepositorySet>>>(),
-                c.Resolve<ILog>()))
+				c.Resolve<ILog>()))
 				.As<IWeatherService>().InstancePerRequest();
 
 			#endregion
@@ -72,6 +72,5 @@ namespace WeatherAggregator.WebApi
 			IContainer container = builder.Build();
 			GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 		}
-
 	}
 }

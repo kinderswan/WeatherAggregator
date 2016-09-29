@@ -3,8 +3,8 @@ using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Cities;
+using WeatherAggregator.Models.Models.Core.Weather;
 using WeatherAggregator.Models.Models.Weather.Wunderground;
-using WeatherAggregator.Repository.Repositories;
 using WeatherAggregator.Repository.WeatherRepositories;
 using WeatherAggregator.Rest;
 using WeatherAggregator.Rest.Interfaces;
@@ -15,12 +15,6 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 	[TestClass]
 	public class WundergroundWeatherRepositoryTests
 	{
-		private Mock<IHttpRequestor> httpRequestorMock;
-
-	    private Mock<ILog> logMock;
-
-		private WundergroundWeatherRepository weatherRepository;
-
 		private readonly WundergroundWeatherModel weatherResponse = new WundergroundWeatherModel
 		{
 			CurrentObservation = new WundergroundCurrentObservation
@@ -29,11 +23,17 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 			}
 		};
 
+		private Mock<IHttpRequestor> httpRequestorMock;
+
+		private Mock<ILog> logMock;
+
+		private WundergroundWeatherRepository weatherRepository;
+
 		[TestInitialize]
 		public void Initialize()
 		{
 			this.httpRequestorMock = new Mock<IHttpRequestor>();
-            this.logMock = new Mock<ILog>();
+			this.logMock = new Mock<ILog>();
 			this.weatherRepository = new WundergroundWeatherRepository(this.httpRequestorMock.Object, this.logMock.Object);
 			AutoMapperConfig.Configure();
 		}
@@ -48,7 +48,7 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 			this.httpRequestorMock.Setup(x => x.PerformRequest<WundergroundWeatherModel>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
 				.Returns(() => HttpStatusCode.OK);
 
-			var result = this.weatherRepository.GetWeatherData(new CityModel
+			WeatherConventionModel result = this.weatherRepository.GetWeatherData(new CityModel
 			{
 				CityName = "CityName",
 				CountryName = "CountryName"
@@ -61,14 +61,14 @@ namespace WeatherAggregator.Repository.Tests.WeatherRepositories
 		[TestMethod, TestCategory("Repositories")]
 		public void GetWeatherDataState_ShouldReturn_WeatherConventionModel()
 		{
-			string url = string.Format(ApisUrlsNames.WundergroundCountryStateURL, "CountryName","StateName","CityName");
+			string url = string.Format(ApisUrlsNames.WundergroundCountryStateURL, "CountryName", "StateName", "CityName");
 
 			this.httpRequestorMock.Setup(x => x.PerformRequest<WundergroundWeatherModel>(It.Is<string>(y => y == url), HttpMethod.Get).Data)
 				.Returns(() => this.weatherResponse);
 			this.httpRequestorMock.Setup(x => x.PerformRequest<WundergroundWeatherModel>(It.Is<string>(y => y == url), HttpMethod.Get).StatusCode)
 				.Returns(() => HttpStatusCode.OK);
 
-			var result = this.weatherRepository.GetWeatherData(new CityModel
+			WeatherConventionModel result = this.weatherRepository.GetWeatherData(new CityModel
 			{
 				CityName = "CityName",
 				CountryName = "CountryName",

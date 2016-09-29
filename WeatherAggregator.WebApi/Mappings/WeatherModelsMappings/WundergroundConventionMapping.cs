@@ -15,7 +15,7 @@ namespace WeatherAggregator.WebApi.Mappings.WeatherModelsMappings
 		[Obsolete("Use the constructor instead. Will be removed in 6.0")]
 		protected override void Configure()
 		{
-			CreateMap<WundergroundWeatherModel, WeatherConventionModel>()
+			this.CreateMap<WundergroundWeatherModel, WeatherConventionModel>()
 				.ForMember(temp => temp.Temperature, x => x.MapFrom(src => src.CurrentObservation.TemperatureCelsius))
 				.ForMember(temp => temp.Humidity, x => x.MapFrom(src => src.CurrentObservation.RelativeHumidity))
 				.ForMember(temp => temp.City, x => x.MapFrom(src => src.CurrentObservation.DisplayLocation.CityName))
@@ -27,7 +27,7 @@ namespace WeatherAggregator.WebApi.Mappings.WeatherModelsMappings
 				.ForMember(temp => temp.WindDegrees, x => x.MapFrom(src => src.CurrentObservation.WindDegrees))
 				.ForMember(temp => temp.WindSpeed, x => x.MapFrom(src => src.CurrentObservation.WindSpeed))
 				.ForMember(temp => temp.State, x => x.MapFrom(src => src.CurrentObservation.DisplayLocation.StateName))
-                .ForMember(temp => temp.WeatherDescription, x => x.MapFrom(src => src.CurrentObservation.IconDefinition));
+				.ForMember(temp => temp.WeatherDescription, x => x.MapFrom(src => src.CurrentObservation.IconDefinition));
 		}
 	}
 }

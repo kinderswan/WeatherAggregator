@@ -9,11 +9,12 @@ namespace WeatherAggregator.Services
 {
 	public class CitiesService : ICitiesService
 	{
-		private readonly log4net.ILog log;
-
 		private readonly ICitiesRepository citiesRepository;
+		private readonly ILog log;
 
-		public CitiesService() { }
+		public CitiesService()
+		{
+		}
 
 		public CitiesService(ICitiesRepository citiesRepository, ILog log)
 		{
@@ -24,11 +25,11 @@ namespace WeatherAggregator.Services
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with countryName '{0}'", countryName);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with countryName '{0}'", countryName);
 
 			if (string.IsNullOrEmpty(countryName))
 			{
-				log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because countryName was null or empty");
+				this.log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because countryName was null or empty");
 				throw new ArgumentException(countryName, "countryName");
 			}
 
@@ -37,17 +38,17 @@ namespace WeatherAggregator.Services
 
 		public CitiesCollectionModel GetCitiesCollection(string countryName, string stateName)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with countryName '{0}', stateName '{1}'", countryName, stateName);
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called with countryName '{0}', stateName '{1}'", countryName, stateName);
 
 			if (string.IsNullOrEmpty(countryName))
 			{
-				log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because countryName was null or empty");
+				this.log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because countryName was null or empty");
 				throw new ArgumentException(countryName, "countryName");
 			}
 
 			if (string.IsNullOrEmpty(stateName))
 			{
-				log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because stateName was null or empty");
+				this.log.ErrorFormat(CultureInfo.InvariantCulture, "method throwed an exception because stateName was null or empty");
 				throw new ArgumentException(stateName, "stateName");
 			}
 

@@ -1,20 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using log4net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using WeatherAggregator.Models.Models.Core.Cities;
-using WeatherAggregator.Models.Models.Core.Countries;
-using WeatherAggregator.Models.Models.Core.Images;
 using WeatherAggregator.Models.Models.Core.Weather;
-using WeatherAggregator.Repository;
 using WeatherAggregator.Repository.Infrastructure;
-using WeatherAggregator.Repository.Repositories.Interfaces;
-using WeatherAggregator.Repository.WeatherRepositories;
 using WeatherAggregator.Repository.WeatherRepositories.Interfaces;
-using WeatherAggregator.Rest;
 using WeatherAggregator.Services;
 using WeatherAggregator.Services.Interfaces;
 
@@ -23,19 +15,18 @@ namespace WeatherAggregator.Service.Tests
 	[TestClass]
 	public class WeatherServiceTest
 	{
-		private IWeatherService weatherService;
-		private Mock<IWeatherRepository> wundergroundWeatherRepositoryMock;
-		private Mock<IWeatherRepository> openWeatherMapRepositoryMock;
-
-		private Mock<IRepositorySet> openWeatherMockSet; 
-		private Mock<IRepositorySet> wunderWeatherMockSet;
-
-	    private Mock<ILog> logMock;
-
 		private readonly WeatherConventionModel response = new WeatherConventionModel
 		{
 			Temperature = 20
 		};
+
+		private Mock<ILog> logMock;
+		private Mock<IWeatherRepository> openWeatherMapRepositoryMock;
+
+		private Mock<IRepositorySet> openWeatherMockSet;
+		private IWeatherService weatherService;
+		private Mock<IWeatherRepository> wundergroundWeatherRepositoryMock;
+		private Mock<IRepositorySet> wunderWeatherMockSet;
 
 		[TestInitialize]
 		public void Initialize()
@@ -49,7 +40,7 @@ namespace WeatherAggregator.Service.Tests
 			this.openWeatherMockSet.Setup(x => x.RepositorySet).Returns(RepositorySet.OpenWeatherMap);
 			this.wunderWeatherMockSet.Setup(x => x.RepositorySet).Returns(RepositorySet.Wunderground);
 
-			var di = new List<Lazy<IWeatherRepository, IRepositorySet>>
+			List<Lazy<IWeatherRepository, IRepositorySet>> di = new List<Lazy<IWeatherRepository, IRepositorySet>>
 			{
 				new Lazy<IWeatherRepository, IRepositorySet>(() => this.wundergroundWeatherRepositoryMock.Object,
 					this.wunderWeatherMockSet.Object),
@@ -57,7 +48,7 @@ namespace WeatherAggregator.Service.Tests
 					this.openWeatherMockSet.Object)
 			};
 
-            this.logMock = new Mock<ILog>();
+			this.logMock = new Mock<ILog>();
 			this.weatherService = new WeatherService(di, this.logMock.Object);
 		}
 
@@ -67,7 +58,7 @@ namespace WeatherAggregator.Service.Tests
 			this.openWeatherMapRepositoryMock.Setup(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")))
 				.Returns(this.response);
 
-			var result = this.weatherService.GetWeatherData(new CityModel
+			WeatherConventionModel result = this.weatherService.GetWeatherData(new CityModel
 			{
 				CityName = "CityName"
 			}, "openweathermap");
@@ -77,20 +68,20 @@ namespace WeatherAggregator.Service.Tests
 			this.wundergroundWeatherRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Never);
 		}
 
-        [TestMethod]
-        public void GetWeatherData_ShouldBeCalledTheWunderweather()
-        {
-            this.wundergroundWeatherRepositoryMock.Setup(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")))
-                .Returns(this.response);
+		[TestMethod]
+		public void GetWeatherData_ShouldBeCalledTheWunderweather()
+		{
+			this.wundergroundWeatherRepositoryMock.Setup(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")))
+				.Returns(this.response);
 
-            var result = this.weatherService.GetWeatherData(new CityModel
-            {
-                CityName = "CityName"
-            }, "wunderweather");
+			WeatherConventionModel result = this.weatherService.GetWeatherData(new CityModel
+			{
+				CityName = "CityName"
+			}, "wunderweather");
 
-            Assert.AreEqual(result.Temperature, 20);
-            this.wundergroundWeatherRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Once);
-            this.openWeatherMapRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Never);
-        }
-    }
+			Assert.AreEqual(result.Temperature, 20);
+			this.wundergroundWeatherRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Once);
+			this.openWeatherMapRepositoryMock.Verify(x => x.GetWeatherData(It.Is<CityModel>(y => y.CityName == "CityName")), Times.Never);
+		}
+	}
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -11,13 +10,11 @@ namespace WeatherAggregator.Rest
 {
 	public class RestResponse<T> : IRestResponse<T>
 	{
-        private readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(RestResponse<T>).Name);
+		private readonly ILog log = LogManager.GetLogger(typeof (RestResponse<T>).Name);
 
-        public HttpStatusCode StatusCode { get; private set; }
-
-		public T Data { get; private set; }
-
-		public RestResponse() { }
+		public RestResponse()
+		{
+		}
 
 		public RestResponse(HttpResponseMessage httpResponseMessage)
 			: this()
@@ -27,16 +24,20 @@ namespace WeatherAggregator.Rest
 			this.Data = this.GetDataFromResponseContent(httpResponseMessage.Content);
 		}
 
+		public HttpStatusCode StatusCode { get; private set; }
+
+		public T Data { get; private set; }
+
 		private T GetDataFromResponseContent(HttpContent responseContent)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
 			string responseString = Task.Run(() => responseContent.ReadAsStringAsync()).Result;
 			return this.JsonTryDeserialize(responseString);
 		}
 
 		private T JsonTryDeserialize(string responseString)
 		{
-			log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
+			this.log.InfoFormat(CultureInfo.InvariantCulture, "method has been called");
 
 			T result;
 
@@ -46,7 +47,8 @@ namespace WeatherAggregator.Rest
 			}
 			catch (JsonSerializationException exception)
 			{
-				log.FatalFormat(CultureInfo.InvariantCulture, "JsonTryDeserialize threw an error {0} {1}", exception.Data, exception.Message);
+				this.log.FatalFormat(CultureInfo.InvariantCulture, "JsonTryDeserialize threw an error {0} {1}", exception.Data,
+					exception.Message);
 				return default(T);
 			}
 

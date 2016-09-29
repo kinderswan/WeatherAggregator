@@ -13,12 +13,6 @@ namespace WeatherAggregator.Repository.Tests
 	[TestClass]
 	public class CountriesRepositoryTests
 	{
-		private Mock<IHttpRequestor> httpRequestorMock;
-
-	    private Mock<ILog> logMock;
-
-		private CountriesRepository countriesRepository;
-
 		private readonly CountriesCollectionModel countriesResponse = new CountriesCollectionModel
 		{
 			Countries = new List<CountryModel>
@@ -32,11 +26,16 @@ namespace WeatherAggregator.Repository.Tests
 			}
 		};
 
+		private CountriesRepository countriesRepository;
+		private Mock<IHttpRequestor> httpRequestorMock;
+
+		private Mock<ILog> logMock;
+
 		[TestInitialize]
 		public void Initialize()
 		{
 			this.httpRequestorMock = new Mock<IHttpRequestor>();
-            this.logMock = new Mock<ILog>();
+			this.logMock = new Mock<ILog>();
 			this.countriesRepository = new CountriesRepository(this.httpRequestorMock.Object, this.logMock.Object);
 		}
 
